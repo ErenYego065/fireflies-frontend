@@ -1,0 +1,202 @@
+[
+  {
+    "title": "Airdrop",
+    "description": "This mechanism is a marketing strategy that enables a company to send coins or tokens to wallet addresses of their active members. The blockchain community can get these small amounts of the digital asset for free or in return for a small service, such as retweeting a post."
+  },
+  {
+    "title": "Blockchain",
+    "description": "A decentralized digital ledger that records transactions across many computers. It ensures security, transparency, and immutability of data."
+  },
+  {
+    "title": "DAO (Decentralized Autonomous Organization)",
+    "description": "An organization that operates on blockchain and is governed by smart contracts and the collective decision-making of community members rather than a central authority."
+  },
+  {
+    "title": "Smart Contract",
+    "description": "Self-executing contracts with the terms of the agreement directly written into code, automatically enforcing, verifying, or executing actions based on conditions."
+  },
+  {
+    "title": "NFT (Non-Fungible Token)",
+    "description": "A unique digital asset that represents ownership of specific items, such as artwork, virtual real estate, or collectibles, on a blockchain."
+  },
+  {
+    "title": "Gas Fee",
+    "description": "The fee required to execute a transaction or operation on the Ethereum network, compensating miners or validators for their computational resources."
+  },
+  {
+    "title": "DeFi (Decentralized Finance)",
+    "description": "A financial ecosystem built on blockchain technology that allows users to borrow, lend, and trade without relying on traditional financial institutions."
+  },
+  {
+    "title": "Wallet",
+    "description": "A digital or hardware tool that stores private keys and allows users to send, receive, and manage their cryptocurrency and digital assets."
+  },
+  {
+    "title": "Token",
+    "description": "A digital asset issued on a blockchain, representing a unit of value or access to specific services, often used in decentralized applications."
+  },
+  {
+    "title": "Metaverse",
+    "description": "A collective virtual shared space created by converging virtually enhanced physical reality and persistent virtual worlds, allowing real-time user interaction."
+  },
+  {
+    "title": "Staking",
+    "description": "The process of locking up cryptocurrency in a blockchain network to support its operations, such as transaction validation, in exchange for rewards."
+  },
+  {
+    "title": "Proof of Work (PoW)",
+    "description": "A consensus mechanism where miners solve complex mathematical problems to validate transactions and add blocks to the blockchain, securing the network."
+  },
+  {
+    "title": "Proof of Stake (PoS)",
+    "description": "A consensus mechanism that selects validators based on the amount of cryptocurrency they hold and are willing to 'stake' as collateral, making the network more energy-efficient."
+  },
+  {
+    "title": "Mining",
+    "description": "The process of using computational power to solve cryptographic puzzles, validate transactions, and add them to a blockchain, rewarding participants with new cryptocurrency."
+  },
+  {
+    "title": "Yield Farming",
+    "description": "A DeFi strategy where users lend or stake their cryptocurrency assets to earn rewards in the form of interest or new tokens."
+  },
+  {
+    "title": "Liquidity Pool",
+    "description": "A collection of funds locked in a smart contract that provides liquidity for decentralized exchanges and protocols, enabling automated trading of assets."
+  },
+  {
+    "title": "Initial Coin Offering (ICO)",
+    "description": "A fundraising method in which new blockchain projects sell their tokens to investors in exchange for capital, often before the project is fully developed."
+  },
+  {
+    "title": "Cross-Chain",
+    "description": "A technology that allows different blockchain networks to interact and communicate with each other, enabling the transfer of assets and data across chains."
+  },
+  {
+    "title": "Layer 1",
+    "description": "A base blockchain network, such as Bitcoin or Ethereum, that provides the foundation for applications and protocols without relying on another blockchain."
+  },
+  {
+    "title": "Layer 2",
+    "description": "A secondary network or technology built on top of a Layer 1 blockchain to improve scalability, speed, and cost-efficiency of transactions."
+  },
+  {
+    "title": "Dapp (Decentralized Application)",
+    "description": "An application that runs on a blockchain or peer-to-peer network instead of a centralized server, offering greater transparency and decentralization."
+  },
+  {
+    "title": "Node",
+    "description": "A computer or device connected to a blockchain network that helps verify transactions and maintain the network's distributed ledger."
+  },
+  {
+    "title": "Validator",
+    "description": "A participant in a blockchain network that verifies transactions and adds new blocks to the chain, typically in a Proof of Stake or other consensus mechanism."
+  },
+  {
+    "title": "Fork",
+    "description": "A change or divergence in a blockchain protocol that creates two different versions of the blockchain, one of which may implement new rules or features."
+  },
+  {
+    "title": "Sharding",
+    "description": "A scaling technique that divides a blockchain's data into smaller pieces, called shards, to improve transaction speed and capacity without compromising security."
+  },
+  {
+    "title": "Atomic Swap",
+    "description": "A technology that allows users to exchange one cryptocurrency for another without relying on a centralized exchange or intermediary."
+  },
+  {
+    "title": "Governance Token",
+    "description": "A token that grants its holders voting rights in a blockchain project's governance process, allowing them to influence decisions and upgrades."
+  },
+  {
+    "title": "Oracles",
+    "description": "Third-party services that provide external, real-world data to smart contracts, enabling decentralized applications to interact with off-chain information."
+  },
+  {
+    "title": "Web3",
+    "description": "The next generation of the internet that emphasizes decentralization, user control of data, and blockchain technology, enabling peer-to-peer interactions without intermediaries."
+  },
+  {
+    "title": "Privacy Coin",
+    "description": "Cryptocurrencies that emphasize user privacy and anonymity, often using advanced cryptography to conceal transaction details and participants' identities."
+  },
+  {
+    "title": "Rollup",
+    "description": "A Layer 2 solution that bundles multiple transactions together off-chain and then submits them as a single transaction to the Layer 1 blockchain, reducing costs and increasing throughput."
+  },
+  {
+    "title": "Interoperability",
+    "description": "The ability of different blockchain networks to communicate and share data, allowing assets to move freely between platforms and improving ecosystem connectivity."
+  },
+  {
+    "title": "Hash Rate",
+    "description": "The measurement of computational power used in a Proof of Work blockchain network, representing the number of calculations a miner can perform per second."
+  },
+  {
+    "title": "Cold Storage",
+    "description": "A method of storing cryptocurrency offline, away from internet access, to protect it from hacking and unauthorized access."
+  },
+  {
+    "title": "Hot Wallet",
+    "description": "A cryptocurrency wallet that is connected to the internet, allowing for quick access and transactions but with a higher risk of security breaches."
+  },
+  {
+    "title": "Stablecoin",
+    "description": "A type of cryptocurrency that is pegged to the value of a stable asset, such as fiat currency or gold, to reduce volatility."
+  },
+  {
+    "title": "Liquidity Mining",
+    "description": "A process where users provide liquidity to decentralized finance platforms and earn rewards, typically in the form of tokens or interest."
+  },
+  {
+    "title": "Digital Identity",
+    "description": "A decentralized and secure way to manage personal information on the blockchain, allowing individuals to control and share their identity without relying on centralized authorities."
+  },
+  {
+    "title": "Zero-Knowledge Proof",
+    "description": "A cryptographic technique that allows one party to prove to another that a statement is true without revealing any underlying information."
+  },
+  {
+    "title": "Sybil Attack",
+    "description": "A security threat where an attacker creates multiple fake identities to gain control or influence over a decentralized network or platform."
+  },
+  {
+    "title": "Tokenomics",
+    "description": "The economic model and design of a cryptocurrency or token, including its supply, distribution, and use cases within an ecosystem."
+  },
+  {
+    "title": "DEX (Decentralized Exchange)",
+    "description": "A peer-to-peer exchange where users can trade cryptocurrencies directly with one another without relying on a centralized entity or intermediary."
+  },
+  {
+    "title": "Fungibility",
+    "description": "A property of an asset where each unit is interchangeable with others of the same type, making it suitable for use as currency."
+  },
+  {
+    "title": "Governance",
+    "description": "The process by which decisions are made in decentralized organizations or blockchain networks, often involving community voting and consensus."
+  },
+  {
+    "title": "Merkle Tree",
+    "description": "A data structure used in blockchain systems to efficiently and securely verify the integrity of large sets of data."
+  },
+  {
+    "title": "Sidechain",
+    "description": "A separate blockchain that is connected to a main blockchain (Layer 1) and can move assets between the two while offering different features or performance."
+  },
+  {
+    "title": "Multisig",
+    "description": "A security feature that requires multiple signatures or approvals from different users to execute a transaction, enhancing security in wallet management."
+  },
+  {
+    "title": "ICO (Initial Coin Offering)",
+    "description": "A fundraising method used by blockchain projects to raise capital by selling a new cryptocurrency or token to early investors."
+  },
+  {
+    "title": "Hard Fork",
+    "description": "A significant change to a blockchain's protocol that is not backward compatible, often resulting in the creation of a new blockchain and cryptocurrency."
+  },
+  {
+    "title": "Soft Fork",
+    "description": "A minor change to a blockchain's protocol that is backward compatible, meaning the new rules can coexist with the old ones."
+  }
+]
