@@ -99,12 +99,11 @@ const Rewards = () => {
                 <p className="font-bold text-primary-500 md:text-3xl text-lg">{ticketDetails?.price?.toLocaleString()} FFT</p>
                 <p className="md:text-2xl text-lg text-secondary-700">/ Ticket</p>
               </div>
-              <Button size="lg" className="w-full bg-gradient-to-r-from-teal-to-blue" onClick={() => setIsModalOpen(true)} >Buy Now</Button>
+              <PurchaseModal ticketDetails={ticketDetails} />
             </div>
           </div>
         </div>
       </div >
-      <PurchaseModal ticketDetails={ticketDetails} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </React.Fragment>
   )
 }
