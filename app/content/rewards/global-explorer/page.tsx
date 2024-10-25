@@ -7,6 +7,7 @@ import React, { useEffect, useState } from "react";
 import moment from "moment";
 import PurchaseModal from "../../../../components/content/rewards/globalExplorer/PurchaseModal";
 import ImagesSlider from "../../../../components/content/rewards/globalExplorer/ImagesSlider";
+import ProgressBar from "@/components/ui/progress-bar";
 
 
 export interface TicketDetails {
@@ -110,9 +111,7 @@ const Rewards = () => {
               </div>
               <p className="md:text-sm text-xs text-[#5A5555] mt-1">Closes on <span className="font-bold">{moment(ticketDetails?.endTime).format('MMM Do hA')}</span></p>
               <div className="py-3.5"><h2 className="text-lg font-semibold text-[#0A0A0B]">Tickets</h2>
-                <div className="w-full h-4 bg-[#CCCBCB] my-1 rounded-full">
-                  <div style={{ width: ticketSoldPercentage + "%" }} className="h-full rounded-full bg-primary-500" />
-                </div>
+                <ProgressBar progress={ticketSoldPercentage} />
                 <div className="flex justify-between">
                   <p className="text-base md:text-lg text-secondary-700">{ticketSoldPercentage}% Sold</p>
                   <p className="text-base md:text-lg font-bold text-secondary-900">{ticketDetails?.totalSold}/{ticketDetails?.totalTickets}</p>
