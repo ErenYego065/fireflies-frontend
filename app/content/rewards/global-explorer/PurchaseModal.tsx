@@ -38,9 +38,9 @@ const PurchaseModal = ({ isOpen, onClose, ticketDetails }: PurchaseModalProps) =
                         <div>
                             <p className='text-xs md:text-sm text-[#5A5555]'>Select Number of Tickets:</p>
                             <div className='flex justify-between items-center mt-1.5'>
-                                <Button disabled={tickets === 1} onClick={() => setTickets(tickets - 1)}><Remove /></Button>
+                                <Button className='w-10 h-10' disabled={tickets === 1} onClick={() => setTickets(tickets - 1)}><Remove /></Button>
                                 <p className='text-[#000]'>{tickets}</p>
-                                <Button onClick={() => setTickets(tickets + 1)}><Add /></Button>
+                                <Button className='w-10 h-10' onClick={() => setTickets(tickets + 1)}><Add /></Button>
                             </div>
                         </div>
                         <button className="bg-[linear-gradient(98.32deg,_#505D65_20.43%,#000000_100%)] text-[#FAFAFA] h-10 px-2.5 rounded-lg p-0 text-xs md:text-sm font-semibold">You get a 10% discount for purchasing 50+ tickets.</button>
@@ -59,10 +59,10 @@ const PurchaseModal = ({ isOpen, onClose, ticketDetails }: PurchaseModalProps) =
                             <p className="text-xs md:text-sm text-[#5A5555]">Subtotal</p>
                             <p className="text-sm md:text-base font-bold text-[#5A5555]">{(tickets * ticketDetails?.price).toLocaleString()} FFT</p>
                         </div>
-                        <div className='flex justify-between'>
+                        {tickets > ticketDetails?.minTicketForDiscount && <div className='flex justify-between'>
                             <p className="text-xs md:text-sm text-[#5A5555]">Discount ({ticketDetails?.minTicketForDiscount.toLocaleString()}+)</p>
                             <p className="text-sm md:text-base font-bold text-[#5A5555]">{ticketDetails?.discountPercentage}%</p>
-                        </div>
+                        </div>}
                         <div className='w-full h-[1px] bg-[#D9D9D980]' />
                         <div className='flex justify-between'>
                             <p className="text-xs md:text-sm text-[#5A5555]">TOTAL</p>
