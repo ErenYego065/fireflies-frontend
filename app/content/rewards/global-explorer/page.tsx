@@ -60,11 +60,11 @@ const Rewards = () => {
         <div className="container px-5">
           <div className="flex items-center gap-2.5 mt-[76px] w-full mx-auto">
             <ChevronLeft sx={{ height: "64px", width: "64px", color: "#5A616C", cursor: "pointer" }} />
-            <h1 className="font-[family-name:var(--font-sofia)] font-bold text-6xl text-secondary-700">
+            <h1 className="font-[family-name:var(--font-sofia)] font-bold text-3xl md:text-6xl text-secondary-700">
               Global Explorer
             </h1>
           </div>
-          <div className="grid md:grid-cols-2 gap-6 mt-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-10">
             <div className="w-full">
               <Image
                 src={ticketDetails?.imgUrls[selectedImageIndex]}
@@ -74,29 +74,41 @@ const Rewards = () => {
                 width={700}
               />
               {ticketDetails?.imgUrls?.length > 1 && <div className="px-6 py-4">
-                <Slider arrows infinite={false} draggable={false} slidesToScroll={1} speed={500} slidesToShow={4}
-                  afterChange={(currentSlide) => setSelectedImageIndex(currentSlide)}>
-                  {ticketDetails?.imgUrls?.map((url, index) =>
-                    <div>
-                      <Image
-                        style={{ border: selectedImageIndex === index ? "1px solid" : "" }}
-                        onClick={() => setSelectedImageIndex(index)}
-                        src={url}
-                        key={"thumbnail " + index}
-                        alt={"thumbnail " + index}
-                        className="w-full aspect-video object-cover rounded-md pointer border-secondary-700"
-                        height={90}
-                        width={120}
-                      />
-                    </div>
-                  )}
-                </Slider>
+                <div className="slider-container">
+
+                  <Slider arrows infinite={false} slidesToScroll={1} speed={500} slidesToShow={4} responsive={[{
+                    breakpoint: 600,
+                    settings: {
+                      slidesToShow: 3,
+                    }
+                  }, {
+                    breakpoint: 480,
+                    settings: {
+                      slidesToShow: 2,
+                    }
+                  }]}
+                    afterChange={(currentSlide) => setSelectedImageIndex(currentSlide)}>
+                    {ticketDetails?.imgUrls?.map((url, index) =>
+                      <div>
+                        <Image
+                          style={{ border: selectedImageIndex === index ? "1px solid" : "" }}
+                          onClick={() => setSelectedImageIndex(index)}
+                          src={url}
+                          key={"thumbnail " + index}
+                          alt={"thumbnail " + index}
+                          className="w-full aspect-video object-cover rounded-md pointer border-secondary-700"
+                          height={90}
+                          width={120}
+                        />
+                      </div>
+                    )}
+                  </Slider></div>
               </div>}
             </div>
             <div className="h-fit p-5 border border-[#CCCBCB] bg-[#FAFAFA] rounded-lg relative max-md:mt-10">
-              <button className="bg-[linear-gradient(98.32deg,_#505D65_20.43%,#000000_100%)] text-[#FAFAFA] h-10 px-2.5 rounded-lg absolute -top-16 max-md:left-0 md:right-0 text-sm font-semibold">Buy {ticketDetails?.minTicketForDiscount}+ tickets - {ticketDetails?.discountPercentage}% discount</button>
-              <h2 className="text-lg font-semibold text-[#0A0A0B]">Description</h2>
-              <p className="text-sm text-[#5A5555]">{ticketDetails?.description}</p>
+              <button className="bg-[linear-gradient(98.32deg,_#505D65_20.43%,#000000_100%)] text-[#FAFAFA] h-10 px-2.5 rounded-lg absolute -top-16 max-md:left-0 md:right-0 md:text-sm text-xs font-semibold">Buy {ticketDetails?.minTicketForDiscount}+ tickets - {ticketDetails?.discountPercentage}% discount</button>
+              <h2 className="text-base md:text-lg font-semibold text-[#0A0A0B]">Description</h2>
+              <p className="md:text-sm text-xs text-[#5A5555]">{ticketDetails?.description}</p>
               <div className="flex flex-col gap-3.5 py-3.5">
                 <div className="flex items-center gap-1">
                   <Image
@@ -106,7 +118,7 @@ const Rewards = () => {
                     height={24}
                     className="h-6 w-6"
                   />
-                  <p className="text-sm text-[#5A5555]">Max {ticketDetails?.max} per person</p>
+                  <p className="md:text-sm text-xs text-[#5A5555]">Max {ticketDetails?.max} per person</p>
                 </div>
                 <div className="flex items-center gap-1">
                   <Image
@@ -116,30 +128,30 @@ const Rewards = () => {
                     height={24}
                     className="h-6 w-6"
                   />
-                  <p className="text-sm text-[#5A5555]">{ticketDetails?.totalTickets} entries</p>
+                  <p className="md:text-sm text-xs text-[#5A5555]">{ticketDetails?.totalTickets} entries</p>
                 </div>
               </div>
-              <h2 className="text-lg font-semibold text-[#0A0A0B]">Ends In</h2>
+              <h2 className="text-base md:text-lg font-semibold text-[#0A0A0B]">Ends In</h2>
               <div className="flex gap-2.5 mt-1">
                 {endTime?.map((d, i) => <div key={i} className="flex flex-col items-center gap-0.5 justify-center h-20 w-20 rounded-lg bg-[linear-gradient(25.71deg,_rgba(217,217,217,0)_20.07%,#13AFB6_116.86%)]">
                   <p className="font-bold text-3xl text-[#5A5555]">{d?.value}</p>
-                  <p className="text-sm text-[#5A5555]">{d?.label}</p>
+                  <p className="md:text-sm text-xs text-[#5A5555]">{d?.label}</p>
                 </div>)}
               </div>
-              <p className="text-sm text-[#5A5555] mt-1">Closes on <span className="font-bold">{moment(ticketDetails?.endTime).format('MMM Do hA')}</span></p>
+              <p className="md:text-sm text-xs text-[#5A5555] mt-1">Closes on <span className="font-bold">{moment(ticketDetails?.endTime).format('MMM Do hA')}</span></p>
               <div className="py-3.5"><h2 className="text-lg font-semibold text-[#0A0A0B]">Tickets</h2>
                 <div className="w-full h-4 bg-[#CCCBCB] my-1 rounded-full">
                   <div style={{ width: ticketSoldPercentage + "%" }} className="h-full rounded-full bg-primary-500" />
                 </div>
                 <div className="flex justify-between">
-                  <p className="text-lg text-secondary-700">{ticketSoldPercentage}% Sold</p>
-                  <p className="text-lg font-bold text-secondary-900">{ticketDetails?.totalSold}/{ticketDetails?.totalTickets}</p>
+                  <p className="text-base md:text-lg text-secondary-700">{ticketSoldPercentage}% Sold</p>
+                  <p className="text-base md:text-lg font-bold text-secondary-900">{ticketDetails?.totalSold}/{ticketDetails?.totalTickets}</p>
                 </div>
               </div>
               <p className="text-[#5A5555]">Raffle will close early if all entries are sold prior to end date.</p>
               <div className="flex flex-row items-center gap-3.5 py-3.5">
-                <p className="font-bold text-primary-500 text-3xl">{ticketDetails?.price?.toLocaleString()} FFT</p>
-                <p className="text-2xl text-secondary-700">/ Ticket</p>
+                <p className="font-bold text-primary-500 md:text-3xl text-lg">{ticketDetails?.price?.toLocaleString()} FFT</p>
+                <p className="md:text-2xl text-lg text-secondary-700">/ Ticket</p>
               </div>
               <Button size="lg" className="w-full bg-gradient-to-r-from-teal-to-blue" onClick={() => setIsModalOpen(true)} >Buy Now</Button>
             </div>
