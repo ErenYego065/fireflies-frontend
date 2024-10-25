@@ -61,7 +61,7 @@ function SampleNextArrow(props: HTMLAttributes<HTMLDivElement>) {
             className={"w-6 h-6 text-secondary-900 bg-white absolute top-1/2 -right-6 border border-primary-500 rounded-full -translate-y-1/2 pointer flex items-center justify-center"}
             onClick={onClick}
         >
-            <ArrowForward style={{ height: "18px", width: "18px" }} />
+            <Image alt="left arrow" src="/images/rewards/global-explorer/arrow-right.svg" height={18} width={18} />
         </div>
     );
 }
@@ -73,7 +73,7 @@ function SamplePrevArrow(props: HTMLAttributes<HTMLDivElement>) {
             className={"w-6 h-6 text-secondary-900 bg-white absolute top-1/2 -left-6 border border-primary-500 rounded-full -translate-y-1/2 pointer flex items-center justify-center"}
             onClick={onClick}
         >
-            <ArrowBack style={{ height: "18px", width: "18px" }} />
+            <Image alt="left arrow" src="/images/rewards/global-explorer/arrow-left.svg" height={18} width={18} />
         </div>
     );
 }
