@@ -141,7 +141,7 @@ const Rewards = () => {
                 <p className="font-bold text-primary-500 text-3xl">{ticketDetails?.price?.toLocaleString()} FFT</p>
                 <p className="text-2xl text-secondary-700">/ Ticket</p>
               </div>
-              <Button size="lg" className="w-full" onClick={() => setIsModalOpen(true)} >Buy Now</Button>
+              <Button size="lg" className="w-full bg-gradient-to-r-from-teal-to-blue" onClick={() => setIsModalOpen(true)} >Buy Now</Button>
             </div>
           </div>
         </div>
