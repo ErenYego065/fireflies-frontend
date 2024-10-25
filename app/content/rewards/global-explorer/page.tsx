@@ -69,7 +69,7 @@ const Rewards = () => {
     <React.Fragment>
       <div className="flex flex-col gap-14 bg-global-explorer items-center">
         <div className="container px-5">
-          <div className="flex items-center gap-2.5 mt-[76px] w-full mx-auto">
+          <div className="flex items-center gap-2.5 mt-8 md:mt-[76px] w-full mx-auto">
             <ChevronLeft sx={{ height: "64px", width: "64px", color: "#5A616C", cursor: "pointer" }} />
             <h1 className="font-[family-name:var(--font-sofia)] font-bold text-3xl md:text-6xl text-secondary-700">
               Global Explorer
