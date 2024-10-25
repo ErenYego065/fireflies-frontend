@@ -12,14 +12,16 @@ interface PurchaseModalProps {
 
 const PurchaseModal = ({ isOpen, onClose, ticketDetails }: PurchaseModalProps) => {
     const [tickets, setTickets] = useState(1);
-    const totalPrice = useMemo(() => {
+
+
+    const getTotalPrice = () => {
         let priceByTickets = tickets * ticketDetails?.price
 
         if (tickets > ticketDetails?.minTicketForDiscount) {
             priceByTickets = (priceByTickets - (priceByTickets * (ticketDetails?.discountPercentage / 100)))
         }
-        return priceByTickets
-    }, [tickets])
+        return priceByTickets;
+    }
 
     if (!isOpen) {
         return null
@@ -67,7 +69,7 @@ const PurchaseModal = ({ isOpen, onClose, ticketDetails }: PurchaseModalProps) =
                         <div className='w-full h-[1px] bg-[#D9D9D980]' />
                         <div className='flex justify-between'>
                             <p className="text-xs md:text-sm text-[#5A5555]">TOTAL</p>
-                            <p className="text-sm md:text-base font-bold text-[#5A5555]">{totalPrice.toLocaleString()} FFT</p>
+                            <p className="text-sm md:text-base font-bold text-[#5A5555]">{getTotalPrice().toLocaleString()} FFT</p>
                         </div>
                     </div>
                     <Button onClick={onClose}>Purchase</Button>

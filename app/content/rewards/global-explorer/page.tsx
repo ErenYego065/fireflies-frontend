@@ -3,7 +3,7 @@
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ChevronLeft } from "@mui/icons-material";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import moment from "moment";
 import PurchaseModal from "../../../../components/content/rewards/globalExplorer/PurchaseModal";
 import ImagesSlider from "../../../../components/content/rewards/globalExplorer/ImagesSlider";
@@ -43,9 +43,7 @@ const Rewards = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
 
-  const ticketSoldPercentage = useMemo(() => {
-    return Math.round((ticketDetails?.totalSold / ticketDetails?.totalTickets) * 100)
-  }, [ticketDetails])
+  const ticketSoldPercentage = Math.round((ticketDetails?.totalSold / ticketDetails?.totalTickets) * 100)
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -55,7 +53,7 @@ const Rewards = () => {
     return () => clearInterval(intervalId);
   }, []);
 
-  const endTime = useMemo(() => {
+  const getCountdown = () => {
     const fullDate = moment(ticketDetails?.endTime);
     return [
       { label: "Days", value: fullDate.diff(currentTime, 'days') },
@@ -63,7 +61,7 @@ const Rewards = () => {
       { label: "Minutes", value: fullDate.diff(currentTime, 'minutes') % 60 },
       { label: "Seconds", value: fullDate.diff(currentTime, 'seconds') % 60 }
     ];
-  }, [ticketDetails, currentTime]);
+  };
 
   return (
     <React.Fragment>
@@ -105,7 +103,7 @@ const Rewards = () => {
               </div>
               <h2 className="text-base md:text-lg font-semibold text-[#0A0A0B]">Ends In</h2>
               <div className="flex gap-2.5 mt-1">
-                {endTime?.map((d, i) => <div key={i} className="flex flex-col items-center gap-0.5 justify-center h-20 w-20 rounded-lg bg-[linear-gradient(25.71deg,_rgba(217,217,217,0)_20.07%,#13AFB6_116.86%)]">
+                {getCountdown()?.map((d, i) => <div key={i} className="flex flex-col items-center gap-0.5 justify-center h-20 w-20 rounded-lg bg-[linear-gradient(25.71deg,_rgba(217,217,217,0)_20.07%,#13AFB6_116.86%)]">
                   <p className="font-bold text-3xl text-[#5A5555]">{d?.value}</p>
                   <p className="md:text-sm text-xs text-[#5A5555]">{d?.label}</p>
                 </div>)}
