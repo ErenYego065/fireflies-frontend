@@ -27,7 +27,8 @@ const config: Config = {
 				'custom-gradient-dark': 'linear-gradient(98.32deg, #505D65 20.43%, #000000 100%)',
 				'custom-gradient-light': 'linear-gradient(180deg, #CCEDEE 0%, #FAFAFA 100%)',
 				'streak-bg': 'linear-gradient(0.47deg, #FAFAFA 85.1%, #13AFB6 129.31%)',
-				'streak-dashboard': 'linear-gradient(218.15deg, rgba(217, 217, 217, 0) 47.48%, #13AFB6 145.36%)'
+				'streak-dashboard': 'linear-gradient(218.15deg, rgba(217, 217, 217, 0) 47.48%, #13AFB6 145.36%)',
+				'global-explorer': 'linear-gradient(0.47deg, #FAFAFA 85.1%, #13AFB6 129.31%)'
 			},
 			borderColor: {
 				'streak': '1 linear-gradient(130.82deg, #E9EBED 0%, #A9AEB7 100%) 1'

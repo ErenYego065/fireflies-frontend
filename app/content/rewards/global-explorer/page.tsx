@@ -56,7 +56,7 @@ const Rewards = () => {
 
   return (
     <React.Fragment>
-      <div className="flex flex-col gap-14 bg-gradient-radial items-center">
+      <div className="flex flex-col gap-14 bg-global-explorer items-center">
         <div className="container px-5">
           <div className="flex items-center gap-2.5 mt-[76px] w-full mx-auto">
             <ChevronLeft sx={{ height: "64px", width: "64px", color: "#5A616C", cursor: "pointer" }} />
