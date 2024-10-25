@@ -5,12 +5,24 @@ import { Button } from "@/components/ui/button"
 import { ChevronLeft } from "@mui/icons-material";
 import React, { useEffect, useMemo, useState } from "react";
 import moment from "moment";
-import Slider from "react-slick";
 import PurchaseModal from "./PurchaseModal";
+import ImagesSlider from "./ImagesSlider";
 
+
+export interface TicketDetails {
+  imgUrls: string[];
+  description: string;
+  max: number;
+  totalTickets: number;
+  totalSold: number;
+  endTime: moment.Moment; // Using moment's type for the endTime
+  price: number;
+  discountPercentage: number;
+  minTicketForDiscount: number;
+}
 
 const Rewards = () => {
-  const [ticketDetails] = useState({
+  const [ticketDetails] = useState<TicketDetails>({
     imgUrls: [
       "/images/rewards/global-explorer/hero-thumbnail.svg",
       "/images/blogs/blog-bg.jpg",
@@ -28,7 +40,6 @@ const Rewards = () => {
     minTicketForDiscount: 50,
   })
   const [currentTime, setCurrentTime] = useState(new Date());
-  const [selectedImageIndex, setSelectedImageIndex] = useState(0)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
 
@@ -65,46 +76,7 @@ const Rewards = () => {
             </h1>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-10">
-            <div className="w-full">
-              <Image
-                src={ticketDetails?.imgUrls[selectedImageIndex]}
-                alt="hero"
-                className="w-full aspect-[4/3] object-cover rounded-xl"
-                height={500}
-                width={700}
-              />
-              {ticketDetails?.imgUrls?.length > 1 && <div className="px-6 py-4">
-                <div className="slider-container">
-
-                  <Slider arrows infinite={false} slidesToScroll={1} speed={500} slidesToShow={4} responsive={[{
-                    breakpoint: 600,
-                    settings: {
-                      slidesToShow: 3,
-                    }
-                  }, {
-                    breakpoint: 480,
-                    settings: {
-                      slidesToShow: 2,
-                    }
-                  }]}
-                    afterChange={(currentSlide) => setSelectedImageIndex(currentSlide)}>
-                    {ticketDetails?.imgUrls?.map((url, index) =>
-                      <div>
-                        <Image
-                          style={{ border: selectedImageIndex === index ? "1px solid" : "" }}
-                          onClick={() => setSelectedImageIndex(index)}
-                          src={url}
-                          key={"thumbnail " + index}
-                          alt={"thumbnail " + index}
-                          className="w-full aspect-video object-cover rounded-md pointer border-secondary-700"
-                          height={90}
-                          width={120}
-                        />
-                      </div>
-                    )}
-                  </Slider></div>
-              </div>}
-            </div>
+            <ImagesSlider ticketDetails={ticketDetails} />
             <div className="h-fit p-5 border border-[#CCCBCB] bg-[#FAFAFA] rounded-lg relative max-md:mt-10">
               <button className="bg-[linear-gradient(98.32deg,_#505D65_20.43%,#000000_100%)] text-[#FAFAFA] h-10 px-2.5 rounded-lg absolute -top-16 max-md:left-0 md:right-0 md:text-sm text-xs font-semibold">Buy {ticketDetails?.minTicketForDiscount}+ tickets - {ticketDetails?.discountPercentage}% discount</button>
               <h2 className="text-base md:text-lg font-semibold text-[#0A0A0B]">Description</h2>

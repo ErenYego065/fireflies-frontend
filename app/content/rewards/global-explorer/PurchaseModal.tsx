@@ -2,11 +2,12 @@ import { Button } from '@/components/ui/button';
 import { Add, Remove } from "@mui/icons-material";
 
 import React, { useMemo, useState } from 'react'
+import { TicketDetails } from './page';
 
 interface PurchaseModalProps {
     isOpen: boolean;
     onClose: () => void;
-    ticketDetails: Record<string, any>
+    ticketDetails: TicketDetails
 }
 
 const PurchaseModal = ({ isOpen, onClose, ticketDetails }: PurchaseModalProps) => {
