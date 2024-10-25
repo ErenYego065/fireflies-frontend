@@ -5,8 +5,8 @@ import { Button } from "@/components/ui/button"
 import { ChevronLeft } from "@mui/icons-material";
 import React, { useEffect, useMemo, useState } from "react";
 import moment from "moment";
-import PurchaseModal from "./PurchaseModal";
-import ImagesSlider from "./ImagesSlider";
+import PurchaseModal from "../../../../components/content/rewards/globalExplorer/PurchaseModal";
+import ImagesSlider from "../../../../components/content/rewards/globalExplorer/ImagesSlider";
 
 
 export interface TicketDetails {

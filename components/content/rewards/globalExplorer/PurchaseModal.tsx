@@ -1,8 +1,8 @@
+import React, { useMemo, useState } from 'react'
+import { TicketDetails } from '@/app/content/rewards/global-explorer/page';
 import { Button } from '@/components/ui/button';
 import { Add, Remove } from "@mui/icons-material";
 
-import React, { useMemo, useState } from 'react'
-import { TicketDetails } from './page';
 
 interface PurchaseModalProps {
     isOpen: boolean;
