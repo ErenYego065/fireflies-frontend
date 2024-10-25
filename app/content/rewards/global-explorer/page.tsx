@@ -60,7 +60,7 @@ const Rewards = () => {
         <div className="container px-5">
           <div className="flex items-center gap-2.5 mt-[76px] w-full mx-auto">
             <ChevronLeft sx={{ height: "64px", width: "64px", color: "#5A616C", cursor: "pointer" }} />
-            <h1 className="font-[family-name:var(--font-sofia)] font-bold text-6xl text-[#5A616C]">
+            <h1 className="font-[family-name:var(--font-sofia)] font-bold text-6xl text-secondary-700">
               Global Explorer
             </h1>
           </div>
@@ -79,12 +79,12 @@ const Rewards = () => {
                   {ticketDetails?.imgUrls?.map((url, index) =>
                     <div>
                       <Image
-                        style={{ border: selectedImageIndex === index ? "1px solid #5A616C" : "" }}
+                        style={{ border: selectedImageIndex === index ? "1px solid" : "" }}
                         onClick={() => setSelectedImageIndex(index)}
                         src={url}
                         key={"thumbnail " + index}
                         alt={"thumbnail " + index}
-                        className="w-full aspect-video object-cover rounded-md pointer"
+                        className="w-full aspect-video object-cover rounded-md pointer border-secondary-700"
                         height={90}
                         width={120}
                       />
@@ -129,17 +129,17 @@ const Rewards = () => {
               <p className="text-sm text-[#5A5555] mt-1">Closes on <span className="font-bold">{moment(ticketDetails?.endTime).format('MMM Do hA')}</span></p>
               <div className="py-3.5"><h2 className="text-lg font-semibold text-[#0A0A0B]">Tickets</h2>
                 <div className="w-full h-4 bg-[#CCCBCB] my-1 rounded-full">
-                  <div style={{ width: ticketSoldPercentage + "%" }} className="h-full rounded-full bg-[#00ADB5]" />
+                  <div style={{ width: ticketSoldPercentage + "%" }} className="h-full rounded-full bg-primary-500" />
                 </div>
                 <div className="flex justify-between">
-                  <p className="text-lg text-[#5A616C]">{ticketSoldPercentage}% Sold</p>
-                  <p className="text-lg font-bold text-[##B3F46]">{ticketDetails?.totalSold}/{ticketDetails?.totalTickets}</p>
+                  <p className="text-lg text-secondary-700">{ticketSoldPercentage}% Sold</p>
+                  <p className="text-lg font-bold text-secondary-900">{ticketDetails?.totalSold}/{ticketDetails?.totalTickets}</p>
                 </div>
               </div>
               <p className="text-[#5A5555]">Raffle will close early if all entries are sold prior to end date.</p>
               <div className="flex flex-row items-center gap-3.5 py-3.5">
-                <p className="font-bold text-[#00ADB5] text-3xl">{ticketDetails?.price?.toLocaleString()} FFT</p>
-                <p className="text-2xl text-[#5A616C]">/ Ticket</p>
+                <p className="font-bold text-primary-500 text-3xl">{ticketDetails?.price?.toLocaleString()} FFT</p>
+                <p className="text-2xl text-secondary-700">/ Ticket</p>
               </div>
               <Button size="lg" className="w-full" onClick={() => setIsModalOpen(true)} >Buy Now</Button>
             </div>

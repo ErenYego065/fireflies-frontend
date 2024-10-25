@@ -55,11 +55,14 @@ const config: Config = {
 				},
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					foreground: 'hsl(var(--primary-foreground))',
+					500:"#00ADB5"
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
-					foreground: 'hsl(var(--secondary-foreground))'
+					foreground: 'hsl(var(--secondary-foreground))',
+					700: "#5A616C",
+					900: "#3B3F46"
 				},
 				muted: {
 					DEFAULT: 'hsl(var(--muted))',
