@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { TicketDetails } from '@/app/content/rewards/global-explorer/page';
+import { TicketDetails } from '@/app/content/rewards/raffles/global-explorer/page';
 import { Add, Remove } from "@mui/icons-material";
 import {
     Dialog,

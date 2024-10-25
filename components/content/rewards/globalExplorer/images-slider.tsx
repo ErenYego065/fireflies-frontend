@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React, { HTMLAttributes, useState } from 'react'
 import Slider from 'react-slick'
-import { TicketDetails } from '@/app/content/rewards/global-explorer/page'
+import { TicketDetails } from '@/app/content/rewards/raffles/global-explorer/page'
 
 interface ImagesSliderProps { ticketDetails: TicketDetails }
 
