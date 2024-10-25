@@ -3,10 +3,10 @@
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ChevronLeft } from "@mui/icons-material";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import moment from "moment";
-import PurchaseModal from "../../../../components/content/rewards/globalExplorer/PurchaseModal";
-import ImagesSlider from "../../../../components/content/rewards/globalExplorer/ImagesSlider";
+import PurchaseModal from "@/components/content/rewards/globalExplorer/purchase-modal";
+import ImagesSlider from "@/components/content/rewards/globalExplorer/images-slider";
 import ProgressBar from "@/components/ui/progress-bar";
 import CountDown from "@/components/content/rewards/globalExplorer/count-down";
 

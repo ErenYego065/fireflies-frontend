@@ -2,7 +2,6 @@ import Image from 'next/image'
 import React, { HTMLAttributes, useState } from 'react'
 import Slider from 'react-slick'
 import { TicketDetails } from '@/app/content/rewards/global-explorer/page'
-import { ArrowBack, ArrowForward } from '@mui/icons-material'
 
 interface ImagesSliderProps { ticketDetails: TicketDetails }
 
