@@ -128,11 +128,13 @@ const Rewards = () => {
               </div>
               <p className="text-sm text-[#5A5555] mt-1">Closes on <span className="font-bold">{moment(ticketDetails?.endTime).format('MMM Do hA')}</span></p>
               <div className="py-3.5"><h2 className="text-lg font-semibold text-[#0A0A0B]">Tickets</h2>
-
                 <div className="w-full h-4 bg-[#CCCBCB] my-1 rounded-full">
                   <div style={{ width: ticketSoldPercentage + "%" }} className="h-full rounded-full bg-[#00ADB5]" />
                 </div>
-                <p className="text-lg text-[#5A616C]">{ticketSoldPercentage}% Sold</p>
+                <div className="flex justify-between">
+                  <p className="text-lg text-[#5A616C]">{ticketSoldPercentage}% Sold</p>
+                  <p className="text-lg font-bold text-[##B3F46]">{ticketDetails?.totalSold}/{ticketDetails?.totalTickets}</p>
+                </div>
               </div>
               <p className="text-[#5A5555]">Raffle will close early if all entries are sold prior to end date.</p>
               <div className="flex flex-row items-center gap-3.5 py-3.5">
