@@ -27,7 +27,8 @@ const config: Config = {
 				'custom-gradient-dark': 'linear-gradient(98.32deg, #505D65 20.43%, #000000 100%)',
 				'custom-gradient-light': 'linear-gradient(180deg, #CCEDEE 0%, #FAFAFA 100%)',
 				'streak-bg': 'linear-gradient(0.47deg, #FAFAFA 85.1%, #13AFB6 129.31%)',
-				'streak-dashboard': 'linear-gradient(218.15deg, rgba(217, 217, 217, 0) 47.48%, #13AFB6 145.36%)'
+				'streak-dashboard': 'linear-gradient(218.15deg, rgba(217, 217, 217, 0) 47.48%, #13AFB6 145.36%)',
+				'global-explorer': 'linear-gradient(0.47deg, #FAFAFA 85.1%, #13AFB6 129.31%)'
 			},
 			borderColor: {
 				'streak': '1 linear-gradient(130.82deg, #E9EBED 0%, #A9AEB7 100%) 1'
@@ -54,11 +55,14 @@ const config: Config = {
 				},
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					foreground: 'hsl(var(--primary-foreground))',
+					500:"#00ADB5"
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
-					foreground: 'hsl(var(--secondary-foreground))'
+					foreground: 'hsl(var(--secondary-foreground))',
+					700: "#5A616C",
+					900: "#3B3F46"
 				},
 				muted: {
 					DEFAULT: 'hsl(var(--muted))',
