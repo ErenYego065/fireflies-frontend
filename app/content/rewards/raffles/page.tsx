@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import Tabs from "@/components/ui/tabs";
 import Live from "@/components/content/rewards/raffles/live";
 import Banner from "@/components/content/rewards/raffles/banner";
+import RafflesTable from "@/components/content/rewards/raffles/raffles-table";
 
 export interface TicketDetails {
   title: string;
@@ -84,7 +85,7 @@ const Rewards = () => {
           {[1, 2, 3, 4, 5].map((d) => (
             <div
               key={d}
-              className="w-full bg-gradient-to-r-from-blue-to-teal pl-8 shadow-sm md:pl-24"
+              className="w-full rounded-[10px] bg-gradient-to-r-from-blue-to-teal pl-8 shadow-sm md:pl-24"
             >
               <div className="grid w-full grid-cols-[42%_58%] items-center justify-between md:grid-cols-2">
                 <div className="flex max-w-96 flex-col gap-1 py-2.5 md:gap-4">
@@ -115,6 +116,9 @@ const Rewards = () => {
         </div>
       </div>
       <Banner />
+      <div className="container mx-auto px-5">
+        <RafflesTable />
+      </div>
     </React.Fragment>
   );
 };
