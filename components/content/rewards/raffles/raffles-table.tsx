@@ -53,7 +53,7 @@ const RafflesTable = () => {
             panels={[]}
           />
         </div>
-        <div className="flex justify-between">
+        <div className="flex justify-between gap-4 max-md:flex-col">
           <div className="flex gap-2">
             <Button
               size={"sm"}
