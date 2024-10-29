@@ -11,6 +11,7 @@ import Live from "@/components/content/rewards/raffles/live";
 import Banner from "@/components/content/rewards/raffles/banner";
 import RafflesTable from "@/components/content/rewards/raffles/raffles-table";
 import Upcoming from "@/components/content/rewards/raffles/upcoming";
+import WinnersSlider from "@/components/content/rewards/raffles/winners-slider";
 
 export interface TicketDetails {
   title: string;
@@ -118,6 +119,7 @@ const Rewards = () => {
       </div>
       <Banner />
       <div className="container mx-auto px-5">
+        <WinnersSlider />
         <RafflesTable />
       </div>
     </React.Fragment>

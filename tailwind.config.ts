@@ -28,7 +28,11 @@ const config: Config = {
 				'custom-gradient-light': 'linear-gradient(180deg, #CCEDEE 0%, #FAFAFA 100%)',
 				'streak-bg': 'linear-gradient(0.47deg, #FAFAFA 85.1%, #13AFB6 129.31%)',
 				'streak-dashboard': 'linear-gradient(218.15deg, rgba(217, 217, 217, 0) 47.48%, #13AFB6 145.36%)',
-				'global-explorer': 'linear-gradient(0.47deg, #FAFAFA 85.1%, #13AFB6 129.31%)'
+				'global-explorer': 'linear-gradient(0.47deg, #FAFAFA 85.1%, #13AFB6 129.31%)',
+				"card-1": "linear-gradient(270deg, #00ADB5 0%, #A460EC 100%)",
+				"card-2": "linear-gradient(230.17deg, #00ADB5 15.59%, #E8CD5C 89.71%)",
+				"card-3": "linear-gradient(90deg, #101D7F 0%, #00ADB5 100%)",
+
 			},
 			borderColor: {
 				'streak': '1 linear-gradient(130.82deg, #E9EBED 0%, #A9AEB7 100%) 1'

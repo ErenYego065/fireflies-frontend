@@ -1,13 +1,24 @@
 import React, { HTMLAttributes, ReactNode } from "react";
 import SlickSlider, { Settings } from "react-slick";
 import Image from "next/image";
+import clsx from "clsx";
 
 interface ImagesSliderProps extends Partial<Settings> {
   children: ReactNode;
-  afterChange?: (index: number) => void;
+  arrowLeftClassName?: HTMLAttributes<HTMLDivElement>["className"];
+  arrowRightClassName?: HTMLAttributes<HTMLDivElement>["className"];
 }
 
-const Slider = ({ children, afterChange }: ImagesSliderProps) => {
+interface ArrowProps extends HTMLAttributes<HTMLDivElement> {
+  arrowClassName?: HTMLAttributes<HTMLDivElement>["className"];
+}
+
+const Slider = ({
+  children,
+  arrowRightClassName,
+  arrowLeftClassName,
+  ...rest
+}: ImagesSliderProps) => {
   return (
     <div className="w-full">
       <div className="slider-container">
@@ -19,7 +30,6 @@ const Slider = ({ children, afterChange }: ImagesSliderProps) => {
           speed={500}
           slidesToShow={1}
           slidesToScroll={1}
-          afterChange={afterChange}
           centerPadding="140px"
           responsive={[
             {
@@ -29,8 +39,9 @@ const Slider = ({ children, afterChange }: ImagesSliderProps) => {
               },
             },
           ]}
-          nextArrow={<SampleNextArrow />}
-          prevArrow={<SamplePrevArrow />}
+          nextArrow={<SampleNextArrow arrowClassName={arrowRightClassName} />}
+          prevArrow={<SamplePrevArrow arrowClassName={arrowLeftClassName} />}
+          {...rest}
         >
           {children}
         </SlickSlider>
@@ -39,13 +50,14 @@ const Slider = ({ children, afterChange }: ImagesSliderProps) => {
   );
 };
 
-function SampleNextArrow(props: HTMLAttributes<HTMLDivElement>) {
-  const { onClick } = props;
+function SampleNextArrow(props: ArrowProps) {
+  const { onClick, arrowClassName } = props;
   return (
     <div
-      className={
-        "absolute right-2 top-1/2 z-10 flex h-6 w-6 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border border-primary-500 bg-white text-secondary-900 md:right-[132px]"
-      }
+      className={clsx(
+        "absolute right-2 top-1/2 z-10 flex h-6 w-6 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border border-primary-500 bg-white text-secondary-900 md:right-[132px]",
+        arrowClassName && arrowClassName,
+      )}
       onClick={onClick}
     >
       <Image
@@ -59,13 +71,14 @@ function SampleNextArrow(props: HTMLAttributes<HTMLDivElement>) {
   );
 }
 
-function SamplePrevArrow(props: HTMLAttributes<HTMLDivElement>) {
-  const { onClick } = props;
+function SamplePrevArrow(props: ArrowProps) {
+  const { onClick, arrowClassName } = props;
   return (
     <div
-      className={
-        "absolute left-2.5 top-1/2 z-10 flex h-6 w-6 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border border-primary-500 bg-white text-secondary-900 md:left-[140px]"
-      }
+      className={clsx(
+        "absolute left-2.5 top-1/2 z-10 flex h-6 w-6 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border border-primary-500 bg-white text-secondary-900 md:left-[140px]",
+        arrowClassName && arrowClassName,
+      )}
       onClick={onClick}
     >
       <Image
