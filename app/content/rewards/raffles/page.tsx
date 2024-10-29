@@ -8,6 +8,7 @@ import Slider from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import Tabs from "@/components/ui/tabs";
 import Live from "@/components/content/rewards/raffles/live";
+import Banner from "@/components/content/rewards/raffles/banner";
 
 export interface TicketDetails {
   title: string;
@@ -106,13 +107,14 @@ const Rewards = () => {
             </div>
           ))}
         </Slider>
-        <div className="container">
+        <div className="container px-5">
           <Tabs
             panels={[<Live data={ticketDetails} />, <p>Upcoming</p>]}
             labels={["Live (3)", "Upcoming (0)"]}
           />
         </div>
       </div>
+      <Banner />
     </React.Fragment>
   );
 };
