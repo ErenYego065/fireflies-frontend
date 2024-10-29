@@ -43,7 +43,7 @@ const raffleData = [
 
 const RafflesTable = () => {
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-6 pb-72">
       <h2 className="text-secondary-500 text-[40px] font-bold">My Raffles</h2>
       <div>
         <div className="mb-4">

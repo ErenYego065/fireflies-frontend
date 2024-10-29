@@ -4,14 +4,35 @@ import React from "react";
 const Banner = () => {
   return (
     <div className="relative my-20 flex w-full flex-col items-center justify-center gap-2 bg-gradient-to-r-from-teal-to-blue p-6">
-      <div
-        className="absolute left-0 top-0 h-full w-full"
-        style={{
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundImage: "url('/images/rewards/raffles/banner-bg.svg')",
-        }}
-      />
+      <div className="absolute left-0 top-0 h-full w-full">
+        <Image
+          alt="top left flag"
+          src="/images/rewards/raffles/flag.svg"
+          width={195}
+          height={120}
+        />
+        <Image
+          alt="top left flag"
+          src="/images/rewards/raffles/spring.svg"
+          width={60}
+          height={80}
+          className="absolute left-[130px] top-[124px]"
+        />
+        <Image
+          alt="top left flag"
+          src="/images/rewards/raffles/blur-coin.svg"
+          width={200}
+          height={200}
+          className="absolute bottom-[20px] left-[345px] rotate-[21.18deg]"
+        />
+        <Image
+          alt="top left flag"
+          src="/images/rewards/raffles/coin.svg"
+          width={200}
+          height={200}
+          className="absolute right-[341px] top-[20px] rotate-[-80deg]"
+        />
+      </div>
       <h2 className="relative text-center text-[40px] font-bold text-white md:text-5xl">
         Congratulations on Top!
       </h2>
