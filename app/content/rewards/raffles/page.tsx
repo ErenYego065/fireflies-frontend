@@ -6,6 +6,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import moment from "moment";
 import Slider from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
+import Tabs from "@/components/ui/tabs";
 
 export interface TicketDetails {
   imgUrls: string[];
@@ -84,7 +85,7 @@ const Rewards = () => {
           {[1, 2, 3, 4, 5].map((d) => (
             <div
               key={d}
-              className="w-full bg-gradient-to-r-from-blue-to-teal pl-8 md:pl-24"
+              className="w-full bg-gradient-to-r-from-blue-to-teal pl-8 shadow-sm md:pl-24"
             >
               <div className="grid w-full grid-cols-[42%_58%] items-center justify-between md:grid-cols-2">
                 <div className="flex max-w-96 flex-col gap-1 py-2.5 md:gap-4">
@@ -107,6 +108,12 @@ const Rewards = () => {
             </div>
           ))}
         </Slider>
+        <div className="container">
+          <Tabs
+            panels={[<p>Live</p>, <p>Upcoming</p>]}
+            labels={["Live (3)", "Upcoming (0)"]}
+          />
+        </div>
       </div>
     </React.Fragment>
   );
