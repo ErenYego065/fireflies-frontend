@@ -85,17 +85,16 @@ body {
 }
 
 .text-gradient {
-  background: linear-gradient(90deg, #10507F 0%, #00ADB5 100%);
+  background: linear-gradient(90deg, #10507f 0%, #00adb5 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
 }
 
-
 .slick-track {
+  @apply gap-2 md:gap-4;
   display: flex !important;
-  gap: 16px;
 }
 .slick-slide {
   height: inherit !important;
@@ -103,6 +102,18 @@ body {
 .slick-slide > div {
   height: 100%;
 }
-.slick-prev:before, .slick-next:before{
-  color:#00ADB5 !important;
+.slick-prev:before,
+.slick-next:before {
+  @apply !text-primary-500;
+}
+
+.slick-dots li {
+  @apply !mx-0.5;
+}
+.slick-dots li.slick-active button:before {
+  @apply !text-primary-500 !opacity-100;
+}
+
+.slick-dots li button:before {
+  @apply !text-secondary-200 !text-xs !opacity-100;
 }

@@ -61,6 +61,7 @@ const config: Config = {
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
 					foreground: 'hsl(var(--secondary-foreground))',
+					200: "#D4D7DB",
 					700: "#5A616C",
 					900: "#3B3F46"
 				},
