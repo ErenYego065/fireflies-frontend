@@ -7,63 +7,61 @@ import moment from "moment";
 import Slider from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import Tabs from "@/components/ui/tabs";
+import Live from "@/components/content/rewards/raffles/live";
 
 export interface TicketDetails {
-  imgUrls: string[];
+  title: string;
+  imgUrl: string;
   description: string;
   max: number;
   totalTickets: number;
   totalSold: number;
-  endTime: moment.Moment; // Using moment's type for the endTime
+  endTime: moment.Moment;
   price: number;
   discountPercentage: number;
   minTicketForDiscount: number;
 }
 
 const Rewards = () => {
-  const [ticketDetails] = useState<TicketDetails>({
-    imgUrls: [
-      "/images/rewards/global-explorer/hero-thumbnail.svg",
-      "/images/blogs/blog-bg.jpg",
-      "/images/rewards/streak/card-desktop1.svg",
-      "/images/rewards/streak/card-desktop2.svg",
-      "/images/rewards/streak/card-desktop3.svg",
-    ],
-    description:
-      "Embark on a world tour with accommodations in top destinations",
-    max: 100,
-    totalTickets: 250,
-    totalSold: 175,
-    endTime: moment().add(5, "days"),
-    price: 70,
-    discountPercentage: 10,
-    minTicketForDiscount: 50,
-  });
-  const [currentTime, setCurrentTime] = useState(new Date());
-
-  const ticketSoldPercentage = useMemo(() => {
-    return Math.round(
-      (ticketDetails?.totalSold / ticketDetails?.totalTickets) * 100,
-    );
-  }, [ticketDetails]);
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 1000);
-
-    return () => clearInterval(intervalId);
-  }, []);
-
-  const endTime = useMemo(() => {
-    const fullDate = moment(ticketDetails?.endTime);
-    return [
-      { label: "Days", value: fullDate.diff(currentTime, "days") },
-      { label: "Hours", value: fullDate.diff(currentTime, "hours") % 24 },
-      { label: "Minutes", value: fullDate.diff(currentTime, "minutes") % 60 },
-      { label: "Seconds", value: fullDate.diff(currentTime, "seconds") % 60 },
-    ];
-  }, [ticketDetails, currentTime]);
+  const [ticketDetails] = useState<TicketDetails[]>([
+    {
+      imgUrl: "/images/rewards/raffles/card-1.svg",
+      title: "Global Explorer",
+      description:
+        "Embark on a world tour with accommodations in top destinations.",
+      max: 100,
+      totalTickets: 250,
+      totalSold: 175,
+      endTime: moment().add(5, "days"),
+      price: 70,
+      discountPercentage: 10,
+      minTicketForDiscount: 50,
+    },
+    {
+      imgUrl: "/images/rewards/raffles/card-2.svg",
+      title: "Dream Vacation",
+      description: "Enjoy an all-inclusive stay at luxurious resorts.",
+      max: 100,
+      totalTickets: 200,
+      totalSold: 75,
+      endTime: moment().add(5, "days"),
+      price: 70,
+      discountPercentage: 10,
+      minTicketForDiscount: 50,
+    },
+    {
+      imgUrl: "/images/rewards/raffles/card-3.svg",
+      title: "Luxury Car Rental Experience",
+      description: "Drive a high-end car for a specified period.",
+      max: 100,
+      totalTickets: 320,
+      totalSold: 175,
+      endTime: moment().add(5, "days"),
+      price: 38,
+      discountPercentage: 10,
+      minTicketForDiscount: 50,
+    },
+  ]);
 
   return (
     <React.Fragment>
@@ -110,7 +108,7 @@ const Rewards = () => {
         </Slider>
         <div className="container">
           <Tabs
-            panels={[<p>Live</p>, <p>Upcoming</p>]}
+            panels={[<Live data={ticketDetails} />, <p>Upcoming</p>]}
             labels={["Live (3)", "Upcoming (0)"]}
           />
         </div>

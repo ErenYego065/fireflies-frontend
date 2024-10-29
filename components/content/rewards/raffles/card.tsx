@@ -1,79 +1,89 @@
+import { Button } from "@/components/ui/button";
 import ProgressBar from "@/components/ui/progress.bar";
 import moment from "moment";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Card = ({ data }: any) => {
   const ticketSoldPercentage = Math.round(
     (data?.totalSold / data?.totalTickets) * 100,
   );
 
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  const getCountdown = () => {
+    const fullDate = moment(data?.endTime);
+    return [
+      { label: "Days", value: fullDate.diff(currentTime, "days") },
+      { label: "Hours", value: fullDate.diff(currentTime, "hours") % 24 },
+      { label: "Minutes", value: fullDate.diff(currentTime, "minutes") % 60 },
+      { label: "Seconds", value: fullDate.diff(currentTime, "seconds") % 60 },
+    ];
+  };
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
-    <div className="relative h-fit rounded-lg border border-[#CCCBCB] bg-[#FAFAFA] p-5 max-md:mt-10">
-      <button className="absolute -top-16 h-10 rounded-lg bg-[linear-gradient(98.32deg,_#505D65_20.43%,#000000_100%)] px-2.5 text-xs font-semibold text-[#FAFAFA] max-md:left-0 md:right-0 md:text-sm">
-        Buy {data?.minTicketForDiscount}+ tickets - {data?.discountPercentage}%
-        discount
-      </button>
-      <h2 className="text-base font-semibold text-[#0A0A0B] md:text-lg">
-        Description
-      </h2>
-      <p className="text-xs text-[#5A5555] md:text-sm">{data?.description}</p>
-      <div className="flex flex-col gap-3.5 py-3.5">
-        <div className="flex items-center gap-1">
-          <Image
-            src="/images/rewards/global-explorer/baseline-person.svg"
-            alt="person icon"
-            width={24}
-            height={24}
-            className="h-6 w-6"
-          />
-          <p className="text-xs text-[#5A5555] md:text-sm">
-            Max {data?.max} per person
-          </p>
+    <div
+      style={{
+        backdropFilter: "blur(16px)",
+        borderImageSource:
+          "linear-gradient(130.82deg, #E9EBED 0%, #A9AEB7 100%)",
+        border: "2px solid #CCCBCB",
+      }}
+      className="relative rounded-[20px] bg-[linear-gradient(0deg,rgba(0,173,181,0.175)_-29.68%,rgba(255,255,255,0.35)_100%)] p-6"
+    >
+      <Image
+        src={data?.imgUrl}
+        alt={data?.title}
+        width={320}
+        height={250}
+        className="aspect-auto w-full"
+      />
+      <div className="border-secondary-400 my-5 border-b pb-2.5">
+        <h4 className="text-2xl font-bold text-secondary-700">{data?.title}</h4>
+        <p className="mt-2.5 text-base text-secondary-700 md:text-lg">
+          {data?.description}
+        </p>
+      </div>
+      <div className="flex w-full items-center justify-between">
+        <div>
+          <h2 className="text-lg text-secondary-700">Tickets</h2>
+          <h2 className="text-lg font-bold text-secondary-900">
+            {data?.totalTickets}
+          </h2>
         </div>
-        <div className="flex items-center gap-1">
-          <Image
-            src="/images/rewards/global-explorer/ticket-fill.svg"
-            alt="ticket icon"
-            width={24}
-            height={24}
-            className="h-6 w-6"
-          />
-          <p className="text-xs text-[#5A5555] md:text-sm">
-            {data?.totalTickets} entries
-          </p>
+        <div>
+          <h2 className="text-right text-lg text-secondary-700">Available</h2>
+          <h2 className="text-right text-lg font-bold text-secondary-900">
+            {data?.totalTickets - data?.totalSold}
+          </h2>
         </div>
       </div>
-      <h2 className="text-base font-semibold text-[#0A0A0B] md:text-lg">
-        Ends In
-      </h2>
-      {/* <CountDown time={data?.endTime} /> */}
-      <p className="mt-1 text-xs text-[#5A5555] md:text-sm">
-        Closes on{" "}
-        <span className="font-bold">
-          {moment(data?.endTime).format("MMM Do hA")}
-        </span>
-      </p>
-      <div className="py-3.5">
-        <h2 className="text-lg font-semibold text-[#0A0A0B]">Tickets</h2>
+      <Button className="my-2.5 w-full">Buy Ticket</Button>
+      <div className="flex flex-col gap-1">
+        <div className="flex justify-between">
+          <p className="text-lg text-secondary-700">Ends In</p>
+          <p className="text-lg font-bold text-secondary-900">
+            {getCountdown()?.[1]?.value}H : {getCountdown()?.[2]?.value}M :{" "}
+            {getCountdown()?.[3]?.value}S
+          </p>
+        </div>
         <ProgressBar progress={ticketSoldPercentage} />
         <div className="flex justify-between">
-          <p className="text-base text-secondary-700 md:text-lg">
+          <p className="text-lg text-secondary-700">
             {ticketSoldPercentage}% Sold
           </p>
-          <p className="text-base font-bold text-secondary-900 md:text-lg">
+          <p className="text-lg font-bold text-secondary-900">
             {data?.totalSold}/{data?.totalTickets}
           </p>
         </div>
-      </div>
-      <p className="text-[#5A5555]">
-        Raffle will close early if all entries are sold prior to end date.
-      </p>
-      <div className="flex flex-row items-center gap-3.5 py-3.5">
-        <p className="text-lg font-bold text-primary-500 md:text-3xl">
-          {data?.price?.toLocaleString()} FFT
-        </p>
-        <p className="text-lg text-secondary-700 md:text-2xl">/ Ticket</p>
       </div>
     </div>
   );
