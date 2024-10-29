@@ -38,9 +38,10 @@ const config: Config = {
 			},
 			boxShadow: {
 				'white-inset': '0px 0px 16px 0px #FFFFFF8F inset',
-        'teal-drop': '0px 12px 16px 0px #00727766',
+        		'teal-drop': '0px 12px 16px 0px #00727766',
 				'custom-inset': 'inset 4px -4px 10px 0px rgba(255, 255, 255, 0.33)',
 				'streak-shadow': '0px 10px 20px 0px #00000026',
+				sm: "0px 1px 2px 0px #0000000D"
 			},
 			colors: {
 				background: 'hsl(var(--background))',
@@ -64,6 +65,10 @@ const config: Config = {
 					200: "#D4D7DB",
 					700: "#5A616C",
 					900: "#3B3F46"
+				},
+				neutral:{
+					200:"#CCCBCB",
+					700: "#5A5555",
 				},
 				muted: {
 					DEFAULT: 'hsl(var(--muted))',
