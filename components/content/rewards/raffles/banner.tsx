@@ -18,26 +18,33 @@ const Banner = () => {
           height={80}
           className="absolute left-[130px] top-[124px]"
         />
-        <Image
-          alt="top left flag"
-          src="/images/rewards/raffles/blur-coin.svg"
-          width={200}
-          height={200}
-          className="absolute bottom-[20px] left-[345px] rotate-[21.18deg]"
-        />
-        <Image
-          alt="top left flag"
-          src="/images/rewards/raffles/coin.svg"
-          width={200}
-          height={200}
-          className="absolute right-[341px] top-[20px] rotate-[-80deg]"
-        />
       </div>
       <h2 className="relative text-center text-[40px] font-bold text-white md:text-5xl">
-        Congratulations on Top!
+        Congratulations!
       </h2>
       <div className="relative flex flex-col items-center justify-center gap-4">
-        <div className="flex flex-col items-center justify-center gap-1">
+        <div className="relative flex flex-col items-center justify-center gap-1">
+          <Image
+            alt="top left flag"
+            src="/images/rewards/raffles/blur-coin.svg"
+            width={180}
+            height={180}
+            className="absolute -left-[316px] top-[26px] max-w-none"
+          />
+          <Image
+            alt="top left flag"
+            src="/images/rewards/raffles/coin.svg"
+            width={220}
+            height={220}
+            className="absolute right-[-280px] top-[20px]"
+          />
+          <Image
+            className="absolute -left-[42px] -top-3 w-[178px] max-w-none"
+            src={"/images/rewards/raffles/celebration.svg"}
+            alt={"celebration"}
+            height={82}
+            width={178}
+          />
           <Image
             src="/images/rewards/raffles/avatar.png"
             alt="avatar"
