@@ -18,13 +18,14 @@ const authExceptPath = [
   "/signin",
   "/_next",
   "/images",
+  "/icons",
 ];
 
 export async function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   const isPathExempt = authExceptPath.some(
-    (path) => pathname === path || pathname.startsWith(path + "/")
+    (path) => pathname === path || pathname.startsWith(path + "/"),
   );
 
   if (isPathExempt) {
