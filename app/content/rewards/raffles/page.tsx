@@ -10,6 +10,7 @@ import Tabs from "@/components/ui/tabs";
 import Live from "@/components/content/rewards/raffles/live";
 import Banner from "@/components/content/rewards/raffles/banner";
 import RafflesTable from "@/components/content/rewards/raffles/raffles-table";
+import Upcoming from "@/components/content/rewards/raffles/upcoming";
 
 export interface TicketDetails {
   title: string;
@@ -110,7 +111,7 @@ const Rewards = () => {
         </Slider>
         <div className="container px-5">
           <Tabs
-            panels={[<Live data={ticketDetails} />, <p>Upcoming</p>]}
+            panels={[<Live data={ticketDetails} />, <Upcoming />]}
             labels={["Live (3)", "Upcoming (0)"]}
           />
         </div>
