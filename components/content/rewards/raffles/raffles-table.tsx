@@ -46,14 +46,14 @@ const RafflesTable = () => {
     <div className="flex flex-col gap-6 pb-72">
       <h2 className="text-secondary-500 text-[40px] font-bold">My Raffles</h2>
       <div>
-        <div className="mb-4">
+        <div className="mb-2.5 md:mb-4">
           <Tabs
             labelsClassName="!self-start"
             labels={["Active", "Past Participation", "Winnings"]}
             panels={[]}
           />
         </div>
-        <div className="flex justify-between gap-4 max-md:flex-col">
+        <div className="flex justify-between gap-2.5 max-md:flex-col">
           <div className="flex gap-2">
             <Button
               size={"sm"}
