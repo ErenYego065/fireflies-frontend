@@ -14,10 +14,10 @@ const Tabs = (props: TabsProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-2.5 md:gap-6">
       <div
         className={clsx(
-          "flex w-fit self-center rounded-[6px] border-2 border-neutral-200 bg-neutral-200 ",
+          "flex w-fit self-center rounded-[6px] border-2 border-neutral-200 bg-neutral-200",
           labelsClassName && labelsClassName,
         )}
       >

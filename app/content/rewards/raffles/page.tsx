@@ -6,7 +6,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import moment from "moment";
 import Slider from "@/components/common/slider";
 import { Button } from "@/components/ui/button";
-import Tabs from "@/components/ui/tabs";
+import Tabs from "@/components/common/tabs";
 import Live from "@/components/content/rewards/raffles/live";
 import Banner from "@/components/content/rewards/raffles/banner";
 import RafflesTables from "@/components/content/rewards/raffles/raffles-tables";
