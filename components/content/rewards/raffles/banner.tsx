@@ -3,8 +3,8 @@ import React from "react";
 
 const Banner = () => {
   return (
-    <div className="relative my-10 flex w-full flex-col items-center justify-center gap-2 overflow-x-hidden overflow-y-visible bg-gradient-to-r-from-teal-to-blue p-6 max-md:pb-[102px] max-md:pt-[74px] md:my-20">
-      <div className="absolute left-0 top-0 h-full w-full">
+    <div className="relative my-10 flex w-full flex-col items-center justify-center gap-2 bg-gradient-to-r-from-teal-to-blue p-6 max-md:overflow-x-hidden max-md:pb-[102px] max-md:pt-[74px] md:my-20">
+      <div className="absolute left-0 top-0 h-full w-full overflow-visible">
         <Image
           alt="top left flag"
           src="/images/rewards/raffles/flag.svg"
