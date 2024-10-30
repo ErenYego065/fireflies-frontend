@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import Tabs from "@/components/ui/tabs";
 import Live from "@/components/content/rewards/raffles/live";
 import Banner from "@/components/content/rewards/raffles/banner";
-import RafflesTable from "@/components/content/rewards/raffles/raffles-table";
+import RafflesTables from "@/components/content/rewards/raffles/raffles-tables";
 import Upcoming from "@/components/content/rewards/raffles/upcoming";
 import WinnersSlider from "@/components/content/rewards/raffles/winners-slider";
 
@@ -120,7 +120,7 @@ const Rewards = () => {
       <Banner />
       <div className="container mx-auto px-5">
         <WinnersSlider />
-        <RafflesTable />
+        <RafflesTables />
       </div>
     </React.Fragment>
   );
