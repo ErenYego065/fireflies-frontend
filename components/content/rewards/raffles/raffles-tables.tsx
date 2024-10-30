@@ -10,6 +10,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import FilterModal from "./filter-modal";
 
 const raffleData = [
   {
@@ -90,19 +91,7 @@ const EndedRaffles = () => (
   <Fragment>
     <div className="flex justify-between gap-2.5 max-md:flex-col">
       <div className="flex gap-2">
-        <Button
-          size={"sm"}
-          className="border border-neutral-200 bg-white text-black"
-        >
-          <Image
-            src="/icons/filter.svg"
-            alt="filter"
-            height={16}
-            width={16}
-            className="mr-1.5"
-          />
-          Filter
-        </Button>
+        <FilterModal />
         <Button
           size={"sm"}
           className="border border-neutral-200 bg-white text-black"
@@ -161,19 +150,7 @@ const ActiveRaffles = () => (
   <Fragment>
     <div className="flex justify-between gap-2.5 max-md:flex-col">
       <div className="flex gap-2">
-        <Button
-          size={"sm"}
-          className="border border-neutral-200 bg-white text-black"
-        >
-          <Image
-            src="/icons/filter.svg"
-            alt="filter"
-            height={16}
-            width={16}
-            className="mr-1.5"
-          />
-          Filter
-        </Button>
+        <FilterModal />
         <Button
           size={"sm"}
           className="border border-neutral-200 bg-white text-black"
@@ -244,19 +221,7 @@ const PassedParticipationRaffles = () => (
   <Fragment>
     <div className="flex justify-between gap-2.5 max-md:flex-col">
       <div className="flex gap-2">
-        <Button
-          size={"sm"}
-          className="border border-neutral-200 bg-white text-black"
-        >
-          <Image
-            src="/icons/filter.svg"
-            alt="filter"
-            height={16}
-            width={16}
-            className="mr-1.5"
-          />
-          Filter
-        </Button>
+        <FilterModal />
         <Button
           size={"sm"}
           className="border border-neutral-200 bg-white text-black"
@@ -326,19 +291,7 @@ const WinningsRaffles = () => (
   <Fragment>
     <div className="flex justify-between gap-2.5 max-md:flex-col">
       <div className="flex gap-2">
-        <Button
-          size={"sm"}
-          className="border border-neutral-200 bg-white text-black"
-        >
-          <Image
-            src="/icons/filter.svg"
-            alt="filter"
-            height={16}
-            width={16}
-            className="mr-1.5"
-          />
-          Filter
-        </Button>
+        <FilterModal />
       </div>
       <div className="flex gap-1.5">
         <Input className="md:w-80" placeholder="Search by raffle name" />
