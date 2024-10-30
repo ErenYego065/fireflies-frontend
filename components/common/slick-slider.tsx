@@ -43,8 +43,8 @@ const Slider = ({
               },
             },
           ]}
-          nextArrow={<SampleNextArrow arrowClassName={arrowRightClassName} />}
-          prevArrow={<SamplePrevArrow arrowClassName={arrowLeftClassName} />}
+          nextArrow={<SliderNextArrow arrowClassName={arrowRightClassName} />}
+          prevArrow={<SliderPrevArrow arrowClassName={arrowLeftClassName} />}
           {...rest}
         >
           {children}
@@ -54,7 +54,7 @@ const Slider = ({
   );
 };
 
-function SampleNextArrow(props: ArrowProps) {
+export function SliderNextArrow(props: ArrowProps) {
   const { onClick, arrowClassName } = props;
   return (
     <div
@@ -75,7 +75,7 @@ function SampleNextArrow(props: ArrowProps) {
   );
 }
 
-function SamplePrevArrow(props: ArrowProps) {
+export function SliderPrevArrow(props: ArrowProps) {
   const { onClick, arrowClassName } = props;
   return (
     <div
