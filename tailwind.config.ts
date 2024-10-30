@@ -27,6 +27,7 @@ const config: Config = {
 				'custom-gradient-dark': 'linear-gradient(98.32deg, #505D65 20.43%, #000000 100%)',
 				'custom-gradient-light': 'linear-gradient(180deg, #CCEDEE 0%, #FAFAFA 100%)',
 				'reward-bg': 'linear-gradient(0.47deg, #FAFAFA 85.1%, #13AFB6 129.31%)',
+				'raffles': "linear-gradient(223.03deg, rgba(217, 217, 217, 0) 27.53%, #13AFB6 167.13%)",
 				'streak-dashboard': 'linear-gradient(218.15deg, rgba(217, 217, 217, 0) 47.48%, #13AFB6 145.36%)',
 				"card-1": "linear-gradient(270deg, #00ADB5 0%, #A460EC 100%)",
 				"card-2": "linear-gradient(230.17deg, #00ADB5 15.59%, #E8CD5C 89.71%)",

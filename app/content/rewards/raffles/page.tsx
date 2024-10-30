@@ -70,7 +70,7 @@ const Rewards = () => {
   ]);
 
   return (
-    <React.Fragment>
+    <div className="bg-raffles">
       <div className="bg-reward-bg">
         <div className="flex flex-col items-center gap-14">
           <div className="container px-5 pt-3 md:pt-8">
@@ -101,7 +101,7 @@ const Rewards = () => {
         <WinnersSlider />
         <RafflesTables />
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 
