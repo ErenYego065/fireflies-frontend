@@ -9,9 +9,7 @@ import {
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { addDays, format } from "date-fns";
-import { Calendar as CalendarIcon } from "lucide-react";
 import { DateRange } from "react-day-picker";
-
 import { cn } from "@/lib/utils";
 import { Calendar } from "@/components/ui/calendar";
 import {

@@ -11,6 +11,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import FilterModal from "./filter-modal";
+import HistoryFilterModal from "./history-filter-modal";
 
 const raffleData = [
   {
@@ -59,8 +60,11 @@ const RafflesTable = () => {
           <div className="mb-2.5 md:mb-4">
             <Tabs
               labelsClassName="!self-start"
-              labels={["Ended", "Warnings"]}
-              panels={[<EndedRaffles />, <WinningsRaffles />]}
+              labels={["Ended", "Winnings"]}
+              panels={[
+                <EndedRaffles filter={<HistoryFilterModal />} />,
+                <WinningsRaffles filter={<HistoryFilterModal />} />,
+              ]}
             />
           </div>
         </div>
@@ -75,9 +79,9 @@ const RafflesTable = () => {
               labelsClassName="!self-start"
               labels={["Active", "Past Participation", "Winnings"]}
               panels={[
-                <ActiveRaffles />,
-                <PassedParticipationRaffles />,
-                <WinningsRaffles />,
+                <ActiveRaffles filter={<FilterModal />} />,
+                <PassedParticipationRaffles filter={<FilterModal />} />,
+                <WinningsRaffles filter={<FilterModal />} />,
               ]}
             />
           </div>
@@ -87,11 +91,11 @@ const RafflesTable = () => {
   );
 };
 
-const EndedRaffles = () => (
+const EndedRaffles = ({ filter }: { filter: React.ReactNode }) => (
   <Fragment>
     <div className="flex justify-between gap-2.5 max-md:flex-col">
       <div className="flex gap-2">
-        <FilterModal />
+        {filter}
         <Button
           size={"sm"}
           className="border border-neutral-200 bg-white text-black"
@@ -146,11 +150,11 @@ const EndedRaffles = () => (
   </Fragment>
 );
 
-const ActiveRaffles = () => (
+const ActiveRaffles = ({ filter }: { filter: React.ReactNode }) => (
   <Fragment>
     <div className="flex justify-between gap-2.5 max-md:flex-col">
       <div className="flex gap-2">
-        <FilterModal />
+        {filter}
         <Button
           size={"sm"}
           className="border border-neutral-200 bg-white text-black"
@@ -217,11 +221,15 @@ const ActiveRaffles = () => (
   </Fragment>
 );
 
-const PassedParticipationRaffles = () => (
+const PassedParticipationRaffles = ({
+  filter,
+}: {
+  filter: React.ReactNode;
+}) => (
   <Fragment>
     <div className="flex justify-between gap-2.5 max-md:flex-col">
       <div className="flex gap-2">
-        <FilterModal />
+        {filter}
         <Button
           size={"sm"}
           className="border border-neutral-200 bg-white text-black"
@@ -287,12 +295,10 @@ const PassedParticipationRaffles = () => (
     </Table>
   </Fragment>
 );
-const WinningsRaffles = () => (
+const WinningsRaffles = ({ filter }: { filter: React.ReactNode }) => (
   <Fragment>
     <div className="flex justify-between gap-2.5 max-md:flex-col">
-      <div className="flex gap-2">
-        <FilterModal />
-      </div>
+      <div className="flex gap-2">{filter}</div>
       <div className="flex gap-1.5">
         <Input className="md:w-80" placeholder="Search by raffle name" />
         <Button>Search</Button>
