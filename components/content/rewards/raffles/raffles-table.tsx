@@ -104,9 +104,9 @@ const RafflesTable = () => {
             </TableCell>
             <TableCell>Raffle Name</TableCell>
             <TableCell>Ticket Price</TableCell>
-            <TableCell>Number of Tickets</TableCell>
-            <TableCell>Purchased Ticket</TableCell>
-            <TableCell>Status</TableCell>
+            <TableCell className="text-center">Number of Tickets</TableCell>
+            <TableCell className="text-center">Purchased Ticket</TableCell>
+            <TableCell className="text-center">Status</TableCell>
           </TableHeader>
           <TableBody>
             {raffleData?.map((data, index) => (
@@ -121,12 +121,16 @@ const RafflesTable = () => {
                 <TableCell className="font-semibold">
                   {data?.raffleName}
                 </TableCell>
-                <TableCell>{data?.ticketPrice}</TableCell>
-                <TableCell>{data?.numberOfTickets}</TableCell>
-                <TableCell>
+                <TableCell className="text-center">
+                  {data?.ticketPrice}
+                </TableCell>
+                <TableCell className="text-center">
+                  {data?.numberOfTickets}
+                </TableCell>
+                <TableCell className="text-center">
                   {data?.purchasedTicket?.toLocaleString()} FFT
                 </TableCell>
-                <TableCell>{data?.status}</TableCell>
+                <TableCell className="text-center">{data?.status}</TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -198,9 +202,9 @@ const RafflesTable = () => {
             </TableCell>
             <TableCell>Raffle Name</TableCell>
             <TableCell>Ticket Price</TableCell>
-            <TableCell>Number of Tickets</TableCell>
-            <TableCell>Purchased Ticket</TableCell>
-            <TableCell>Status</TableCell>
+            <TableCell className="text-center">Number of Tickets</TableCell>
+            <TableCell className="text-center">Purchased Ticket</TableCell>
+            <TableCell className="text-center">Status</TableCell>
           </TableHeader>
           <TableBody>
             {raffleData?.map((data, index) => (
@@ -215,12 +219,16 @@ const RafflesTable = () => {
                 <TableCell className="font-semibold">
                   {data?.raffleName}
                 </TableCell>
-                <TableCell>{data?.ticketPrice}</TableCell>
-                <TableCell>{data?.numberOfTickets}</TableCell>
-                <TableCell>
+                <TableCell className="text-center">
+                  {data?.ticketPrice}
+                </TableCell>
+                <TableCell className="text-center">
+                  {data?.numberOfTickets}
+                </TableCell>
+                <TableCell className="text-center">
                   {data?.purchasedTicket?.toLocaleString()} FFT
                 </TableCell>
-                <TableCell>{data?.status}</TableCell>
+                <TableCell className="text-center">{data?.status}</TableCell>
               </TableRow>
             ))}
           </TableBody>
