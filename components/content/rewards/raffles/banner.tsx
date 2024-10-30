@@ -119,25 +119,25 @@ const Banner = () => {
         </p>
         <div className="flex items-center gap-4">
           <Image
-            src="/icons/twitter.svg"
+            src="/images/icons/twitter.svg"
             alt="twitter"
             height={24}
             width={24}
           />
           <Image
-            src="/icons/facebook.svg"
+            src="/images/icons/facebook.svg"
             alt="facebook"
             height={24}
             width={24}
           />
           <Image
-            src="/icons/instagram.svg"
+            src="/images/icons/instagram.svg"
             alt="instagram"
             height={24}
             width={24}
           />
           <Image
-            src="/icons/telegram.svg"
+            src="/images/icons/telegram.svg"
             alt="telegram"
             height={24}
             width={24}

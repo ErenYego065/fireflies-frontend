@@ -18,26 +18,30 @@ const Home = () => {
 
   return (
     <div>
-      <div className="px-[10px] pt-7 mb-[84px] bg-gradient-radial 2xl:pt-0 2xl:px-0">
-        {session && <div className="sticky top-[600px] flex flex-row justify-center font-[family-name:var(--font-nunito)]">
-          <div className="flex flex-col gap-[6px] items-center w-64 bg-custom-gradient-light p-[14px] rounded-lg border border-[#D6FDFF]">
-            <div className="text-black font-semibold test-sm">Fast Access</div>
-            <div className="flex flex-row justify-between">
-              <Button className="h-6 rounded-full bg-[#00ADB5] px-2 text-sm font-semibold text-[#FAFAFA]">
-                <Link href="#tokenomics">Tokenomics</Link>
-              </Button>
-              <Button className="h-6 mx-2 rounded-full bg-[#00ADB5] px-2 text-sm font-semibold text-[#FAFAFA]">
-                Roadmap
-              </Button>
-              <Button className="h-6 rounded-full bg-[#00ADB5] px-2 text-sm font-semibold text-[#FAFAFA]">
-                FAQ
-              </Button>
+      <div className="mb-[84px] bg-gradient-radial px-[10px] pt-7 2xl:px-0 2xl:pt-0">
+        {session && (
+          <div className="sticky top-[600px] flex flex-row justify-center font-[family-name:var(--font-nunito)]">
+            <div className="flex w-64 flex-col items-center gap-[6px] rounded-lg border border-[#D6FDFF] bg-custom-gradient-light p-[14px]">
+              <div className="test-sm font-semibold text-black">
+                Fast Access
+              </div>
+              <div className="flex flex-row justify-between">
+                <Button className="h-6 rounded-full bg-[#00ADB5] px-2 text-sm font-semibold text-[#FAFAFA]">
+                  <Link href="#tokenomics">Tokenomics</Link>
+                </Button>
+                <Button className="mx-2 h-6 rounded-full bg-[#00ADB5] px-2 text-sm font-semibold text-[#FAFAFA]">
+                  Roadmap
+                </Button>
+                <Button className="h-6 rounded-full bg-[#00ADB5] px-2 text-sm font-semibold text-[#FAFAFA]">
+                  <Link href="/content/help-center">FAQ</Link>
+                </Button>
+              </div>
             </div>
           </div>
-        </div>}
-        <div className="flex flex-col gap-10 2xl:flex-row 2xl:justify-between 2xl:ml-[138px] 2xl:pt-16 2xl:mb-[150px]">
-          <div className="flex flex-col gap-[14px] 2xl:w-[635px] 2xl:justify-center 2xl:h-[505px]">
-            <h1 className="text-[32px] font-bold text-[#5A616C] leading-8 font-[family-name:var(--font-sofia)] 2xl:text-6xl">
+        )}
+        <div className="flex flex-col gap-10 2xl:mb-[150px] 2xl:ml-[138px] 2xl:flex-row 2xl:justify-between 2xl:pt-16">
+          <div className="flex flex-col gap-[14px] 2xl:h-[505px] 2xl:w-[635px] 2xl:justify-center">
+            <h1 className="font-[family-name:var(--font-sofia)] text-[32px] font-bold leading-8 text-[#5A616C] 2xl:text-6xl">
               Empower Your Financial Future with Fireflies Token.
             </h1>
             <div className="border-l-2 border-l-[#5A616C] py-3 pl-3 font-[family-name:var(--font-nunito)] text-lg leading-6 2xl:text-[28px] 2xl:leading-[38px]">

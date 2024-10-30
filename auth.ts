@@ -18,11 +18,77 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
   pages: {
     signIn: "/signin",
+    error: "/signin",
   },
 
   callbacks: {
+    async signIn({ account, profile }) {
+      if (account?.provider === "google") {
+        try {
+          const response = await fetch(
+            `${process.env.NEXT_PUBLIC_CMS_URL}/api/users/oauth-login`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                email: profile?.email,
+              }),
+            },
+          );
+
+          const body = await response.json();
+
+          if (!response.ok) {
+            throw new Error(body.error);
+          }
+
+          cookies().set("token", body.token, {
+            maxAge: 60 * 60 * 24 * 30,
+          });
+
+          return true;
+        } catch (err) {
+          try {
+            const response = await fetch(
+              `${process.env.NEXT_PUBLIC_CMS_URL}/api/users/oauth-register`,
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  email: profile?.email,
+                  name: profile?.name,
+                  provider: "google",
+                }),
+              },
+            );
+
+            const body = await response.json();
+
+            if (!response.ok) {
+              throw new Error(body.error);
+            }
+
+            cookies().set("token", body.token, {
+              maxAge: 60 * 60 * 24 * 30,
+            });
+
+            return true;
+          } catch (err) {
+            return false;
+          }
+        }
+      }
+
+      return true;
+    },
+
     session(e) {
       const { session, token } = e;
+
       return {
         ...session,
         user: {
@@ -39,22 +105,43 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       credentials: {
         email: {},
         password: {},
+        uid: {},
       },
       async authorize(credentials) {
         try {
-          const response = await fetch(
-            `${process.env.NEXT_PUBLIC_CMS_URL}/api/users/login`,
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
+          let response;
+
+          // Authenticate using verify email token
+          if (credentials.uid) {
+            console.log("Authenticating with uid", credentials.uid);
+            response = await fetch(
+              `${process.env.NEXT_PUBLIC_CMS_URL}/api/users/authenticate`,
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  uid: credentials?.uid,
+                }),
               },
-              body: JSON.stringify({
-                email: credentials?.email,
-                password: credentials?.password,
-              }),
-            },
-          );
+            );
+          } else {
+            console.log("Authenticating with email and password");
+            response = await fetch(
+              `${process.env.NEXT_PUBLIC_CMS_URL}/api/users/login`,
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  email: credentials?.email,
+                  password: credentials?.password,
+                }),
+              },
+            );
+          }
 
           if (!response.ok) {
             return null;

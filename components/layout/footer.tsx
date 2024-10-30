@@ -53,7 +53,7 @@ const Footer = () => {
             </div>
             <div className="flex flex-col gap-[6px] text-xs 2xl:text-[14px] 2xl:leading-[19px]">
               <Link href="#">DApp</Link>
-              <Link href="/content/documents">Whitepaper</Link>
+              <Link href="/content/documents">Docs</Link>
               <Link href="/content/help-center">FAQ & Help Center</Link>
               <Link href="/content/glossary">Glossary</Link>
               <Link href="#">Contact/Support</Link>

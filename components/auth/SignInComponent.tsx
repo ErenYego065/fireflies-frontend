@@ -54,6 +54,15 @@ const SignInComponent = ({ error }: any) => {
     },
   });
 
+  let errorMessage = "";
+
+  if (error === "AccessDenied") {
+    errorMessage =
+      "Invalid oAuth. Please login with the corresponding email and password.";
+  } else if (error === "CredentialsSignin") {
+    errorMessage = "Invalid email or password";
+  }
+
   return (
     <Card className="flex flex-col gap-2 px-5 py-0 pt-5 font-[family-name:var(--font-nunito)] lg:w-[496px]">
       <CardTitle className="text-center text-[32px] text-neutral-900">
@@ -97,7 +106,7 @@ const SignInComponent = ({ error }: any) => {
               )}
             />
             <span className="text-sm text-red-500">
-              {error != "" && "Invalid email or password"}
+              {errorMessage != "" && errorMessage}
             </span>
             <div className="flex flex-row items-center justify-between">
               <FormField
@@ -146,7 +155,7 @@ const SignInComponent = ({ error }: any) => {
           <div className="absolute inset-x-0 top-1/2 h-px bg-neutral-600"></div>
         </div>
         <div className="mt-2 flex w-full justify-between gap-3">
-          <FacebookButtonComponent />
+          {/* <FacebookButtonComponent /> */}
           <GoogleButtonComponent />
         </div>
       </CardContent>

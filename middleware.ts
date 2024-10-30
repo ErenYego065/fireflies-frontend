@@ -16,9 +16,10 @@ const authExceptPath = [
   "/login-scan-QR",
   "/register",
   "/signin",
+  "/verify-email",
+  "/reset-password",
   "/_next",
   "/images",
-  "/icons",
 ];
 
 export async function middleware(req: NextRequest) {

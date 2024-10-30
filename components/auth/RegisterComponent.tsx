@@ -16,13 +16,10 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import FacebookButtonComponent from "./FacebookButtonComponent";
 import GoogleButtonComponent from "./GoogleButtonComponent";
-import { signIn } from "next-auth/react";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
-
-interface RegisterComponentData {
-  setEmail: (email: string) => void;
-}
+import { useState } from "react";
+import VerifySuccessComponent from "./VerificationSuccessComponent";
 
 interface RegisterFormData {
   fullName: string;
@@ -59,7 +56,8 @@ const RegisterSchema = yup.object().shape({
     .oneOf([true], "You must accept the terms and conditions"),
 });
 
-const RegisterComponent = ({ setEmail }: RegisterComponentData) => {
+const RegisterComponent = () => {
+  const [isSuccess, setIsSuccess] = useState(false);
   const router = useRouter();
 
   const form = useForm<RegisterFormData>({
@@ -97,27 +95,20 @@ const RegisterComponent = ({ setEmail }: RegisterComponentData) => {
         throw new Error("Network response was not ok");
       }
 
-      // setEmail(response.body?.email || "")
-
-      const responseMessage = await response.json();
-
-      const { email: emailData } = responseMessage;
-
-      setEmail(emailData);
-
       toast("Registration Successful", {
         type: "success",
       });
 
-      await signIn("credentials", {
-        email,
-        password,
-        callbackUrl: "/content/home",
-      });
+      router.push("/verify-email");
     } catch (error) {
-      console.error("Registration Failed");
+      toast("Registration Failed", {
+        type: "error",
+      });
+
+      console.error(error);
     }
   };
+
   return (
     <Card className="flex flex-col gap-2 px-5 py-0 pt-5 font-[family-name:var(--font-nunito)] lg:w-[496px]">
       <CardTitle className="text-[32px] text-neutral-900">Register</CardTitle>

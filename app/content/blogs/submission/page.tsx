@@ -16,7 +16,6 @@ import { auth } from "@/auth";
 import { getToken } from "next-auth/jwt";
 import Cookies from "js-cookie";
 import { sofiaPro } from "@/app/fonts";
-import { CaretLeft } from "@/components/icons/Icons";
 import { redirect, useRouter } from "next/navigation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -28,6 +27,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { BackButton } from "@/components/icons/Icons";
 
 registerPlugin(FilePondPluginImagePreview);
 
@@ -100,16 +100,8 @@ export default function Page() {
 
   return (
     <div className="lg:px-42 flex flex-col gap-8 p-8 lg:px-48">
-      <div className="flex flex-col items-start justify-center gap-6">
-        <div
-          className="flex flex-row items-center gap-4 text-lg hover:cursor-pointer"
-          onClick={() => {
-            router.back();
-          }}
-        >
-          <CaretLeft />
-          <span className="font-normal text-[#00ADB5]">back</span>
-        </div>
+      <div className="flex flex-row items-center justify-center gap-6">
+        <BackButton />
         <h1
           className={`px-2 text-5xl font-bold text-black/80 lg:text-8xl ${sofiaPro.className}`}
         >

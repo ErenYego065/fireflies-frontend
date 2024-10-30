@@ -1,7 +1,7 @@
 "use client";
 
 import { sofiaPro } from "@/app/fonts";
-import { ShareIcon } from "@/components/icons/Icons";
+import { BackButton, ShareIcon } from "@/components/icons/Icons";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { useEffect, useRef, useState } from "react";
@@ -60,11 +60,14 @@ export default function Page({ params }: any) {
   return (
     <div className="flex flex-col gap-4">
       <div className={`flex flex-row justify-between gap-6`}>
-        <h1
-          className={`text-5xl font-semibold text-black/70 lg:text-6xl ${sofiaPro.className}`}
-        >
-          {title}
-        </h1>
+        <div className="flex flex-row items-center gap-4">
+          <BackButton />
+          <h1
+            className={`p-4 text-5xl font-semibold text-black/70 lg:text-6xl ${sofiaPro.className}`}
+          >
+            {title}
+          </h1>
+        </div>
         <form
           className={`flex w-[24rem] flex-row items-center gap-4`}
           onSubmit={handleSubmit(onSearch)}
@@ -98,10 +101,11 @@ export default function Page({ params }: any) {
         <div className="flex flex-col gap-4">
           {articles.map((article: any) => (
             <ContentCard
+              author={article.user.name}
               id={article.id}
               title={article.title}
               description={article.excerpt}
-              tags={article.tags.split(",")}
+              tags={article.tags?.split(",")}
               helpfulCount={article.helpfulCount}
             />
           ))}
@@ -113,6 +117,7 @@ export default function Page({ params }: any) {
 
 interface ContentCardProps {
   id: string;
+  author: string;
   title: string;
   description: string;
   tags: string[];
@@ -121,6 +126,7 @@ interface ContentCardProps {
 
 function ContentCard({
   id,
+  author,
   title,
   description,
   tags,
@@ -132,11 +138,11 @@ function ContentCard({
         <h4 className="mr-24 text-2xl font-semibold text-black/70 md:pr-48">
           {title}
         </h4>
-        <p className="mr-24 text-black/80 lg:mr-48">Author</p>
+        <p className="mr-24 text-black/80 lg:mr-48">{author}</p>
         <p className="mt-4 text-black/80 md:pr-48">{description}</p>
       </a>
       <div className="mt-8 flex flex-row gap-2">
-        {tags.map((tag) => (
+        {tags?.map((tag) => (
           <Badge className="rounded-sm bg-[#00ADB5] p-1 font-normal text-white">
             {tag}
           </Badge>

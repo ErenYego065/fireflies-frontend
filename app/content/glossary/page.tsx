@@ -1,6 +1,7 @@
 "use client";
 
 import { nunito, sofiaPro } from "@/app/fonts";
+import { BackButton } from "@/components/icons/Icons";
 import { useEffect, useState } from "react";
 
 const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
@@ -18,9 +19,10 @@ export default function Glossary() {
     <div
       className={`flex flex-col p-4 ${nunito.className} gap-6 bg-gradient-to-t from-white to-[#00ADB52D]/40 py-8 lg:p-12 lg:px-24`}
     >
-      <div className="flex flex-row items-center gap-2">
+      <div className="flex flex-row items-center gap-4">
+        <BackButton />
         <h1
-          className={`text-5xl font-semibold text-black/80 lg:text-6xl ${nunito.className}`}
+          className={`p-4 text-5xl font-semibold text-black/80 lg:text-6xl ${nunito.className}`}
         >
           Glossary
         </h1>
@@ -61,7 +63,7 @@ export default function Glossary() {
                   ))}
               </div>
             </div>
-          )
+          ),
       )}
     </div>
   );

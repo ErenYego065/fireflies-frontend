@@ -8,6 +8,8 @@ import {
   SelectContent,
   SelectValue,
   SelectItem,
+  SelectLabel,
+  SelectGroup,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { useEffect, useState } from "react";
@@ -87,75 +89,94 @@ export default function Layout({ children }: any) {
                 className="border-1 w-full rounded-lg border-black/20 bg-white/70 p-2"
                 {...register("email")}
                 required
-                defaultValue=""
               />
             </div>
           </div>
 
           <div className="flex flex-col gap-4 lg:flex-row">
-            <div className="flex w-full flex-col gap-1">
-              <label htmlFor="topic" className="font-bold">
-                Choose Topic
-              </label>
-              <Select
-                {...register("topic")}
-                name="topic"
-                onValueChange={(e) => {
-                  setValue("topic", e);
-                }}
-                required
-                defaultValue=""
-              >
-                <SelectTrigger
-                  className="w-full rounded-lg border border-black/20 bg-white/70 p-2 text-black"
+            <div className="relative flex w-full flex-col gap-1">
+              <SelectGroup>
+                <SelectLabel className="text-md pl-0 pt-0 font-bold">
+                  Choose Topic
+                </SelectLabel>
+                <Select
                   {...register("topic")}
+                  name="topic"
+                  onValueChange={(e) => {
+                    setValue("topic", e);
+                  }}
+                  required
                 >
-                  <SelectValue placeholder="Select your topic" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="gettingStarted">
-                    Getting Started
-                  </SelectItem>
-                  <SelectItem value="creating">Account Issues</SelectItem>
-                  <SelectItem value="buying">Wallet Connection</SelectItem>
-                  <SelectItem value="selling">Transaction Problems</SelectItem>
-                  <SelectItem value="partner">Booking Issues</SelectItem>
-                  <SelectItem value="developers">Rewards & Staking</SelectItem>
-                  <SelectItem value="other">NFT & Exclusive Offers</SelectItem>
-                  <SelectItem value="other">Security Concerns</SelectItem>
-                  <SelectItem value="other">Technical Glithces</SelectItem>
-                  <SelectItem value="other">Platform Navigation</SelectItem>
-                  <SelectItem value="other">Other</SelectItem>
-                </SelectContent>
-              </Select>
+                  <SelectTrigger
+                    className="w-full rounded-lg border border-black/20 bg-white/70 text-black"
+                    {...register("topic")}
+                  >
+                    <SelectValue placeholder="Select your topic" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="gettingStarted">
+                      Getting Started
+                    </SelectItem>
+                    <SelectItem value="account-issues">
+                      Account Issues
+                    </SelectItem>
+                    <SelectItem value="wallet-connection">
+                      Wallet Connection
+                    </SelectItem>
+                    <SelectItem value="transaction-problems">
+                      Transaction Problems
+                    </SelectItem>
+                    <SelectItem value="booking-issues">
+                      Booking Issues
+                    </SelectItem>
+                    <SelectItem value="rewards-and-staking">
+                      Rewards & Staking
+                    </SelectItem>
+                    <SelectItem value="nft-and-exclusive-offers">
+                      NFT & Exclusive Offers
+                    </SelectItem>
+                    <SelectItem value="security-concerns">
+                      Security Concerns
+                    </SelectItem>
+                    <SelectItem value="technical-glitches">
+                      Technical Glitches
+                    </SelectItem>
+                    <SelectItem value="platform-navigation">
+                      Platform Navigation
+                    </SelectItem>
+                    <SelectItem value="other">Other</SelectItem>
+                  </SelectContent>
+                </Select>
+              </SelectGroup>
             </div>
 
             <div className="flex w-full flex-col gap-1">
-              <label htmlFor="priority" className="font-bold">
-                Choose Priority
-              </label>
-              <Select
-                {...register("priority")}
-                name="priority"
-                onValueChange={(e) => {
-                  setValue("priority", e);
-                }}
-                required
-                defaultValue=""
-              >
-                <SelectTrigger
-                  className="w-full rounded-lg border border-black/20 bg-white/70 p-2 text-black"
+              <SelectGroup>
+                <SelectLabel className="text-md pl-0 pt-0 font-bold">
+                  Choose Topic
+                </SelectLabel>
+                <Select
                   {...register("priority")}
+                  name="priority"
+                  onValueChange={(e) => {
+                    setValue("priority", e);
+                  }}
+                  required
                 >
-                  <SelectValue placeholder="Select your priority" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="low">Low</SelectItem>
-                  <SelectItem value="medium">Medium</SelectItem>
-                  <SelectItem value="high">High</SelectItem>
-                  <SelectItem value="critical">Critical</SelectItem>
-                </SelectContent>
-              </Select>
+                  <SelectTrigger
+                    className="w-full rounded-lg border border-black/20 bg-white/70 p-2 text-black"
+                    {...register("priority")}
+                  >
+                    <SelectValue placeholder="Select your priority" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="low">Low</SelectItem>
+                    <SelectItem value="medium">Medium</SelectItem>
+                    <SelectItem value="high">High</SelectItem>
+                    <SelectItem value="critical">Critical</SelectItem>
+                  </SelectContent>
+                </Select>
+              </SelectGroup>
             </div>
           </div>
 

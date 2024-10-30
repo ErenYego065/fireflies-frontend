@@ -2,7 +2,7 @@
 
 import { sofiaPro } from "@/app/fonts";
 import { serialize } from "@/app/tools/serializer";
-import { ShareIcon } from "@/components/icons/Icons";
+import { BackButton, ShareIcon } from "@/components/icons/Icons";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import { format } from "date-fns";
@@ -64,11 +64,14 @@ export default function Article({ params }: any) {
   return (
     <div className="flex flex-col gap-6">
       <div className={`flex flex-col justify-between gap-4 lg:flex-row`}>
-        <h1
-          className={`text-5xl font-semibold text-black/70 lg:text-6xl ${sofiaPro.className}`}
-        >
-          {title}
-        </h1>
+        <div className="flex flex-row items-center gap-4">
+          <BackButton />
+          <h1
+            className={`p-4 text-5xl font-semibold text-black/70 lg:text-6xl ${sofiaPro.className}`}
+          >
+            {title}
+          </h1>
+        </div>
         <form
           className={`flex flex-row items-center gap-4 lg:w-[24rem]`}
           onSubmit={handleSubmit(onSearch)}
@@ -110,7 +113,7 @@ export default function Article({ params }: any) {
                 <p className="text-xs text-black/50">
                   Written By{" "}
                   <span className="font-semibold text-black/50">
-                    {article?.user?.email}
+                    {article?.user?.name}
                   </span>
                 </p>
                 <p className="text-xs text-black/50">

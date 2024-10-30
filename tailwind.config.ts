@@ -26,13 +26,11 @@ const config: Config = {
 				'gradient-to-r-from-teal-to-blue': 'linear-gradient(270deg, #10507F 0%, #00ADB5 100%)',
 				'custom-gradient-dark': 'linear-gradient(98.32deg, #505D65 20.43%, #000000 100%)',
 				'custom-gradient-light': 'linear-gradient(180deg, #CCEDEE 0%, #FAFAFA 100%)',
-				'streak-bg': 'linear-gradient(0.47deg, #FAFAFA 85.1%, #13AFB6 129.31%)',
+				'reward-bg': 'linear-gradient(0.47deg, #FAFAFA 85.1%, #13AFB6 129.31%)',
 				'streak-dashboard': 'linear-gradient(218.15deg, rgba(217, 217, 217, 0) 47.48%, #13AFB6 145.36%)',
-				'global-explorer': 'linear-gradient(0.47deg, #FAFAFA 85.1%, #13AFB6 129.31%)',
 				"card-1": "linear-gradient(270deg, #00ADB5 0%, #A460EC 100%)",
 				"card-2": "linear-gradient(230.17deg, #00ADB5 15.59%, #E8CD5C 89.71%)",
 				"card-3": "linear-gradient(90deg, #101D7F 0%, #00ADB5 100%)",
-
 			},
 			borderColor: {
 				'streak': '1 linear-gradient(130.82deg, #E9EBED 0%, #A9AEB7 100%) 1'
@@ -42,7 +40,7 @@ const config: Config = {
 			},
 			boxShadow: {
 				'white-inset': '0px 0px 16px 0px #FFFFFF8F inset',
-        		'teal-drop': '0px 12px 16px 0px #00727766',
+				'teal-drop': '0px 12px 16px 0px #00727766',
 				'custom-inset': 'inset 4px -4px 10px 0px rgba(255, 255, 255, 0.33)',
 				'streak-shadow': '0px 10px 20px 0px #00000026',
 				sm: "0px 1px 2px 0px #0000000D"
@@ -61,20 +59,20 @@ const config: Config = {
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))',
-					500:"#00ADB5",
-					900:"#007277"
+					500: "#00ADB5",
+					900: "#007277"
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
 					foreground: 'hsl(var(--secondary-foreground))',
 					200: "#D4D7DB",
 					400: "#A9AEB7",
-					500:"#6A727F",
+					500: "#6A727F",
 					700: "#5A616C",
 					900: "#3B3F46"
 				},
-				neutral:{
-					200:"#CCCBCB",
+				neutral: {
+					200: "#CCCBCB",
 					700: "#5A5555",
 				},
 				muted: {

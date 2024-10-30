@@ -2,6 +2,7 @@
 
 import { nunito, sofiaPro } from "@/app/fonts";
 import {
+  BackButton,
   BuyingIcon,
   CaretDown,
   CreatingIcon,
@@ -32,11 +33,14 @@ export default function HelpCenter() {
 
   return (
     <div className={`flex flex-col gap-6`}>
-      <h1
-        className={`mt-4 text-5xl font-semibold text-black/70 lg:text-6xl ${sofiaPro.className}`}
-      >
-        Help Center
-      </h1>
+      <div className="flex flex-row items-center gap-4">
+        <BackButton />
+        <h1
+          className={`p-4 text-5xl font-semibold text-black/70 lg:text-6xl ${sofiaPro.className}`}
+        >
+          Help Center
+        </h1>
+      </div>
       <form className={`flex flex-row gap-4`} onSubmit={handleSubmit(onSearch)}>
         <Input
           {...register("search")}
@@ -173,7 +177,7 @@ function FaqAccordion({ title, description, expanded }: FaqAccordionProps) {
           "aria-expanded",
           e.currentTarget.getAttribute("aria-expanded") === "true"
             ? "false"
-            : "true"
+            : "true",
         );
       }}
     >

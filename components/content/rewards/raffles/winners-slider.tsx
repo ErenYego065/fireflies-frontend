@@ -1,4 +1,4 @@
-import Slider from "@/components/common/slider";
+import Slider from "@/components/common/Slider";
 import clsx from "clsx";
 import Image from "next/image";
 import React from "react";
@@ -26,7 +26,7 @@ const winnerList = [
 
 const WinnersSlider = () => {
   return (
-    <div className="mb-10 px-8">
+    <div className="mb-10">
       <Slider
         dots={false}
         centerMode={false}
