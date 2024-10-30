@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import Tabs from "@/components/common/tabs";
+import Tabs from "@/components/common/Tabs";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Input } from "@/components/ui/input";
