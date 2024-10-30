@@ -113,7 +113,7 @@ const EndedRaffles = ({ filter }: { filter: React.ReactNode }) => (
         <TableCell>
           <div className="flex items-center gap-1.5">
             <Image
-              src="/icons/compare-arrows.svg"
+              src="/images/icons/compare-arrows.svg"
               alt="compare arrow"
               height={20}
               width={20}
@@ -172,7 +172,7 @@ const ActiveRaffles = ({ filter }: { filter: React.ReactNode }) => (
         <TableCell>
           <div className="flex items-center gap-1.5">
             <Image
-              src="/icons/compare-arrows.svg"
+              src="/images/icons/compare-arrows.svg"
               alt="compare arrow"
               height={20}
               width={20}
@@ -183,7 +183,7 @@ const ActiveRaffles = ({ filter }: { filter: React.ReactNode }) => (
         <TableCell>
           <div className="flex items-center gap-1.5">
             <Image
-              src="/icons/compare-arrows.svg"
+              src="/images/icons/compare-arrows.svg"
               alt="compare arrow"
               height={20}
               width={20}
@@ -195,7 +195,17 @@ const ActiveRaffles = ({ filter }: { filter: React.ReactNode }) => (
         <TableCell className="text-center">Ticket Price</TableCell>
         <TableCell className="text-center">Number of Tickets</TableCell>
         <TableCell className="text-center">Purchased Ticket</TableCell>
-        <TableCell className="text-center">Status</TableCell>
+        <TableCell className="text-center">
+          <div className="flex items-center gap-1.5">
+            <Image
+              src="/images/icons/compare-arrows.svg"
+              alt="compare arrow"
+              height={20}
+              width={20}
+            />
+            Status
+          </div>
+          </TableCell>
       </TableHeader>
       <TableBody>
         {raffleData?.map((data, index) => (
@@ -247,7 +257,7 @@ const PassedParticipationRaffles = ({
         <TableCell>
           <div className="flex items-center gap-1.5">
             <Image
-              src="/icons/compare-arrows.svg"
+              src="/images/icons/compare-arrows.svg"
               alt="compare arrow"
               height={20}
               width={20}
@@ -258,7 +268,7 @@ const PassedParticipationRaffles = ({
         <TableCell>
           <div className="flex items-center gap-1.5">
             <Image
-              src="/icons/compare-arrows.svg"
+              src="/images/icons/compare-arrows.svg"
               alt="compare arrow"
               height={20}
               width={20}
@@ -309,7 +319,7 @@ const WinningsRaffles = ({ filter }: { filter: React.ReactNode }) => (
         <TableCell>
           <div className="flex items-center gap-1.5">
             <Image
-              src="/icons/compare-arrows.svg"
+              src="/images/icons/compare-arrows.svg"
               alt="compare arrow"
               height={20}
               width={20}

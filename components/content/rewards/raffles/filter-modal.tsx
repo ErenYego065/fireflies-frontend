@@ -31,7 +31,7 @@ const FilterModal = () => {
           className="border border-neutral-200 bg-white text-black"
         >
           <Image
-            src="/icons/filter.svg"
+            src="/images/icons/filter.svg"
             alt="filter"
             height={16}
             width={16}
