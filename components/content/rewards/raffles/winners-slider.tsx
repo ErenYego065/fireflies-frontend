@@ -1,4 +1,4 @@
-import Slider from "@/components/ui/slider";
+import Slider from "@/components/common/slider";
 import clsx from "clsx";
 import Image from "next/image";
 import React from "react";

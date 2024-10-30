@@ -4,7 +4,7 @@ import Image from "next/image";
 import { ChevronLeft } from "@mui/icons-material";
 import React, { useEffect, useMemo, useState } from "react";
 import moment from "moment";
-import Slider from "@/components/ui/slider";
+import Slider from "@/components/common/slider";
 import { Button } from "@/components/ui/button";
 import Tabs from "@/components/ui/tabs";
 import Live from "@/components/content/rewards/raffles/live";
