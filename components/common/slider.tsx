@@ -64,7 +64,7 @@ function SampleNextArrow(props: ArrowProps) {
         width={16}
         height={16}
         alt="arrow right"
-        src="/icons/arrow-right.svg"
+        src="/images/icons/arrow-right.svg"
         className="h-4 w-4"
       />
     </div>
@@ -85,7 +85,7 @@ function SamplePrevArrow(props: ArrowProps) {
         width={16}
         height={16}
         alt="arrow left"
-        src="/icons/arrow-left.svg"
+        src="/images/icons/arrow-left.svg"
         className="h-4 w-4"
       />
     </div>
