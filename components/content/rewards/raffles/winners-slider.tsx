@@ -1,4 +1,4 @@
-import Slider from "@/components/common/Slider";
+import Slider from "@/components/common/slick-slider";
 import clsx from "clsx";
 import Image from "next/image";
 import React from "react";
