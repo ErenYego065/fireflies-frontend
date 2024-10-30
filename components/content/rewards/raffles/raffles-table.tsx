@@ -43,9 +43,9 @@ const raffleData = [
 
 const RafflesTable = () => {
   return (
-    <div className="flex flex-col gap-16">
+    <div className="flex flex-col gap-10 md:gap-16">
       <div className="flex flex-col gap-6">
-        <h2 className="text-secondary-500 text-[40px] font-bold">
+        <h2 className="text-xl font-bold text-secondary-500 md:text-[40px]">
           Raffle History
         </h2>
         <div>
@@ -79,7 +79,7 @@ const RafflesTable = () => {
           </div>
         </div>
         <Table>
-          <TableHeader className="[&>td]:text-primary-900 border-b-2 border-primary-500 [&>td]:text-nowrap [&>td]:text-sm [&>td]:font-semibold">
+          <TableHeader className="border-b-2 border-primary-500 [&>td]:text-nowrap [&>td]:text-sm [&>td]:font-semibold [&>td]:text-primary-900">
             <TableCell>
               <div className="flex items-center gap-1.5">
                 <Image
@@ -133,7 +133,9 @@ const RafflesTable = () => {
         </Table>
       </div>
       <div className="flex flex-col gap-6 pb-72">
-        <h2 className="text-secondary-500 text-[40px] font-bold">My Raffles</h2>
+        <h2 className="text-xl font-bold text-secondary-500 md:text-[40px]">
+          My Raffles
+        </h2>
         <div>
           <div className="mb-2.5 md:mb-4">
             <Tabs
@@ -171,7 +173,7 @@ const RafflesTable = () => {
           </div>
         </div>
         <Table>
-          <TableHeader className="[&>td]:text-primary-900 border-b-2 border-primary-500 [&>td]:text-nowrap [&>td]:text-sm [&>td]:font-semibold">
+          <TableHeader className="border-b-2 border-primary-500 [&>td]:text-nowrap [&>td]:text-sm [&>td]:font-semibold [&>td]:text-primary-900">
             <TableCell>
               <div className="flex items-center gap-1.5">
                 <Image

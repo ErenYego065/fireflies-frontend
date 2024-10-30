@@ -26,7 +26,7 @@ const winnerList = [
 
 const WinnersSlider = () => {
   return (
-    <div className="mb-10">
+    <div className="mb-10 px-8">
       <Slider
         dots={false}
         centerMode={false}
