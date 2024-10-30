@@ -13,6 +13,10 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+img {
+  /* max-width: ; */
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -47,6 +51,7 @@ body {
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
+
   .dark {
     --background: 224 71.4% 4.1%;
     --foreground: 210 20% 98%;
@@ -79,6 +84,7 @@ body {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -90,4 +96,34 @@ body {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
+}
+
+.slick-track {
+  display: flex !important;
+  gap: 16px;
+}
+
+.slick-slide {
+  height: inherit !important;
+}
+
+.slick-slide>div {
+  height: 100%;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  @apply !text-primary-500;
+}
+
+.slick-dots li {
+  @apply !mx-0.5;
+}
+
+.slick-dots li.slick-active button:before {
+  @apply !text-primary-500 !opacity-100;
+}
+
+.slick-dots li button:before {
+  @apply !text-secondary-200 !text-xs !opacity-100;
 }

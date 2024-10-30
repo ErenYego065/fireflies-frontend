@@ -70,9 +70,9 @@ const claimedHistory = [
 const RewardStreak = () => {
   const { data: session } = useSession()
   return (
-    <div className="bg-streak-bg pt-[42px] 2xl:pt-[77px]">
+    <div className="bg-reward-bg pt-[42px] 2xl:pt-[77px]">
       <h1 className="mb-7 font-[family-name:var(--font-sofia)] font-bold text-[32px] text-center leading-8 text-[#5A616C] 2xl:text-6xl 2xl:mb-11">
-        12 month streak Reward
+        12 Month Streak Reward
       </h1>
       <div className="mx-[42px] flex flex-col gap-[14px] md:flex-row md:mx-10 2xl:mx-[135px]">
         <Image

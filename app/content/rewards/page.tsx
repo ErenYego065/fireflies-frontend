@@ -41,7 +41,8 @@ const Rewards = () => {
           <div className="text-2xl text-[#5A616C] text-center">
             Unlock exclusive travel perks by spending more tokens.
           </div>
-          <Button className="rounded-xl h-8 w-24 font-semibold text-sm bg-[#00ADB5]">
+          <Button className="rounded-xl h-8 w-24 font-semibold text-sm bg-[#00ADB5]"
+            onClick={() => router.push("/content/rewards/high-spend")}>
             View Details
           </Button>
         </div>
@@ -79,7 +80,7 @@ const Rewards = () => {
           <div className="text-2xl text-[#5A616C] text-center">
             Receive monthly rewards for consistent usage.
           </div>
-          <Button 
+          <Button
             className="rounded-xl h-8 w-24 font-semibold text-sm bg-[#00ADB5]"
             onClick={() => router.push("/content/rewards/streak")}
           >
@@ -101,7 +102,8 @@ const Rewards = () => {
           <div className="text-2xl text-[#5A616C] text-center">
             Enter raffles for once-in-a-lifetime experiences.
           </div>
-          <Button className="rounded-xl h-8 w-24 font-semibold text-sm bg-[#00ADB5]">
+          <Button className="rounded-xl h-8 w-24 font-semibold text-sm bg-[#00ADB5]"
+            onClick={() => router.push("/content/rewards/raffles")}>
             View Details
           </Button>
         </div>
