@@ -139,8 +139,6 @@ const EndedRaffles = ({ filterComponent, filter }: PanelProps) => {
   function filterRaffleData() {
     const { type, date, raffle } = filter;
 
-    console.log("type: ", type);
-
     return raffleData.filter((entry) => {
       if (type === "date" && date) {
         const fromDate = new Date(date?.from as Date);

@@ -41,8 +41,6 @@ const HistoryFilterModal = ({ filter, setFilter }: Props) => {
     setTempFilter(filter);
   }, [filter]);
 
-  console.log("filter: ", filter);
-
   return (
     <Dialog>
       <DialogTrigger asChild>
