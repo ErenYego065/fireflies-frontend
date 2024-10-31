@@ -1,4 +1,4 @@
-import Slider from "@/components/common/Slider";
+import Slider from "@/components/common/slick-slider";
 import clsx from "clsx";
 import Image from "next/image";
 import React from "react";
@@ -26,13 +26,13 @@ const winnerList = [
 
 const WinnersSlider = () => {
   return (
-    <div className="mb-10">
+    <div className="-mx-2 mb-10 max-md:px-5">
       <Slider
         dots={false}
         centerMode={false}
         slidesToShow={3}
-        arrowLeftClassName="!-left-10"
-        arrowRightClassName="!-right-10"
+        arrowLeftClassName="md:!-left-10 !-left-4"
+        arrowRightClassName="md:!-right-10 !-right-6"
         responsive={[
           {
             breakpoint: 786,

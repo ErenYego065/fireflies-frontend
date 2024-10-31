@@ -1,3 +1,5 @@
+"use client";
+
 import React, { HTMLAttributes, ReactNode } from "react";
 import SlickSlider, { Settings } from "react-slick";
 import Image from "next/image";
@@ -27,6 +29,8 @@ const Slider = ({
           centerMode
           infinite
           dots
+          swipeToSlide={false}
+          draggable={false}
           speed={500}
           slidesToShow={1}
           slidesToScroll={1}
@@ -39,8 +43,8 @@ const Slider = ({
               },
             },
           ]}
-          nextArrow={<SampleNextArrow arrowClassName={arrowRightClassName} />}
-          prevArrow={<SamplePrevArrow arrowClassName={arrowLeftClassName} />}
+          nextArrow={<SliderNextArrow arrowClassName={arrowRightClassName} />}
+          prevArrow={<SliderPrevArrow arrowClassName={arrowLeftClassName} />}
           {...rest}
         >
           {children}
@@ -50,7 +54,7 @@ const Slider = ({
   );
 };
 
-function SampleNextArrow(props: ArrowProps) {
+export function SliderNextArrow(props: ArrowProps) {
   const { onClick, arrowClassName } = props;
   return (
     <div
@@ -71,7 +75,7 @@ function SampleNextArrow(props: ArrowProps) {
   );
 }
 
-function SamplePrevArrow(props: ArrowProps) {
+export function SliderPrevArrow(props: ArrowProps) {
   const { onClick, arrowClassName } = props;
   return (
     <div
