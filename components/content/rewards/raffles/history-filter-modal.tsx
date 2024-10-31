@@ -140,7 +140,19 @@ const HistoryFilterModal = ({ filter, setFilter }: Props) => {
 
           <DialogClose asChild>
             <div className="flex justify-end gap-2">
-              <Button onClick={() => setTempFilter(filter)} variant={"outline"}>
+              <Button
+                onClick={() => {
+                  setFilter({
+                    raffle: "Global Explorer",
+                    date: {
+                      from: new Date(2022, 0, 20),
+                      to: addDays(new Date(2022, 0, 20), 20),
+                    },
+                    type: "",
+                  });
+                }}
+                variant={"outline"}
+              >
                 Cancel
               </Button>
               <Button onClick={() => setFilter(tempFilter)}>Apply</Button>

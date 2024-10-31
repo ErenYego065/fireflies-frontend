@@ -64,7 +64,7 @@ const RafflesTable = () => {
       from: new Date(2022, 0, 20),
       to: addDays(new Date(2022, 0, 20), 20),
     },
-    type: "raffle",
+    type: "",
   });
 
   const [winningFilter, setWinningFilter] = useState<FilterType>({
@@ -73,7 +73,7 @@ const RafflesTable = () => {
       from: new Date(2022, 0, 20),
       to: addDays(new Date(2022, 0, 20), 20),
     },
-    type: "raffle",
+    type: "",
   });
 
   return (
@@ -140,6 +140,8 @@ const EndedRaffles = ({ filterComponent, filter }: PanelProps) => {
 
   function filterRaffleData() {
     const { type, date, raffle } = filter;
+
+    if (!type) return raffleData;
 
     return raffleData.filter((entry) => {
       if (type === "date" && date) {
