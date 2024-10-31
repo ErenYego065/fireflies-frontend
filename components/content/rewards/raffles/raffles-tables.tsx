@@ -45,7 +45,7 @@ const raffleData = [
     purchasedTicket: 500,
     status: "Active",
     winner: "Carol Williams",
-    rewardReceived: "Free mercedes maybach rent",
+    rewardReceived: "Trip to Malaysia",
   },
 ];
 
@@ -96,12 +96,6 @@ const EndedRaffles = ({ filter }: { filter: React.ReactNode }) => (
     <div className="flex justify-between gap-2.5 max-md:flex-col">
       <div className="flex gap-2">
         {filter}
-        <Button
-          size={"sm"}
-          className="border border-neutral-200 bg-white text-black"
-        >
-          Action
-        </Button>
       </div>
       <div className="flex gap-1.5">
         <Input
@@ -125,10 +119,20 @@ const EndedRaffles = ({ filter }: { filter: React.ReactNode }) => (
           </div>
         </TableCell>
         <TableCell>Raffle Name</TableCell>
-        <TableCell className="text-center">Ticket Price</TableCell>
-        <TableCell className="text-center">Number of Tickets</TableCell>
-        <TableCell className="text-center">Purchased Ticket</TableCell>
-        <TableCell className="text-center">Status</TableCell>
+        <TableCell className="text-center">
+          <div className="flex items-center gap-1.5 justify-center">
+            <Image
+              src="/images/icons/compare-arrows.svg"
+              alt="compare arrow"
+              height={20}
+              width={20}
+            />
+            Ticket Price
+          </div>
+        </TableCell>
+        {/* <TableCell className="text-center">Number of Tickets</TableCell> */}
+        <TableCell className="text-center">Ticket sold</TableCell>
+        <TableCell className="text-center w-40"></TableCell>
       </TableHeader>
       <TableBody>
         {raffleData?.map((data, index) => (
@@ -139,13 +143,12 @@ const EndedRaffles = ({ filter }: { filter: React.ReactNode }) => (
             <TableCell className="font-semibold">{data?.closedDate}</TableCell>
             <TableCell className="font-semibold">{data?.raffleName}</TableCell>
             <TableCell className="text-center">{data?.ticketPrice}</TableCell>
-            <TableCell className="text-center">
+            {/* <TableCell className="text-center">
               {data?.numberOfTickets}
-            </TableCell>
+            </TableCell> */}
             <TableCell className="text-center">
-              {data?.purchasedTicket?.toLocaleString()} FFT
+              {data?.purchasedTicket?.toLocaleString()} Pcs
             </TableCell>
-            <TableCell className="text-center">{data?.status}</TableCell>
           </TableRow>
         ))}
       </TableBody>
@@ -158,12 +161,6 @@ const ActiveRaffles = ({ filter }: { filter: React.ReactNode }) => (
     <div className="flex justify-between gap-2.5 max-md:flex-col">
       <div className="flex gap-2">
         {filter}
-        <Button
-          size={"sm"}
-          className="border border-neutral-200 bg-white text-black"
-        >
-          Action
-        </Button>
       </div>
       <div className="flex gap-1.5">
         <Input
@@ -246,12 +243,6 @@ const PassedParticipationRaffles = ({
     <div className="flex justify-between gap-2.5 max-md:flex-col">
       <div className="flex gap-2">
         {filter}
-        <Button
-          size={"sm"}
-          className="border border-neutral-200 bg-white text-black"
-        >
-          Action
-        </Button>
       </div>
       <div className="flex gap-1.5">
         <Input
@@ -300,7 +291,7 @@ const PassedParticipationRaffles = ({
             <TableCell className="font-semibold">{data?.date}</TableCell>
             <TableCell className="font-semibold">{data?.closedDate}</TableCell>
             <TableCell className="font-semibold">{data?.raffleName}</TableCell>
-            <TableCell className="text-center">{data?.ticketPrice}</TableCell>
+            <TableCell className="text-center">{data?.ticketPrice} FFT</TableCell>
             <TableCell className="text-center">
               {data?.numberOfTickets}
             </TableCell>
@@ -342,7 +333,7 @@ const WinningsRaffles = ({ filter }: { filter: React.ReactNode }) => (
         <TableCell>Winner</TableCell>
         <TableCell>Raffle Name</TableCell>
         <TableCell>Reward Received</TableCell>
-        <TableCell className="text-center">Purchased Ticket</TableCell>
+        <TableCell className="text-center">Ticket</TableCell>
       </TableHeader>
       <TableBody>
         {raffleData?.map((data, index) => (
@@ -366,7 +357,7 @@ const WinningsRaffles = ({ filter }: { filter: React.ReactNode }) => (
             <TableCell className="font-semibold">{data?.raffleName}</TableCell>
             <TableCell>{data?.rewardReceived}</TableCell>
             <TableCell className="text-center">
-              {data?.purchasedTicket?.toLocaleString()} FFT
+              {data?.numberOfTickets}
             </TableCell>
           </TableRow>
         ))}
