@@ -57,16 +57,15 @@ const RafflesTable = () => {
           Raffle History
         </h2>
         <div>
-          <div className="mb-2.5 md:mb-4">
-            <Tabs
-              labelsClassName="!self-start"
-              labels={["Ended", "Winnings"]}
-              panels={[
-                <EndedRaffles filter={<HistoryFilterModal />} />,
-                <WinningsRaffles filter={<HistoryFilterModal />} />,
-              ]}
-            />
-          </div>
+          <Tabs
+            className="!gap-2.5 md:!gap-4"
+            labelsClassName="!self-start"
+            labels={["Ended", "Winnings"]}
+            panels={[
+              <EndedRaffles filter={<HistoryFilterModal />} />,
+              <WinningsRaffles filter={<HistoryFilterModal />} />,
+            ]}
+          />
         </div>
       </div>
       <div className="flex flex-col gap-2.5 md:gap-6">
@@ -74,17 +73,16 @@ const RafflesTable = () => {
           My Raffles
         </h2>
         <div>
-          <div className="mb-2.5 md:mb-4">
-            <Tabs
-              labelsClassName="!self-start"
-              labels={["Active", "Past Participation", "Winnings"]}
-              panels={[
-                <ActiveRaffles filter={<FilterModal />} />,
-                <PassedParticipationRaffles filter={<FilterModal />} />,
-                <WinningsRaffles filter={<FilterModal />} />,
-              ]}
-            />
-          </div>
+          <Tabs
+            className="!gap-2.5 md:!gap-4"
+            labelsClassName="!self-start"
+            labels={["Active", "Past Participation", "Winnings"]}
+            panels={[
+              <ActiveRaffles filter={<FilterModal />} />,
+              <PassedParticipationRaffles filter={<FilterModal />} />,
+              <WinningsRaffles filter={<FilterModal />} />,
+            ]}
+          />
         </div>
       </div>
     </div>
@@ -92,11 +90,9 @@ const RafflesTable = () => {
 };
 
 const EndedRaffles = ({ filter }: { filter: React.ReactNode }) => (
-  <Fragment>
+  <div className="flex flex-col gap-6">
     <div className="flex justify-between gap-2.5 max-md:flex-col">
-      <div className="flex gap-2">
-        {filter}
-      </div>
+      <div className="flex gap-2">{filter}</div>
       <div className="flex gap-1.5">
         <Input
           className="border border-neutral-200 bg-white md:w-80"
@@ -106,33 +102,35 @@ const EndedRaffles = ({ filter }: { filter: React.ReactNode }) => (
       </div>
     </div>
     <Table>
-      <TableHeader className="border-b-2 border-primary-500 [&>td]:text-nowrap [&>td]:text-sm [&>td]:font-semibold [&>td]:text-primary-900">
-        <TableCell>
-          <div className="flex items-center gap-1.5">
-            <Image
-              src="/images/icons/compare-arrows.svg"
-              alt="compare arrow"
-              height={20}
-              width={20}
-            />
-            Closed Date
-          </div>
-        </TableCell>
-        <TableCell>Raffle Name</TableCell>
-        <TableCell className="text-center">
-          <div className="flex items-center gap-1.5 justify-center">
-            <Image
-              src="/images/icons/compare-arrows.svg"
-              alt="compare arrow"
-              height={20}
-              width={20}
-            />
-            Ticket Price
-          </div>
-        </TableCell>
-        {/* <TableCell className="text-center">Number of Tickets</TableCell> */}
-        <TableCell className="text-center">Ticket sold</TableCell>
-        <TableCell className="text-center w-40"></TableCell>
+      <TableHeader className="[&>td]:text-nowrap [&>td]:text-sm [&>td]:font-semibold">
+        <TableRow>
+          <TableCell>
+            <div className="flex items-center gap-1.5">
+              <Image
+                src="/images/icons/compare-arrows.svg"
+                alt="compare arrow"
+                height={20}
+                width={20}
+              />
+              Closed Date
+            </div>
+          </TableCell>
+          <TableCell>Raffle Name</TableCell>
+          <TableCell className="text-center">
+            <div className="flex items-center justify-center gap-1.5">
+              <Image
+                src="/images/icons/compare-arrows.svg"
+                alt="compare arrow"
+                height={20}
+                width={20}
+              />
+              Ticket Price
+            </div>
+          </TableCell>
+          {/* <TableCell className="text-center">Number of Tickets</TableCell> */}
+          <TableCell className="text-center">Ticket sold</TableCell>
+          <TableCell className="w-40 text-center"></TableCell>
+        </TableRow>
       </TableHeader>
       <TableBody>
         {raffleData?.map((data, index) => (
@@ -153,15 +151,13 @@ const EndedRaffles = ({ filter }: { filter: React.ReactNode }) => (
         ))}
       </TableBody>
     </Table>
-  </Fragment>
+  </div>
 );
 
 const ActiveRaffles = ({ filter }: { filter: React.ReactNode }) => (
   <Fragment>
     <div className="flex justify-between gap-2.5 max-md:flex-col">
-      <div className="flex gap-2">
-        {filter}
-      </div>
+      <div className="flex gap-2">{filter}</div>
       <div className="flex gap-1.5">
         <Input
           className="border border-neutral-200 bg-white md:w-80"
@@ -171,44 +167,46 @@ const ActiveRaffles = ({ filter }: { filter: React.ReactNode }) => (
       </div>
     </div>
     <Table>
-      <TableHeader className="border-b-2 border-primary-500 [&>td]:text-nowrap [&>td]:text-sm [&>td]:font-semibold [&>td]:text-primary-900">
-        <TableCell>
-          <div className="flex items-center gap-1.5">
-            <Image
-              src="/images/icons/compare-arrows.svg"
-              alt="compare arrow"
-              height={20}
-              width={20}
-            />
-            Date
-          </div>
-        </TableCell>
-        <TableCell>
-          <div className="flex items-center gap-1.5">
-            <Image
-              src="/images/icons/compare-arrows.svg"
-              alt="compare arrow"
-              height={20}
-              width={20}
-            />
-            Closed Date
-          </div>
-        </TableCell>
-        <TableCell>Raffle Name</TableCell>
-        <TableCell className="text-center">Ticket Price</TableCell>
-        <TableCell className="text-center">Number of Tickets</TableCell>
-        <TableCell className="text-center">Purchased Ticket</TableCell>
-        <TableCell className="text-center">
-          <div className="flex items-center gap-1.5">
-            <Image
-              src="/images/icons/compare-arrows.svg"
-              alt="compare arrow"
-              height={20}
-              width={20}
-            />
-            Status
-          </div>
-        </TableCell>
+      <TableHeader className="[&>td]:text-nowrap [&>td]:text-sm [&>td]:font-semibold">
+        <TableRow>
+          <TableCell>
+            <div className="flex items-center gap-1.5">
+              <Image
+                src="/images/icons/compare-arrows.svg"
+                alt="compare arrow"
+                height={20}
+                width={20}
+              />
+              Date
+            </div>
+          </TableCell>
+          <TableCell>
+            <div className="flex items-center gap-1.5">
+              <Image
+                src="/images/icons/compare-arrows.svg"
+                alt="compare arrow"
+                height={20}
+                width={20}
+              />
+              Closed Date
+            </div>
+          </TableCell>
+          <TableCell>Raffle Name</TableCell>
+          <TableCell className="text-center">Ticket Price</TableCell>
+          <TableCell className="text-center">Number of Tickets</TableCell>
+          <TableCell className="text-center">Purchased Ticket</TableCell>
+          <TableCell className="text-center">
+            <div className="flex items-center gap-1.5">
+              <Image
+                src="/images/icons/compare-arrows.svg"
+                alt="compare arrow"
+                height={20}
+                width={20}
+              />
+              Status
+            </div>
+          </TableCell>
+        </TableRow>
       </TableHeader>
       <TableBody>
         {raffleData?.map((data, index) => (
@@ -241,9 +239,7 @@ const PassedParticipationRaffles = ({
 }) => (
   <Fragment>
     <div className="flex justify-between gap-2.5 max-md:flex-col">
-      <div className="flex gap-2">
-        {filter}
-      </div>
+      <div className="flex gap-2">{filter}</div>
       <div className="flex gap-1.5">
         <Input
           className="border border-neutral-200 bg-white md:w-80"
@@ -253,34 +249,36 @@ const PassedParticipationRaffles = ({
       </div>
     </div>
     <Table>
-      <TableHeader className="border-b-2 border-primary-500 [&>td]:text-nowrap [&>td]:text-sm [&>td]:font-semibold [&>td]:text-primary-900">
-        <TableCell>
-          <div className="flex items-center gap-1.5">
-            <Image
-              src="/images/icons/compare-arrows.svg"
-              alt="compare arrow"
-              height={20}
-              width={20}
-            />
-            Date
-          </div>
-        </TableCell>
-        <TableCell>
-          <div className="flex items-center gap-1.5">
-            <Image
-              src="/images/icons/compare-arrows.svg"
-              alt="compare arrow"
-              height={20}
-              width={20}
-            />
-            Closed Date
-          </div>
-        </TableCell>
-        <TableCell>Raffle Name</TableCell>
-        <TableCell className="text-center">Ticket Price</TableCell>
-        <TableCell className="text-center">Number of Tickets</TableCell>
-        <TableCell className="text-center">Purchased Ticket</TableCell>
-        <TableCell className="text-center">Status</TableCell>
+      <TableHeader className="[&>td]:text-nowrap [&>td]:text-sm [&>td]:font-semibold">
+        <TableRow>
+          <TableCell>
+            <div className="flex items-center gap-1.5">
+              <Image
+                src="/images/icons/compare-arrows.svg"
+                alt="compare arrow"
+                height={20}
+                width={20}
+              />
+              Date
+            </div>
+          </TableCell>
+          <TableCell>
+            <div className="flex items-center gap-1.5">
+              <Image
+                src="/images/icons/compare-arrows.svg"
+                alt="compare arrow"
+                height={20}
+                width={20}
+              />
+              Closed Date
+            </div>
+          </TableCell>
+          <TableCell>Raffle Name</TableCell>
+          <TableCell className="text-center">Ticket Price</TableCell>
+          <TableCell className="text-center">Number of Tickets</TableCell>
+          <TableCell className="text-center">Purchased Ticket</TableCell>
+          <TableCell className="text-center">Status</TableCell>
+        </TableRow>
       </TableHeader>
       <TableBody>
         {raffleData?.map((data, index) => (
@@ -291,7 +289,9 @@ const PassedParticipationRaffles = ({
             <TableCell className="font-semibold">{data?.date}</TableCell>
             <TableCell className="font-semibold">{data?.closedDate}</TableCell>
             <TableCell className="font-semibold">{data?.raffleName}</TableCell>
-            <TableCell className="text-center">{data?.ticketPrice} FFT</TableCell>
+            <TableCell className="text-center">
+              {data?.ticketPrice} FFT
+            </TableCell>
             <TableCell className="text-center">
               {data?.numberOfTickets}
             </TableCell>
@@ -318,22 +318,24 @@ const WinningsRaffles = ({ filter }: { filter: React.ReactNode }) => (
       </div>
     </div>
     <Table>
-      <TableHeader className="border-b-2 border-primary-500 [&>td]:text-nowrap [&>td]:text-sm [&>td]:font-semibold [&>td]:text-primary-900">
-        <TableCell>
-          <div className="flex items-center gap-1.5">
-            <Image
-              src="/images/icons/compare-arrows.svg"
-              alt="compare arrow"
-              height={20}
-              width={20}
-            />
-            Closed Date
-          </div>
-        </TableCell>
-        <TableCell>Winner</TableCell>
-        <TableCell>Raffle Name</TableCell>
-        <TableCell>Reward Received</TableCell>
-        <TableCell className="text-center">Ticket</TableCell>
+      <TableHeader className="[&>td]:text-nowrap [&>td]:text-sm [&>td]:font-semibold">
+        <TableRow>
+          <TableCell>
+            <div className="flex items-center gap-1.5">
+              <Image
+                src="/images/icons/compare-arrows.svg"
+                alt="compare arrow"
+                height={20}
+                width={20}
+              />
+              Closed Date
+            </div>
+          </TableCell>
+          <TableCell>Winner</TableCell>
+          <TableCell>Raffle Name</TableCell>
+          <TableCell>Reward Received</TableCell>
+          <TableCell className="text-center">Ticket</TableCell>
+        </TableRow>
       </TableHeader>
       <TableBody>
         {raffleData?.map((data, index) => (
