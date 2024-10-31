@@ -136,6 +136,8 @@ interface PanelProps {
 }
 
 const EndedRaffles = ({ filterComponent, filter }: PanelProps) => {
+  const [search, setSearch] = useState("");
+
   function filterRaffleData() {
     const { type, date, raffle } = filter;
 
@@ -159,6 +161,8 @@ const EndedRaffles = ({ filterComponent, filter }: PanelProps) => {
         <div className="flex gap-2">{filterComponent}</div>
         <div className="flex gap-1.5">
           <Input
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
             className="border border-neutral-200 bg-white md:w-80"
             placeholder="Search by raffle name"
           />
@@ -196,23 +200,29 @@ const EndedRaffles = ({ filterComponent, filter }: PanelProps) => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {filterRaffleData()?.map((data, index) => (
-            <TableRow
-              key={index}
-              className="[&>td]:text-nowrap [&>td]:text-sm [&>td]:text-black"
-            >
-              <TableCell className="font-semibold">
-                {data?.closedDate}
-              </TableCell>
-              <TableCell className="font-semibold">
-                {data?.raffleName}
-              </TableCell>
-              <TableCell className="text-center">{data?.ticketPrice}</TableCell>
-              <TableCell className="text-center">
-                {data?.purchasedTicket?.toLocaleString()} Pcs
-              </TableCell>
-            </TableRow>
-          ))}
+          {filterRaffleData()
+            ?.filter((e) =>
+              e.raffleName.toLowerCase().includes(search.toLowerCase()),
+            )
+            ?.map((data, index) => (
+              <TableRow
+                key={index}
+                className="[&>td]:text-nowrap [&>td]:text-sm [&>td]:text-black"
+              >
+                <TableCell className="font-semibold">
+                  {data?.closedDate}
+                </TableCell>
+                <TableCell className="font-semibold">
+                  {data?.raffleName}
+                </TableCell>
+                <TableCell className="text-center">
+                  {data?.ticketPrice}
+                </TableCell>
+                <TableCell className="text-center">
+                  {data?.purchasedTicket?.toLocaleString()} Pcs
+                </TableCell>
+              </TableRow>
+            ))}
         </TableBody>
       </Table>
     </div>
