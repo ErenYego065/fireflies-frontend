@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import Tabs from "@/components/common/Tabs";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -12,6 +12,8 @@ import {
 } from "@/components/ui/table";
 import FilterModal from "./filter-modal";
 import HistoryFilterModal from "./history-filter-modal";
+import { addDays } from "date-fns";
+import { DateRange } from "react-day-picker";
 
 const raffleData = [
   {
@@ -49,7 +51,31 @@ const raffleData = [
   },
 ];
 
+export interface FilterType {
+  raffle: string;
+  date: DateRange;
+  type: string;
+}
+
 const RafflesTable = () => {
+  const [endedFilter, setEndedFilter] = useState<FilterType>({
+    raffle: "Global Explorer",
+    date: {
+      from: new Date(2022, 0, 20),
+      to: addDays(new Date(2022, 0, 20), 20),
+    },
+    type: "raffle",
+  });
+
+  const [winningFilter, setWinningFilter] = useState<FilterType>({
+    raffle: "Global Explorer",
+    date: {
+      from: new Date(2022, 0, 20),
+      to: addDays(new Date(2022, 0, 20), 20),
+    },
+    type: "raffle",
+  });
+
   return (
     <div className="flex flex-col gap-10 pb-72 md:gap-[70px]">
       <div className="flex flex-col gap-2.5 md:gap-6">
@@ -62,8 +88,23 @@ const RafflesTable = () => {
             labelsClassName="!self-start"
             labels={["Ended", "Winnings"]}
             panels={[
-              <EndedRaffles filter={<HistoryFilterModal />} />,
-              <WinningsRaffles filter={<HistoryFilterModal />} />,
+              <EndedRaffles
+                filterComponent={
+                  <HistoryFilterModal
+                    filter={endedFilter}
+                    setFilter={setEndedFilter}
+                  />
+                }
+                filter={endedFilter}
+              />,
+              <WinningsRaffles
+                filterComponent={
+                  <HistoryFilterModal
+                    filter={winningFilter}
+                    setFilter={setWinningFilter}
+                  />
+                }
+              />,
             ]}
           />
         </div>
@@ -80,7 +121,7 @@ const RafflesTable = () => {
             panels={[
               <ActiveRaffles filter={<FilterModal />} />,
               <PassedParticipationRaffles filter={<FilterModal />} />,
-              <WinningsRaffles filter={<FilterModal />} />,
+              <WinningsRaffles filterComponent={<FilterModal />} />,
             ]}
           />
         </div>
@@ -89,70 +130,96 @@ const RafflesTable = () => {
   );
 };
 
-const EndedRaffles = ({ filter }: { filter: React.ReactNode }) => (
-  <div className="flex flex-col gap-6">
-    <div className="flex justify-between gap-2.5 max-md:flex-col">
-      <div className="flex gap-2">{filter}</div>
-      <div className="flex gap-1.5">
-        <Input
-          className="border border-neutral-200 bg-white md:w-80"
-          placeholder="Search by raffle name"
-        />
-        <Button>Search</Button>
+interface PanelProps {
+  filterComponent: React.ReactNode;
+  filter: FilterType;
+}
+
+const EndedRaffles = ({ filterComponent, filter }: PanelProps) => {
+  function filterRaffleData() {
+    const { type, date, raffle } = filter;
+
+    console.log("type: ", type);
+
+    return raffleData.filter((entry) => {
+      if (type === "date" && date) {
+        const fromDate = new Date(date?.from as Date);
+        const toDate = new Date(date?.to as Date);
+        const raffleDate = new Date(entry.closedDate);
+
+        return raffleDate >= fromDate && raffleDate <= toDate;
+      } else if (type === "raffle" && raffle) {
+        return entry.raffleName === raffle;
+      }
+      return false;
+    });
+  }
+
+  return (
+    <div className="flex flex-col gap-6">
+      <div className="flex justify-between gap-2.5 max-md:flex-col">
+        <div className="flex gap-2">{filterComponent}</div>
+        <div className="flex gap-1.5">
+          <Input
+            className="border border-neutral-200 bg-white md:w-80"
+            placeholder="Search by raffle name"
+          />
+          <Button>Search</Button>
+        </div>
       </div>
-    </div>
-    <Table>
-      <TableHeader className="[&>td]:text-nowrap [&>td]:text-sm [&>td]:font-semibold">
-        <TableRow>
-          <TableCell>
-            <div className="flex items-center gap-1.5">
-              <Image
-                src="/images/icons/compare-arrows.svg"
-                alt="compare arrow"
-                height={20}
-                width={20}
-              />
-              Closed Date
-            </div>
-          </TableCell>
-          <TableCell>Raffle Name</TableCell>
-          <TableCell className="text-center">
-            <div className="flex items-center justify-center gap-1.5">
-              <Image
-                src="/images/icons/compare-arrows.svg"
-                alt="compare arrow"
-                height={20}
-                width={20}
-              />
-              Ticket Price
-            </div>
-          </TableCell>
-          {/* <TableCell className="text-center">Number of Tickets</TableCell> */}
-          <TableCell className="text-center">Ticket sold</TableCell>
-          <TableCell className="w-40 text-center"></TableCell>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {raffleData?.map((data, index) => (
-          <TableRow
-            key={index}
-            className="[&>td]:text-nowrap [&>td]:text-sm [&>td]:text-black"
-          >
-            <TableCell className="font-semibold">{data?.closedDate}</TableCell>
-            <TableCell className="font-semibold">{data?.raffleName}</TableCell>
-            <TableCell className="text-center">{data?.ticketPrice}</TableCell>
-            {/* <TableCell className="text-center">
-              {data?.numberOfTickets}
-            </TableCell> */}
-            <TableCell className="text-center">
-              {data?.purchasedTicket?.toLocaleString()} Pcs
+      <Table>
+        <TableHeader className="[&>td]:text-nowrap [&>td]:text-sm [&>td]:font-semibold">
+          <TableRow>
+            <TableCell>
+              <div className="flex items-center gap-1.5">
+                <Image
+                  src="/images/icons/compare-arrows.svg"
+                  alt="compare arrow"
+                  height={20}
+                  width={20}
+                />
+                Closed Date
+              </div>
             </TableCell>
+            <TableCell>Raffle Name</TableCell>
+            <TableCell className="text-center">
+              <div className="flex items-center justify-center gap-1.5">
+                <Image
+                  src="/images/icons/compare-arrows.svg"
+                  alt="compare arrow"
+                  height={20}
+                  width={20}
+                />
+                Ticket Price
+              </div>
+            </TableCell>
+            <TableCell className="text-center">Ticket sold</TableCell>
+            <TableCell className="w-40 text-center"></TableCell>
           </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  </div>
-);
+        </TableHeader>
+        <TableBody>
+          {filterRaffleData()?.map((data, index) => (
+            <TableRow
+              key={index}
+              className="[&>td]:text-nowrap [&>td]:text-sm [&>td]:text-black"
+            >
+              <TableCell className="font-semibold">
+                {data?.closedDate}
+              </TableCell>
+              <TableCell className="font-semibold">
+                {data?.raffleName}
+              </TableCell>
+              <TableCell className="text-center">{data?.ticketPrice}</TableCell>
+              <TableCell className="text-center">
+                {data?.purchasedTicket?.toLocaleString()} Pcs
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
+  );
+};
 
 const ActiveRaffles = ({ filter }: { filter: React.ReactNode }) => (
   <Fragment>
@@ -305,10 +372,14 @@ const PassedParticipationRaffles = ({
     </Table>
   </Fragment>
 );
-const WinningsRaffles = ({ filter }: { filter: React.ReactNode }) => (
+const WinningsRaffles = ({
+  filterComponent,
+}: {
+  filterComponent: React.ReactNode;
+}) => (
   <Fragment>
     <div className="flex justify-between gap-2.5 max-md:flex-col">
-      <div className="flex gap-2">{filter}</div>
+      <div className="flex gap-2">{filterComponent}</div>
       <div className="flex gap-1.5">
         <Input
           className="border border-neutral-200 bg-white md:w-80"
