@@ -7,14 +7,20 @@ interface TabsProps {
   labels: string[];
   panels: React.ReactNode[];
   labelsClassName?: HTMLAttributes<HTMLDivElement>["className"];
+  className?: HTMLAttributes<HTMLDivElement>["className"];
 }
 
 const Tabs = (props: TabsProps) => {
-  const { labels, panels, labelsClassName } = props;
+  const { labels, panels, labelsClassName, className } = props;
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <div className="flex flex-col gap-2.5 md:flex-col md:gap-6">
+    <div
+      className={clsx(
+        "flex flex-col gap-2.5 md:flex-col md:gap-6",
+        className && className,
+      )}
+    >
       <div
         className={clsx(
           "flex w-fit self-center rounded-[6px] border-2 border-neutral-200 bg-neutral-200",
