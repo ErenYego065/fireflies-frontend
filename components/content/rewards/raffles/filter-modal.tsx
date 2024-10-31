@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Dialog,
   DialogClose,
@@ -17,12 +17,26 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { FilterType } from "./raffles-tables";
 
-const FilterModal = () => {
-  const [date, setDate] = useState<DateRange | undefined>({
-    from: new Date(2022, 0, 20),
-    to: addDays(new Date(2022, 0, 20), 20),
+interface Props {
+  setFilter: React.Dispatch<React.SetStateAction<FilterType>>;
+  filter: FilterType;
+}
+
+const FilterModal = ({ filter, setFilter }: Props) => {
+  const [tempFilter, setTempFilter] = useState<FilterType>({
+    date: {
+      from: new Date(2022, 0, 20),
+      to: addDays(new Date(2022, 0, 20), 20),
+    },
+    type: "date",
   });
+
+  useEffect(() => {
+    setTempFilter(filter);
+  }, [filter]);
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -52,18 +66,18 @@ const FilterModal = () => {
                 variant={"outline"}
                 className={cn(
                   "w-fit justify-start text-left font-bold",
-                  !date && "text-muted-foreground",
+                  !tempFilter?.date && "text-muted-foreground",
                 )}
               >
                 Date: (
-                {date?.from ? (
-                  date.to ? (
+                {tempFilter?.date?.from ? (
+                  tempFilter?.date.to ? (
                     <>
-                      {format(date.from, "LL dd, y")} -{" "}
-                      {format(date.to, "LL dd, y")}
+                      {format(tempFilter?.date.from, "LL dd, y")} -{" "}
+                      {format(tempFilter?.date.to, "LL dd, y")}
                     </>
                   ) : (
-                    format(date.from, "LL dd, y")
+                    format(tempFilter?.date.from, "LL dd, y")
                   )
                 ) : (
                   <span>Pick a date</span>
@@ -74,17 +88,36 @@ const FilterModal = () => {
             <PopoverContent className="w-auto p-0" align="start">
               <Calendar
                 mode="range"
-                defaultMonth={date?.from}
-                selected={date}
-                onSelect={setDate}
+                defaultMonth={tempFilter?.date?.from}
+                selected={tempFilter?.date}
+                onSelect={(d) =>
+                  setTempFilter({
+                    ...tempFilter,
+                    date: d as DateRange,
+                    type: "date",
+                  })
+                }
                 numberOfMonths={1}
               />
             </PopoverContent>
           </Popover>
           <DialogClose asChild>
             <div className="flex justify-end gap-2">
-              <Button variant={"outline"}>Cancel</Button>
-              <Button>Apply</Button>
+              <Button
+                onClick={() => {
+                  setFilter({
+                    date: {
+                      from: new Date(2022, 0, 20),
+                      to: addDays(new Date(2022, 0, 20), 20),
+                    },
+                    type: "",
+                  });
+                }}
+                variant={"outline"}
+              >
+                Cancel
+              </Button>
+              <Button onClick={() => setFilter(tempFilter)}>Apply</Button>
             </div>
           </DialogClose>
         </div>

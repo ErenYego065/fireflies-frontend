@@ -57,32 +57,21 @@ export interface FilterType {
   type?: string;
 }
 
+const defaultFilterValue: FilterType = {
+  raffle: "Global Explorer",
+  date: {
+    from: new Date(2022, 0, 20),
+    to: addDays(new Date(2022, 0, 20), 20),
+  },
+  type: "",
+};
+
 const RafflesTable = () => {
-  const [endedFilter, setEndedFilter] = useState<FilterType>({
-    raffle: "Global Explorer",
-    date: {
-      from: new Date(2022, 0, 20),
-      to: addDays(new Date(2022, 0, 20), 20),
-    },
-    type: "",
-  });
-
-  const [winningFilter, setWinningFilter] = useState<FilterType>({
-    raffle: "Global Explorer",
-    date: {
-      from: new Date(2022, 0, 20),
-      to: addDays(new Date(2022, 0, 20), 20),
-    },
-    type: "",
-  });
-
-  const [myWinningFilter, setMyWinningFilter] = useState<FilterType>({
-    date: {
-      from: new Date(2022, 0, 20),
-      to: addDays(new Date(2022, 0, 20), 20),
-    },
-    type: "date",
-  });
+  const [endedFilter, setEndedFilter] = useState(defaultFilterValue);
+  const [winningFilter, setWinningFilter] = useState(defaultFilterValue);
+  const [myPastFilter, setMyPastFilter] = useState(defaultFilterValue);
+  const [myActiveFilter, setMyActiveFilter] = useState(defaultFilterValue);
+  const [myWinningFilter, setMyWinningFilter] = useState(defaultFilterValue);
 
   return (
     <div className="flex flex-col gap-10 pb-72 md:gap-[70px]">
@@ -128,11 +117,32 @@ const RafflesTable = () => {
             labelsClassName="!self-start"
             labels={["Active", "Past Participation", "Winnings"]}
             panels={[
-              <ActiveRaffles filter={<FilterModal />} />,
-              <PassedParticipationRaffles filter={<FilterModal />} />,
+              <ActiveRaffles
+                filter={myActiveFilter}
+                filterComponent={
+                  <FilterModal
+                    filter={myActiveFilter}
+                    setFilter={setMyActiveFilter}
+                  />
+                }
+              />,
+              <PassedParticipationRaffles
+                filter={myPastFilter}
+                filterComponent={
+                  <FilterModal
+                    filter={myPastFilter}
+                    setFilter={setMyPastFilter}
+                  />
+                }
+              />,
               <WinningsRaffles
                 filter={myWinningFilter}
-                filterComponent={<FilterModal />}
+                filterComponent={
+                  <FilterModal
+                    filter={myWinningFilter}
+                    setFilter={setMyWinningFilter}
+                  />
+                }
               />,
             ]}
           />
@@ -241,157 +251,223 @@ const EndedRaffles = ({ filterComponent, filter }: PanelProps) => {
   );
 };
 
-const ActiveRaffles = ({ filter }: { filter: React.ReactNode }) => (
-  <Fragment>
-    <div className="flex justify-between gap-2.5 max-md:flex-col">
-      <div className="flex gap-2">{filter}</div>
-      <div className="flex gap-1.5">
-        <Input
-          className="border border-neutral-200 bg-white md:w-80"
-          placeholder="Search by raffle name"
-        />
-        <Button>Search</Button>
+const ActiveRaffles = ({ filter, filterComponent }: PanelProps) => {
+  const [search, setSearch] = useState("");
+
+  function filterRaffleData() {
+    const { type, date, raffle } = filter;
+
+    if (!type) return raffleData;
+
+    return raffleData.filter((entry) => {
+      if (type === "date" && date) {
+        const fromDate = new Date(date?.from as Date);
+        const toDate = new Date(date?.to as Date);
+        const raffleDate = new Date(entry.date);
+
+        return raffleDate >= fromDate && raffleDate <= toDate;
+      } else if (type === "raffle" && raffle) {
+        return entry.raffleName === raffle;
+      }
+      return false;
+    });
+  }
+
+  const data = filterRaffleData()?.filter((e) =>
+    e.raffleName.toLowerCase().includes(search.toLowerCase()),
+  );
+
+  return (
+    <Fragment>
+      <div className="flex justify-between gap-2.5 max-md:flex-col">
+        <div className="flex gap-2">{filterComponent}</div>
+        <div className="flex gap-1.5">
+          <Input
+            onChange={(e) => setSearch(e.target.value)}
+            value={search}
+            className="border border-neutral-200 bg-white md:w-80"
+            placeholder="Search by raffle name"
+          />
+          <Button>Search</Button>
+        </div>
       </div>
-    </div>
-    <Table>
-      <TableHeader className="[&>td]:text-nowrap [&>td]:text-sm [&>td]:font-semibold">
-        <TableRow>
-          <TableCell>
-            <div className="flex items-center gap-1.5">
-              <Image
-                src="/images/icons/compare-arrows.svg"
-                alt="compare arrow"
-                height={20}
-                width={20}
-              />
-              Date
-            </div>
-          </TableCell>
-          <TableCell>
-            <div className="flex items-center gap-1.5">
-              <Image
-                src="/images/icons/compare-arrows.svg"
-                alt="compare arrow"
-                height={20}
-                width={20}
-              />
-              Closed Date
-            </div>
-          </TableCell>
-          <TableCell>Raffle Name</TableCell>
-          <TableCell className="text-center">Ticket Price</TableCell>
-          <TableCell className="text-center">Number of Tickets</TableCell>
-          <TableCell className="text-center">Purchased Ticket</TableCell>
-          <TableCell className="text-center">
-            <div className="flex items-center gap-1.5">
-              <Image
-                src="/images/icons/compare-arrows.svg"
-                alt="compare arrow"
-                height={20}
-                width={20}
-              />
-              Status
-            </div>
-          </TableCell>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {raffleData?.map((data, index) => (
-          <TableRow
-            key={index}
-            className="[&>td]:text-nowrap [&>td]:text-sm [&>td]:text-black"
-          >
-            <TableCell className="font-semibold">{data?.date}</TableCell>
-            <TableCell className="font-semibold">{data?.closedDate}</TableCell>
-            <TableCell className="font-semibold">{data?.raffleName}</TableCell>
-            <TableCell className="text-center">{data?.ticketPrice}</TableCell>
-            <TableCell className="text-center">
-              {data?.numberOfTickets}
+      <Table>
+        <TableHeader className="[&>td]:text-nowrap [&>td]:text-sm [&>td]:font-semibold">
+          <TableRow>
+            <TableCell>
+              <div className="flex items-center gap-1.5">
+                <Image
+                  src="/images/icons/compare-arrows.svg"
+                  alt="compare arrow"
+                  height={20}
+                  width={20}
+                />
+                Date
+              </div>
             </TableCell>
-            <TableCell className="text-center">
-              {data?.purchasedTicket?.toLocaleString()} FFT
+            <TableCell>
+              <div className="flex items-center gap-1.5">
+                <Image
+                  src="/images/icons/compare-arrows.svg"
+                  alt="compare arrow"
+                  height={20}
+                  width={20}
+                />
+                Closed Date
+              </div>
             </TableCell>
-            <TableCell className="text-center">{data?.status}</TableCell>
+            <TableCell>Raffle Name</TableCell>
+            <TableCell className="text-center">Ticket Price</TableCell>
+            <TableCell className="text-center">Number of Tickets</TableCell>
+            <TableCell className="text-center">Purchased Ticket</TableCell>
+            <TableCell className="text-center">
+              <div className="flex items-center gap-1.5">
+                <Image
+                  src="/images/icons/compare-arrows.svg"
+                  alt="compare arrow"
+                  height={20}
+                  width={20}
+                />
+                Status
+              </div>
+            </TableCell>
           </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  </Fragment>
-);
+        </TableHeader>
+        <TableBody>
+          {data?.map((item, index) => (
+            <TableRow
+              key={index}
+              className="[&>td]:text-nowrap [&>td]:text-sm [&>td]:text-black"
+            >
+              <TableCell className="font-semibold">{item?.date}</TableCell>
+              <TableCell className="font-semibold">
+                {item?.closedDate}
+              </TableCell>
+              <TableCell className="font-semibold">
+                {item?.raffleName}
+              </TableCell>
+              <TableCell className="text-center">{item?.ticketPrice}</TableCell>
+              <TableCell className="text-center">
+                {item?.numberOfTickets}
+              </TableCell>
+              <TableCell className="text-center">
+                {item?.purchasedTicket?.toLocaleString()} FFT
+              </TableCell>
+              <TableCell className="text-center">{item?.status}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </Fragment>
+  );
+};
 
 const PassedParticipationRaffles = ({
+  filterComponent,
   filter,
-}: {
-  filter: React.ReactNode;
-}) => (
-  <Fragment>
-    <div className="flex justify-between gap-2.5 max-md:flex-col">
-      <div className="flex gap-2">{filter}</div>
-      <div className="flex gap-1.5">
-        <Input
-          className="border border-neutral-200 bg-white md:w-80"
-          placeholder="Search by raffle name"
-        />
-        <Button>Search</Button>
+}: PanelProps) => {
+  const [search, setSearch] = useState("");
+
+  function filterRaffleData() {
+    const { type, date, raffle } = filter;
+
+    if (!type) return raffleData;
+
+    return raffleData.filter((entry) => {
+      if (type === "date" && date) {
+        const fromDate = new Date(date?.from as Date);
+        const toDate = new Date(date?.to as Date);
+        const raffleDate = new Date(entry.date);
+
+        return raffleDate >= fromDate && raffleDate <= toDate;
+      } else if (type === "raffle" && raffle) {
+        return entry.raffleName === raffle;
+      }
+      return false;
+    });
+  }
+
+  const data = filterRaffleData()?.filter((e) =>
+    e.raffleName.toLowerCase().includes(search.toLowerCase()),
+  );
+
+  return (
+    <Fragment>
+      <div className="flex justify-between gap-2.5 max-md:flex-col">
+        <div className="flex gap-2">{filterComponent}</div>
+        <div className="flex gap-1.5">
+          <Input
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="border border-neutral-200 bg-white md:w-80"
+            placeholder="Search by raffle name"
+          />
+          <Button>Search</Button>
+        </div>
       </div>
-    </div>
-    <Table>
-      <TableHeader className="[&>td]:text-nowrap [&>td]:text-sm [&>td]:font-semibold">
-        <TableRow>
-          <TableCell>
-            <div className="flex items-center gap-1.5">
-              <Image
-                src="/images/icons/compare-arrows.svg"
-                alt="compare arrow"
-                height={20}
-                width={20}
-              />
-              Date
-            </div>
-          </TableCell>
-          <TableCell>
-            <div className="flex items-center gap-1.5">
-              <Image
-                src="/images/icons/compare-arrows.svg"
-                alt="compare arrow"
-                height={20}
-                width={20}
-              />
-              Closed Date
-            </div>
-          </TableCell>
-          <TableCell>Raffle Name</TableCell>
-          <TableCell className="text-center">Ticket Price</TableCell>
-          <TableCell className="text-center">Number of Tickets</TableCell>
-          <TableCell className="text-center">Purchased Ticket</TableCell>
-          <TableCell className="text-center">Status</TableCell>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {raffleData?.map((data, index) => (
-          <TableRow
-            key={index}
-            className="[&>td]:text-nowrap [&>td]:text-sm [&>td]:text-black"
-          >
-            <TableCell className="font-semibold">{data?.date}</TableCell>
-            <TableCell className="font-semibold">{data?.closedDate}</TableCell>
-            <TableCell className="font-semibold">{data?.raffleName}</TableCell>
-            <TableCell className="text-center">
-              {data?.ticketPrice} FFT
+      <Table>
+        <TableHeader className="[&>td]:text-nowrap [&>td]:text-sm [&>td]:font-semibold">
+          <TableRow>
+            <TableCell>
+              <div className="flex items-center gap-1.5">
+                <Image
+                  src="/images/icons/compare-arrows.svg"
+                  alt="compare arrow"
+                  height={20}
+                  width={20}
+                />
+                Date
+              </div>
             </TableCell>
-            <TableCell className="text-center">
-              {data?.numberOfTickets}
+            <TableCell>
+              <div className="flex items-center gap-1.5">
+                <Image
+                  src="/images/icons/compare-arrows.svg"
+                  alt="compare arrow"
+                  height={20}
+                  width={20}
+                />
+                Closed Date
+              </div>
             </TableCell>
-            <TableCell className="text-center">
-              {data?.purchasedTicket?.toLocaleString()} FFT
-            </TableCell>
-            <TableCell className="text-center">{data?.status}</TableCell>
+            <TableCell>Raffle Name</TableCell>
+            <TableCell className="text-center">Ticket Price</TableCell>
+            <TableCell className="text-center">Number of Tickets</TableCell>
+            <TableCell className="text-center">Purchased Ticket</TableCell>
+            <TableCell className="text-center">Status</TableCell>
           </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  </Fragment>
-);
+        </TableHeader>
+        <TableBody>
+          {data?.map((item, index) => (
+            <TableRow
+              key={index}
+              className="[&>td]:text-nowrap [&>td]:text-sm [&>td]:text-black"
+            >
+              <TableCell className="font-semibold">{item?.date}</TableCell>
+              <TableCell className="font-semibold">
+                {item?.closedDate}
+              </TableCell>
+              <TableCell className="font-semibold">
+                {item?.raffleName}
+              </TableCell>
+              <TableCell className="text-center">
+                {item?.ticketPrice} FFT
+              </TableCell>
+              <TableCell className="text-center">
+                {item?.numberOfTickets}
+              </TableCell>
+              <TableCell className="text-center">
+                {item?.purchasedTicket?.toLocaleString()} FFT
+              </TableCell>
+              <TableCell className="text-center">{item?.status}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </Fragment>
+  );
+};
+
 const WinningsRaffles = ({ filterComponent, filter }: PanelProps) => {
   const [search, setSearch] = useState("");
 
