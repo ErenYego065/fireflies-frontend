@@ -51,7 +51,7 @@ const raffleData = [
 
 const RafflesTable = () => {
   return (
-    <div className="flex flex-col gap-10 pb-72 md:gap-16">
+    <div className="flex flex-col gap-10 pb-72 md:gap-[70px]">
       <div className="flex flex-col gap-2.5 md:gap-6">
         <h2 className="text-xl font-bold text-secondary-500 md:text-[40px]">
           Raffle History
@@ -104,7 +104,10 @@ const EndedRaffles = ({ filter }: { filter: React.ReactNode }) => (
         </Button>
       </div>
       <div className="flex gap-1.5">
-        <Input className="md:w-80" placeholder="Search by raffle name" />
+        <Input
+          className="border border-neutral-200 bg-white md:w-80"
+          placeholder="Search by raffle name"
+        />
         <Button>Search</Button>
       </div>
     </div>
@@ -163,7 +166,10 @@ const ActiveRaffles = ({ filter }: { filter: React.ReactNode }) => (
         </Button>
       </div>
       <div className="flex gap-1.5">
-        <Input className="md:w-80" placeholder="Search by raffle name" />
+        <Input
+          className="border border-neutral-200 bg-white md:w-80"
+          placeholder="Search by raffle name"
+        />
         <Button>Search</Button>
       </div>
     </div>
@@ -205,7 +211,7 @@ const ActiveRaffles = ({ filter }: { filter: React.ReactNode }) => (
             />
             Status
           </div>
-          </TableCell>
+        </TableCell>
       </TableHeader>
       <TableBody>
         {raffleData?.map((data, index) => (
@@ -248,7 +254,10 @@ const PassedParticipationRaffles = ({
         </Button>
       </div>
       <div className="flex gap-1.5">
-        <Input className="md:w-80" placeholder="Search by raffle name" />
+        <Input
+          className="border border-neutral-200 bg-white md:w-80"
+          placeholder="Search by raffle name"
+        />
         <Button>Search</Button>
       </div>
     </div>
@@ -310,7 +319,10 @@ const WinningsRaffles = ({ filter }: { filter: React.ReactNode }) => (
     <div className="flex justify-between gap-2.5 max-md:flex-col">
       <div className="flex gap-2">{filter}</div>
       <div className="flex gap-1.5">
-        <Input className="md:w-80" placeholder="Search by raffle name" />
+        <Input
+          className="border border-neutral-200 bg-white md:w-80"
+          placeholder="Search by raffle name"
+        />
         <Button>Search</Button>
       </div>
     </div>
