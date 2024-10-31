@@ -130,8 +130,8 @@ const streakReward = [
 const RewardStreak = () => {
   const { data: session } = useSession();
   return (
-    <div className="bg-reward-bg">
-      <div className="container mx-auto">
+    <div className="bg-reward-bg px-2.5">
+      <div className="container mx-auto max-md:px-8">
         <div className="flex w-full flex-col gap-4 pb-7 pt-3 md:pb-11 md:pt-8">
           <div className="flex w-fit cursor-pointer items-center text-secondary-900">
             <BackButton />
@@ -188,7 +188,7 @@ const RewardStreak = () => {
           ))}
         </div>
       </div>
-      {!session && (
+      {session && (
         <div className="mt-11 bg-streak-dashboard">
           <div className="container mx-auto font-[family-name:var(--font-nunito)]">
             <h2 className="my-6 text-[40px] font-bold leading-[55px] text-[#6A727F]">
@@ -304,7 +304,7 @@ const RewardStreak = () => {
               <span className="text-[32px] font-bold leading-[44px] text-[#6A727F]">
                 History
               </span>
-              <div className="flex flex-row justify-between">
+              <div className="flex flex-col justify-between gap-2.5 md:flex-row">
                 <div className="flex h-[34px] flex-row items-center gap-[6px] rounded-xl border border-[#CCCBCB] bg-[#FAFAFA] px-[14px] py-[9px]">
                   <Image
                     src="/images/rewards/streak/filter.svg"
