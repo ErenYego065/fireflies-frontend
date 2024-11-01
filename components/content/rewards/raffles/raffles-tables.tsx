@@ -19,6 +19,7 @@ const raffleData = [
     openingDate: "2024-09-10 14:00",
     closedDate: "2024-09-10 14:00",
     raffleName: "Global Explorer",
+    raffleId: "Global Explorer",
     ticketPrice: 75,
     numberOfTickets: 24,
     purchasedTicket: 1800,
@@ -30,6 +31,7 @@ const raffleData = [
     openingDate: "2024-08-25 09:00",
     closedDate: "2024-08-25 09:00",
     raffleName: "Dream Vacation",
+    raffleNId: "Dream Vacation",
     ticketPrice: 12,
     numberOfTickets: 8,
     purchasedTicket: 96,
@@ -41,6 +43,7 @@ const raffleData = [
     openingDate: "2024-07-15 20:00",
     closedDate: "2024-07-15 20:00",
     raffleName: "Luxury Car Rental Experience",
+    raffleId: "Lux-Car Rental",
     ticketPrice: 50,
     numberOfTickets: 10,
     purchasedTicket: 500,
@@ -168,7 +171,7 @@ const EndedRaffles = ({ filterComponent, filter }: PanelProps) => {
 
         return raffleDate >= fromDate && raffleDate <= toDate;
       } else if (type === "raffle" && raffle) {
-        return entry.raffleName === raffle;
+        return entry.raffleId === raffle;
       }
       return false;
     });
@@ -248,7 +251,7 @@ const ActiveRaffles = ({ filter, filterComponent }: PanelProps) => {
 
         return raffleDate >= fromDate && raffleDate <= toDate;
       } else if (type === "raffle" && raffle) {
-        return entry.raffleName === raffle;
+        return entry.raffleId === raffle;
       }
       return false;
     });
@@ -333,7 +336,7 @@ const ClosedRaffles = ({ filterComponent, filter }: PanelProps) => {
 
         return raffleDate >= fromDate && raffleDate <= toDate;
       } else if (type === "raffle" && raffle) {
-        return entry.raffleName === raffle;
+        return entry.raffleId === raffle;
       }
       return false;
     });
@@ -416,7 +419,7 @@ const MyWinningRaffles = ({ filterComponent, filter }: PanelProps) => {
 
         return raffleDate >= fromDate && raffleDate <= toDate;
       } else if (type === "raffle" && raffle) {
-        return entry.raffleName === raffle;
+        return entry.raffleId === raffle;
       }
       return false;
     });
@@ -500,7 +503,7 @@ const WinningsRaffles = ({ filterComponent, filter }: PanelProps) => {
 
         return raffleDate >= fromDate && raffleDate <= toDate;
       } else if (type === "raffle" && raffle) {
-        return entry.raffleName === raffle;
+        return entry.raffleId === raffle;
       }
       return false;
     });
