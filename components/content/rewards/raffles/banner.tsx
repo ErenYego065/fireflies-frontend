@@ -3,7 +3,7 @@ import React from "react";
 
 const Banner = () => {
   return (
-    <div className="relative w-full">
+    <div className="relative w-full max-md:overflow-hidden">
       <Image
         alt="top flag"
         src="/images/rewards/raffles/banner-right-top-back.svg"
@@ -18,7 +18,7 @@ const Banner = () => {
         height={103}
         className="absolute -bottom-[64px] left-[23px] max-md:hidden"
       />
-      <div className="relative flex w-full flex-col items-center justify-center gap-2 bg-gradient-to-r-from-teal-to-blue p-6 ">
+      <div className="relative flex w-full flex-col items-center justify-center gap-2 bg-gradient-to-r-from-teal-to-blue p-6">
         <div className="absolute left-0 top-0 h-full w-full">
           <Image
             alt="top left flag"
