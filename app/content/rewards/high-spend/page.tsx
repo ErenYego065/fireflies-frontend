@@ -19,7 +19,7 @@ import RewardProgressBar from "@/components/content/rewards/high-spend/reward-pr
 import ProgressBar from "@/components/content/rewards/high-spend/ProgressStatus";
 import RewardProgressBarResponsive from "@/components/content/rewards/high-spend/reward-progressbar/RewardProgressBarResponsive";
 import React from "react";
-import BackButton from "@/components/common/backbutton";
+import BackButton from "@/components/common/backbutton2";
 
 interface RewardData {
   title: string;
