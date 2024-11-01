@@ -10,7 +10,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import FilterModal from "./filter-modal";
 import HistoryFilterModal from "./history-filter-modal";
 import { addDays } from "date-fns";
 import { DateRange } from "react-day-picker";
@@ -118,7 +117,7 @@ const RafflesTable = () => {
               <ActiveRaffles
                 filter={myActiveFilter}
                 filterComponent={
-                  <FilterModal
+                  <HistoryFilterModal
                     filter={myActiveFilter}
                     setFilter={setMyActiveFilter}
                   />
@@ -127,7 +126,7 @@ const RafflesTable = () => {
               <ClosedRaffles
                 filter={myPastFilter}
                 filterComponent={
-                  <FilterModal
+                  <HistoryFilterModal
                     filter={myPastFilter}
                     setFilter={setMyPastFilter}
                   />
@@ -136,7 +135,7 @@ const RafflesTable = () => {
               <MyWinningRaffles
                 filter={myWinningFilter}
                 filterComponent={
-                  <FilterModal
+                  <HistoryFilterModal
                     filter={myWinningFilter}
                     setFilter={setMyWinningFilter}
                   />
