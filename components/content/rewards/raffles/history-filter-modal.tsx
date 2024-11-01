@@ -38,7 +38,7 @@ const HistoryFilterModal = ({ filter, setFilter }: Props) => {
   });
 
   useEffect(() => {
-    setTempFilter(filter);
+    setTempFilter({ ...filter, type: filter?.type || "raffle" });
   }, [filter]);
 
   return (
@@ -65,7 +65,7 @@ const HistoryFilterModal = ({ filter, setFilter }: Props) => {
           </h2>
           <RadioGroup
             className="gap-5"
-            defaultValue={filter?.type}
+            defaultValue={filter?.type || "raffle"}
             onValueChange={(e) => setTempFilter({ ...tempFilter, type: e })}
           >
             <div className="flex items-center space-x-2">
