@@ -14,9 +14,9 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useSession } from "next-auth/react";
-import RewardCard from "@/components/content/rewards/high-spend/RewardCard";
+import RewardCard from "@/components/content/rewards/high-spend/reward-card";
 import RewardProgressBar from "@/components/content/rewards/high-spend/reward-progressbar/RewardProgressBar";
-import ProgressBar from "@/components/content/rewards/high-spend/ProgressStatus";
+import ProgressBar from "@/components/content/rewards/high-spend/progress-status";
 import RewardProgressBarResponsive from "@/components/content/rewards/high-spend/reward-progressbar/RewardProgressBarResponsive";
 import React from "react";
 import BackButton from "@/components/common/back-button";
