@@ -38,7 +38,7 @@ const HistoryFilterModal = ({ filter, setFilter }: Props) => {
   });
 
   useEffect(() => {
-    setTempFilter(filter);
+    setTempFilter({ ...filter, type: filter?.type || "raffle" });
   }, [filter]);
 
   return (
@@ -63,9 +63,34 @@ const HistoryFilterModal = ({ filter, setFilter }: Props) => {
           <h2 className="text-base font-semibold text-[#0A0A0B] md:text-lg">
             Filter
           </h2>
-          <RadioGroup
+
+          <div className="flex flex-wrap gap-2.5">
+            {["Global Explorer", "Dream Vacation", "Lux-Car Rental"].map(
+              (item) => (
+                <div
+                  className={clsx(
+                    "flex h-7 cursor-pointer items-center justify-center rounded-[10px] px-5 text-sm font-semibold",
+                    item === tempFilter?.raffle
+                      ? "bg-primary-500 text-white"
+                      : "bg-gradient-fade text-primary-500",
+                  )}
+                  onClick={() =>
+                    setTempFilter({
+                      ...tempFilter,
+                      raffle: item,
+                      type: "raffle",
+                    })
+                  }
+                  key={item}
+                >
+                  {item}
+                </div>
+              ),
+            )}
+          </div>
+          {/* <RadioGroup
             className="gap-5"
-            defaultValue={filter?.type}
+            defaultValue={filter?.type || "raffle"}
             onValueChange={(e) => setTempFilter({ ...tempFilter, type: e })}
           >
             <div className="flex items-center space-x-2">
@@ -136,7 +161,7 @@ const HistoryFilterModal = ({ filter, setFilter }: Props) => {
                 />
               </PopoverContent>
             </Popover>
-          </RadioGroup>
+          </RadioGroup> */}
 
           <DialogClose asChild>
             <div className="flex justify-end gap-2">

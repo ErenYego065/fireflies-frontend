@@ -12,7 +12,7 @@ import Banner from "@/components/content/rewards/raffles/banner";
 import RafflesTables from "@/components/content/rewards/raffles/raffles-tables";
 import Upcoming from "@/components/content/rewards/raffles/upcoming";
 import WinnersSlider from "@/components/content/rewards/raffles/winners-slider";
-import BackButton from "@/components/common/backbutton";
+import BackButton from "@/components/common/backButton";
 import ThumbnailCard from "@/components/content/rewards/raffles/thumbnail-card";
 
 export interface TicketDetails {
@@ -99,7 +99,7 @@ const Rewards = () => {
         </div>
         <Banner />
       </div>
-      <div className=" mx-auto px-5 bg-streak-dashboard">
+      <div className="mx-auto bg-streak-dashboard px-5">
         <WinnersSlider />
         <RafflesTables />
       </div>

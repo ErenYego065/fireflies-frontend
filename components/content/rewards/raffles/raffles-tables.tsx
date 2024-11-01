@@ -10,7 +10,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import FilterModal from "./filter-modal";
 import HistoryFilterModal from "./history-filter-modal";
 import { addDays } from "date-fns";
 import { DateRange } from "react-day-picker";
@@ -72,7 +71,7 @@ const RafflesTable = () => {
   const [myActiveFilter, setMyActiveFilter] = useState(defaultFilterValue);
   const [myWinningFilter, setMyWinningFilter] = useState(defaultFilterValue);
   return (
-    <div className="flex flex-col gap-10 pb-40 md:gap-[70px] mx-36 max-md:mx-8">
+    <div className="mx-36 flex flex-col gap-10 pb-40 max-md:mx-8 md:gap-[70px]">
       <div className="flex flex-col gap-2.5 md:gap-6">
         <h2 className="text-xl font-bold text-secondary-500 md:text-[40px]">
           Raffle History
@@ -105,7 +104,7 @@ const RafflesTable = () => {
           />
         </div>
       </div>
-      <div className="flex flex-col gap-2.5 md:gap-6 ">
+      <div className="flex flex-col gap-2.5 md:gap-6">
         <h2 className="text-xl font-bold text-secondary-500 md:text-[40px]">
           My Raffles
         </h2>
@@ -118,7 +117,7 @@ const RafflesTable = () => {
               <ActiveRaffles
                 filter={myActiveFilter}
                 filterComponent={
-                  <FilterModal
+                  <HistoryFilterModal
                     filter={myActiveFilter}
                     setFilter={setMyActiveFilter}
                   />
@@ -127,7 +126,7 @@ const RafflesTable = () => {
               <ClosedRaffles
                 filter={myPastFilter}
                 filterComponent={
-                  <FilterModal
+                  <HistoryFilterModal
                     filter={myPastFilter}
                     setFilter={setMyPastFilter}
                   />
@@ -136,7 +135,7 @@ const RafflesTable = () => {
               <MyWinningRaffles
                 filter={myWinningFilter}
                 filterComponent={
-                  <FilterModal
+                  <HistoryFilterModal
                     filter={myWinningFilter}
                     setFilter={setMyWinningFilter}
                   />
@@ -197,25 +196,11 @@ const EndedRaffles = ({ filterComponent, filter }: PanelProps) => {
         <TableHeader className="[&>td]:text-nowrap [&>td]:text-sm [&>td]:font-semibold">
           <TableRow>
             <TableCell>
-              <div className="flex items-center gap-1.5">
-                <Image
-                  src="/images/icons/compare-arrows.svg"
-                  alt="compare arrow"
-                  height={20}
-                  width={20}
-                />
-                Closed Date
-              </div>
+              <div className="flex items-center gap-1.5">Closed Date</div>
             </TableCell>
             <TableCell>Raffle Name</TableCell>
             <TableCell className="text-center">
               <div className="flex items-center justify-center gap-1.5">
-                <Image
-                  src="/images/icons/compare-arrows.svg"
-                  alt="compare arrow"
-                  height={20}
-                  width={20}
-                />
                 Ticket Price
               </div>
             </TableCell>
@@ -291,26 +276,10 @@ const ActiveRaffles = ({ filter, filterComponent }: PanelProps) => {
         <TableHeader className="[&>td]:text-nowrap [&>td]:text-sm [&>td]:font-semibold">
           <TableRow>
             <TableCell>
-              <div className="flex items-center gap-1.5">
-                <Image
-                  src="/images/icons/compare-arrows.svg"
-                  alt="compare arrow"
-                  height={20}
-                  width={20}
-                />
-                Opening Date
-              </div>
+              <div className="flex items-center gap-1.5">Opening Date</div>
             </TableCell>
             <TableCell>
-              <div className="flex items-center gap-1.5">
-                <Image
-                  src="/images/icons/compare-arrows.svg"
-                  alt="compare arrow"
-                  height={20}
-                  width={20}
-                />
-                Closing Date
-              </div>
+              <div className="flex items-center gap-1.5">Closing Date</div>
             </TableCell>
             <TableCell>Raffle Name</TableCell>
             <TableCell className="text-center">Ticket Price</TableCell>
@@ -324,7 +293,9 @@ const ActiveRaffles = ({ filter, filterComponent }: PanelProps) => {
               key={index}
               className="[&>td]:text-nowrap [&>td]:text-sm [&>td]:text-black"
             >
-              <TableCell className="font-semibold">{item?.openingDate}</TableCell>
+              <TableCell className="font-semibold">
+                {item?.openingDate}
+              </TableCell>
               <TableCell className="font-semibold">
                 {item?.closedDate}
               </TableCell>
@@ -346,10 +317,7 @@ const ActiveRaffles = ({ filter, filterComponent }: PanelProps) => {
   );
 };
 
-const ClosedRaffles = ({
-  filterComponent,
-  filter,
-}: PanelProps) => {
+const ClosedRaffles = ({ filterComponent, filter }: PanelProps) => {
   const [search, setSearch] = useState("");
 
   function filterRaffleData() {
@@ -393,15 +361,7 @@ const ClosedRaffles = ({
         <TableHeader className="[&>td]:text-nowrap [&>td]:text-sm [&>td]:font-semibold">
           <TableRow>
             <TableCell>
-              <div className="flex items-center gap-1.5">
-                <Image
-                  src="/images/icons/compare-arrows.svg"
-                  alt="compare arrow"
-                  height={20}
-                  width={20}
-                />
-                Closed Date
-              </div>
+              <div className="flex items-center gap-1.5">Closed Date</div>
             </TableCell>
             <TableCell>Raffle Name</TableCell>
             <TableCell className="text-center">Ticket Price</TableCell>
@@ -415,7 +375,9 @@ const ClosedRaffles = ({
               key={index}
               className="[&>td]:text-nowrap [&>td]:text-sm [&>td]:text-black"
             >
-              <TableCell className="font-semibold">{item?.openingDate}</TableCell>
+              <TableCell className="font-semibold">
+                {item?.openingDate}
+              </TableCell>
               <TableCell className="font-semibold">
                 {item?.closedDate}
               </TableCell>
@@ -438,10 +400,7 @@ const ClosedRaffles = ({
     </Fragment>
   );
 };
-const MyWinningRaffles = ({
-  filterComponent,
-  filter,
-}: PanelProps) => {
+const MyWinningRaffles = ({ filterComponent, filter }: PanelProps) => {
   const [search, setSearch] = useState("");
 
   function filterRaffleData() {
@@ -485,15 +444,7 @@ const MyWinningRaffles = ({
         <TableHeader className="[&>td]:text-nowrap [&>td]:text-sm [&>td]:font-semibold">
           <TableRow>
             <TableCell>
-              <div className="flex items-center gap-1.5">
-                <Image
-                  src="/images/icons/compare-arrows.svg"
-                  alt="compare arrow"
-                  height={20}
-                  width={20}
-                />
-                Closed Date
-              </div>
+              <div className="flex items-center gap-1.5">Closed Date</div>
             </TableCell>
             <TableCell>Raffle Name</TableCell>
             <TableCell className="text-center">Ticket Price</TableCell>
@@ -507,7 +458,9 @@ const MyWinningRaffles = ({
               key={index}
               className="[&>td]:text-nowrap [&>td]:text-sm [&>td]:text-black"
             >
-              <TableCell className="font-semibold">{item?.openingDate}</TableCell>
+              <TableCell className="font-semibold">
+                {item?.openingDate}
+              </TableCell>
               <TableCell className="font-semibold">
                 {item?.closedDate}
               </TableCell>
@@ -575,15 +528,7 @@ const WinningsRaffles = ({ filterComponent, filter }: PanelProps) => {
         <TableHeader className="[&>td]:text-nowrap [&>td]:text-sm [&>td]:font-semibold">
           <TableRow>
             <TableCell>
-              <div className="flex items-center gap-1.5">
-                <Image
-                  src="/images/icons/compare-arrows.svg"
-                  alt="compare arrow"
-                  height={20}
-                  width={20}
-                />
-                Closed Date
-              </div>
+              <div className="flex items-center gap-1.5">Closed Date</div>
             </TableCell>
             <TableCell>Winner</TableCell>
             <TableCell>Raffle Name</TableCell>
