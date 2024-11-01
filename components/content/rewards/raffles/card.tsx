@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import ProgressBar from "@/components/common/ProgressBar";
+import ProgressBar from "@/components/common/progressbar";
 import moment from "moment";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";

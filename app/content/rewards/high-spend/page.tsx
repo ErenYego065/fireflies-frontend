@@ -19,7 +19,7 @@ import RewardProgressBar from "@/components/content/rewards/high-spend/reward-pr
 import ProgressBar from "@/components/content/rewards/high-spend/ProgressStatus";
 import RewardProgressBarResponsive from "@/components/content/rewards/high-spend/reward-progressbar/RewardProgressBarResponsive";
 import React from "react";
-import BackButton from "@/components/common/BackButton";
+import BackButton from "@/components/common/backbutton";
 
 interface RewardData {
   title: string;
@@ -30,7 +30,6 @@ interface RewardData {
   buttonText: string;
   buttonAction: () => void;
 }
-
 const claimedHistory = [
   {
     dateClaimed: "2024-09-10 14:00",
@@ -190,8 +189,7 @@ const RewardHighSpend: React.FC = () => {
       <div className="container mx-auto max-md:px-8">
         <div className="flex w-full flex-col gap-4 pb-7 pt-3 md:pb-11 md:pt-8">
           <div className="flex w-fit cursor-pointer items-center text-secondary-900">
-            <BackButton />
-          </div>
+            <BackButton />  </div>
           <h1 className="text-center font-[family-name:var(--font-sofia)] text-3xl font-bold text-secondary-700 md:text-6xl">
             High Spend Traveler
           </h1>

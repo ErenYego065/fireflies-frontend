@@ -27,8 +27,8 @@ interface Props {
 const FilterModal = ({ filter, setFilter }: Props) => {
   const [tempFilter, setTempFilter] = useState<FilterType>({
     date: {
-      from: new Date(2022, 0, 20),
-      to: addDays(new Date(2022, 0, 20), 20),
+      from: new Date(2024, 0, 20),
+      to: addDays(new Date(2024, 0, 20), 20),
     },
     type: "date",
   });
@@ -107,8 +107,8 @@ const FilterModal = ({ filter, setFilter }: Props) => {
                 onClick={() => {
                   setFilter({
                     date: {
-                      from: new Date(2022, 0, 20),
-                      to: addDays(new Date(2022, 0, 20), 20),
+                      from: new Date(2024, 0, 20),
+                      to: addDays(new Date(2024, 0, 20), 20),
                     },
                     type: "",
                   });

@@ -1,5 +1,3 @@
-"use client";
-
 import React, { HTMLAttributes, ReactNode } from "react";
 import SlickSlider, { Settings } from "react-slick";
 import Image from "next/image";
@@ -23,14 +21,14 @@ const Slider = ({
 }: ImagesSliderProps) => {
   return (
     <div className="w-full">
-      <div className="slider-container">
+      <div className="slider-container ">
         <SlickSlider
           arrows
           centerMode
           infinite
           dots
-          swipeToSlide={false}
-          draggable={false}
+          swipeToSlide={true}
+          draggable={true}
           speed={500}
           slidesToShow={1}
           slidesToScroll={1}

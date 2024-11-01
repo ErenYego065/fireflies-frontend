@@ -26,13 +26,13 @@ const winnerList = [
 
 const WinnersSlider = () => {
   return (
-    <div className="-mx-2 mb-10 max-md:px-5">
+    <div className="container m-auto pt-24 pb-12">
       <Slider
         dots={false}
         centerMode={false}
         slidesToShow={3}
-        arrowLeftClassName="md:!-left-10 !-left-4"
-        arrowRightClassName="md:!-right-10 !-right-6"
+        arrowLeftClassName="md:!-left-10 !-left-2"
+        arrowRightClassName="md:!-right-10 !-right-2"
         responsive={[
           {
             breakpoint: 786,

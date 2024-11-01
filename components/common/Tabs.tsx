@@ -23,7 +23,7 @@ const Tabs = (props: TabsProps) => {
     >
       <div
         className={clsx(
-          "flex w-fit self-center rounded-[6px] border-2 border-neutral-200 bg-neutral-200",
+          "flex w-fit self-center rounded-[6px] border-2 border-neutral-200 bg-neutral-200 ",
           labelsClassName && labelsClassName,
         )}
       >

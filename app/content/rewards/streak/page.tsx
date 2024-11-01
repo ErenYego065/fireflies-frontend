@@ -14,7 +14,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useSession } from "next-auth/react";
-import BackButton from "@/components/common/BackButton";
+import BackButton from "@/components/common/backbutton";
 
 const claimedHistory = [
   {
@@ -66,8 +66,7 @@ const claimedHistory = [
     category: "Hotel Stays",
     value: "$300.00",
   },
-];
-
+]
 const streakReward = [
   {
     img: "/images/rewards/streak/travel-streak.svg",
@@ -130,7 +129,7 @@ const streakReward = [
 const RewardStreak = () => {
   const { data: session } = useSession();
   return (
-    <div className="bg-reward-bg px-2.5">
+    <div className="bg-reward-bg ">
       <div className="container mx-auto max-md:px-8">
         <div className="flex w-full flex-col gap-4 pb-7 pt-3 md:pb-11 md:pt-8">
           <div className="flex w-fit cursor-pointer items-center text-secondary-900">
@@ -190,7 +189,7 @@ const RewardStreak = () => {
       </div>
       {session && (
         <div className="mt-11 bg-streak-dashboard">
-          <div className="container mx-auto font-[family-name:var(--font-nunito)]">
+          <div className="container mx-auto font-[family-name:var(--font-nunito)] max-md:px-4">
             <h2 className="my-6 text-[40px] font-bold leading-[55px] text-[#6A727F]">
               Dashboard
             </h2>
@@ -219,13 +218,15 @@ const RewardStreak = () => {
                   <div className="h-8 grow rounded bg-gradient-to-r-from-teal-to-blue"></div>
                   <div className="h-8 grow rounded bg-gradient-to-r-from-teal-to-blue"></div>
                   <div className="h-8 grow rounded bg-gradient-to-r-from-teal-to-blue"></div>
-                  <div className="h-8 grow rounded bg-gradient-to-r-from-teal-to-blue"></div>
                   <div className="h-8 grow rounded bg-[#6A727F]"></div>
                   <div className="h-8 grow rounded bg-[#6A727F]"></div>
                   <div className="h-8 grow rounded bg-[#6A727F]"></div>
                   <div className="h-8 grow rounded bg-[#6A727F]"></div>
-                  <div className="h-8 rounded bg-[#6A727F]"></div>
-                  <div className="h-8 rounded bg-[#6A727F]"></div>
+                  <div className="h-8 grow rounded bg-[#6A727F]"></div>
+                  <div className="h-8 grow rounded bg-[#6A727F]"></div>
+                  <div className="h-8 grow rounded bg-[#6A727F]"></div>
+                  <div className="h-8 grow rounded bg-[#6A727F]"></div>
+                  <div className="h-8 grow rounded bg-[#6A727F]"></div>
                   <div className="h-8 grow rounded bg-[#6A727F]"></div>
                 </div>
               </div>
@@ -275,10 +276,10 @@ const RewardStreak = () => {
                     Cultural Explorer Streak
                   </span>
                 </div>
-                <div className="flex flex-row justify-between text-lg font-semibold leading-6 text-[#393E46]">
-                  <span>Reward Progress</span>
-                  <div className="flex flex-row gap-[10px]">
-                    <span>Congratulations! Claim your reward here.</span>
+                <div className="flex justify-between max-md:flex-col text-lg font-semibold leading-6 text-[#393E46]">
+                  <div>Reward Progress</div>
+                  <div className="flex justify-end max-md:flex-col gap-[10px]">
+                    <div>Congratulations! Claim your reward here.</div>
                     <Button className="h-8 w-28 rounded-lg bg-[#00ADB5] text-sm font-semibold">
                       Claim Reward
                     </Button>

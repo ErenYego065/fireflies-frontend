@@ -10,10 +10,8 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import clsx from "clsx";
-import {
-  SliderNextArrow,
-  SliderPrevArrow,
-} from "@/components/common/slick-slider";
+import { SliderNextArrow, SliderPrevArrow }
+  from "@/components/common/slick-slider"
 
 const ThumbnailCard = () => {
   return (

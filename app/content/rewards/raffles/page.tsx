@@ -12,7 +12,7 @@ import Banner from "@/components/content/rewards/raffles/banner";
 import RafflesTables from "@/components/content/rewards/raffles/raffles-tables";
 import Upcoming from "@/components/content/rewards/raffles/upcoming";
 import WinnersSlider from "@/components/content/rewards/raffles/winners-slider";
-import BackButton from "@/components/common/BackButton";
+import BackButton from "@/components/common/backbutton";
 import ThumbnailCard from "@/components/content/rewards/raffles/thumbnail-card";
 
 export interface TicketDetails {
@@ -70,9 +70,9 @@ const Rewards = () => {
   ]);
 
   return (
-    <div className="bg-raffles">
+    <React.Fragment>
       <div className="bg-reward-bg">
-        <div className="flex flex-col items-center gap-14">
+        <div className="flex flex-col items-center gap-14 pb-20 max-md:pb-8">
           <div className="container px-5 pt-3 md:pt-8">
             <div className="flex w-full flex-col gap-4">
               <div className="flex w-fit cursor-pointer items-center text-secondary-900">
@@ -83,11 +83,13 @@ const Rewards = () => {
               </h1>
             </div>
           </div>
+          {/* <div className="mx-36 max-md:mx-8"> */}
           <Slider>
             {[1, 2, 3].map((d) => (
               <ThumbnailCard key={d} />
             ))}
           </Slider>
+          {/* </div> */}
           <div className="container px-5">
             <Tabs
               panels={[<Live data={ticketDetails} />, <Upcoming />]}
@@ -97,11 +99,11 @@ const Rewards = () => {
         </div>
         <Banner />
       </div>
-      <div className="container mx-auto px-5">
+      <div className=" mx-auto px-5 bg-streak-dashboard">
         <WinnersSlider />
         <RafflesTables />
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 

@@ -127,12 +127,3 @@ img {
 .slick-dots li button:before {
   @apply !text-secondary-200 !text-xs !opacity-100;
 }
-
-.slick-slide>div {
-  height: 100%;
-}
-
-.slick-prev:before,
-.slick-next:before {
-  color: #00ADB5 !important;
-}

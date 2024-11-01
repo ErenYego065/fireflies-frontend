@@ -31,8 +31,8 @@ const HistoryFilterModal = ({ filter, setFilter }: Props) => {
   const [tempFilter, setTempFilter] = useState<FilterType>({
     raffle: "Global Explorer",
     date: {
-      from: new Date(2022, 0, 20),
-      to: addDays(new Date(2022, 0, 20), 20),
+      from: new Date(2024, 0, 20),
+      to: addDays(new Date(2024, 0, 20), 20),
     },
     type: "raffle",
   });
@@ -145,8 +145,8 @@ const HistoryFilterModal = ({ filter, setFilter }: Props) => {
                   setFilter({
                     raffle: "Global Explorer",
                     date: {
-                      from: new Date(2022, 0, 20),
-                      to: addDays(new Date(2022, 0, 20), 20),
+                      from: new Date(2024, 0, 20),
+                      to: addDays(new Date(2024, 0, 20), 20),
                     },
                     type: "",
                   });

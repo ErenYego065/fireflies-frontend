@@ -17,7 +17,7 @@ import { DateRange } from "react-day-picker";
 
 const raffleData = [
   {
-    date: "2024-09-10 14:00",
+    openingDate: "2024-09-10 14:00",
     closedDate: "2024-09-10 14:00",
     raffleName: "Global Explorer",
     ticketPrice: 75,
@@ -28,7 +28,7 @@ const raffleData = [
     rewardReceived: "Trip to Malaysia",
   },
   {
-    date: "2024-08-25 09:00",
+    openingDate: "2024-08-25 09:00",
     closedDate: "2024-08-25 09:00",
     raffleName: "Dream Vacation",
     ticketPrice: 12,
@@ -39,7 +39,7 @@ const raffleData = [
     rewardReceived: "Trip to Bali",
   },
   {
-    date: "2024-07-15 20:00",
+    openingDate: "2024-07-15 20:00",
     closedDate: "2024-07-15 20:00",
     raffleName: "Luxury Car Rental Experience",
     ticketPrice: 50,
@@ -60,21 +60,19 @@ export interface FilterType {
 const defaultFilterValue: FilterType = {
   raffle: "Global Explorer",
   date: {
-    from: new Date(2022, 0, 20),
-    to: addDays(new Date(2022, 0, 20), 20),
+    from: new Date(2024, 0, 20),
+    to: addDays(new Date(2024, 0, 20), 20),
   },
   type: "",
 };
-
 const RafflesTable = () => {
   const [endedFilter, setEndedFilter] = useState(defaultFilterValue);
   const [winningFilter, setWinningFilter] = useState(defaultFilterValue);
   const [myPastFilter, setMyPastFilter] = useState(defaultFilterValue);
   const [myActiveFilter, setMyActiveFilter] = useState(defaultFilterValue);
   const [myWinningFilter, setMyWinningFilter] = useState(defaultFilterValue);
-
   return (
-    <div className="flex flex-col gap-10 pb-72 md:gap-[70px]">
+    <div className="flex flex-col gap-10 pb-40 md:gap-[70px] mx-36 max-md:mx-8">
       <div className="flex flex-col gap-2.5 md:gap-6">
         <h2 className="text-xl font-bold text-secondary-500 md:text-[40px]">
           Raffle History
@@ -107,7 +105,7 @@ const RafflesTable = () => {
           />
         </div>
       </div>
-      <div className="flex flex-col gap-2.5 md:gap-6">
+      <div className="flex flex-col gap-2.5 md:gap-6 ">
         <h2 className="text-xl font-bold text-secondary-500 md:text-[40px]">
           My Raffles
         </h2>
@@ -115,7 +113,7 @@ const RafflesTable = () => {
           <Tabs
             className="!gap-2.5 md:!gap-4"
             labelsClassName="!self-start"
-            labels={["Active", "Past Participation", "Winnings"]}
+            labels={["Active", "Closed", "Winnings"]}
             panels={[
               <ActiveRaffles
                 filter={myActiveFilter}
@@ -126,7 +124,7 @@ const RafflesTable = () => {
                   />
                 }
               />,
-              <PassedParticipationRaffles
+              <ClosedRaffles
                 filter={myPastFilter}
                 filterComponent={
                   <FilterModal
@@ -135,7 +133,7 @@ const RafflesTable = () => {
                   />
                 }
               />,
-              <WinningsRaffles
+              <MyWinningRaffles
                 filter={myWinningFilter}
                 filterComponent={
                   <FilterModal
@@ -151,12 +149,10 @@ const RafflesTable = () => {
     </div>
   );
 };
-
 interface PanelProps {
   filterComponent: React.ReactNode;
   filter: FilterType;
 }
-
 const EndedRaffles = ({ filterComponent, filter }: PanelProps) => {
   const [search, setSearch] = useState("");
 
@@ -263,7 +259,7 @@ const ActiveRaffles = ({ filter, filterComponent }: PanelProps) => {
       if (type === "date" && date) {
         const fromDate = new Date(date?.from as Date);
         const toDate = new Date(date?.to as Date);
-        const raffleDate = new Date(entry.date);
+        const raffleDate = new Date(entry.openingDate);
 
         return raffleDate >= fromDate && raffleDate <= toDate;
       } else if (type === "raffle" && raffle) {
@@ -302,7 +298,7 @@ const ActiveRaffles = ({ filter, filterComponent }: PanelProps) => {
                   height={20}
                   width={20}
                 />
-                Date
+                Opening Date
               </div>
             </TableCell>
             <TableCell>
@@ -313,24 +309,13 @@ const ActiveRaffles = ({ filter, filterComponent }: PanelProps) => {
                   height={20}
                   width={20}
                 />
-                Closed Date
+                Closing Date
               </div>
             </TableCell>
             <TableCell>Raffle Name</TableCell>
             <TableCell className="text-center">Ticket Price</TableCell>
-            <TableCell className="text-center">Number of Tickets</TableCell>
-            <TableCell className="text-center">Purchased Ticket</TableCell>
-            <TableCell className="text-center">
-              <div className="flex items-center gap-1.5">
-                <Image
-                  src="/images/icons/compare-arrows.svg"
-                  alt="compare arrow"
-                  height={20}
-                  width={20}
-                />
-                Status
-              </div>
-            </TableCell>
+            <TableCell className="text-center">No. of Tickets</TableCell>
+            <TableCell className="text-center">Value</TableCell>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -339,7 +324,7 @@ const ActiveRaffles = ({ filter, filterComponent }: PanelProps) => {
               key={index}
               className="[&>td]:text-nowrap [&>td]:text-sm [&>td]:text-black"
             >
-              <TableCell className="font-semibold">{item?.date}</TableCell>
+              <TableCell className="font-semibold">{item?.openingDate}</TableCell>
               <TableCell className="font-semibold">
                 {item?.closedDate}
               </TableCell>
@@ -353,7 +338,6 @@ const ActiveRaffles = ({ filter, filterComponent }: PanelProps) => {
               <TableCell className="text-center">
                 {item?.purchasedTicket?.toLocaleString()} FFT
               </TableCell>
-              <TableCell className="text-center">{item?.status}</TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -362,7 +346,7 @@ const ActiveRaffles = ({ filter, filterComponent }: PanelProps) => {
   );
 };
 
-const PassedParticipationRaffles = ({
+const ClosedRaffles = ({
   filterComponent,
   filter,
 }: PanelProps) => {
@@ -377,7 +361,7 @@ const PassedParticipationRaffles = ({
       if (type === "date" && date) {
         const fromDate = new Date(date?.from as Date);
         const toDate = new Date(date?.to as Date);
-        const raffleDate = new Date(entry.date);
+        const raffleDate = new Date(entry.openingDate);
 
         return raffleDate >= fromDate && raffleDate <= toDate;
       } else if (type === "raffle" && raffle) {
@@ -416,25 +400,13 @@ const PassedParticipationRaffles = ({
                   height={20}
                   width={20}
                 />
-                Date
-              </div>
-            </TableCell>
-            <TableCell>
-              <div className="flex items-center gap-1.5">
-                <Image
-                  src="/images/icons/compare-arrows.svg"
-                  alt="compare arrow"
-                  height={20}
-                  width={20}
-                />
                 Closed Date
               </div>
             </TableCell>
             <TableCell>Raffle Name</TableCell>
             <TableCell className="text-center">Ticket Price</TableCell>
-            <TableCell className="text-center">Number of Tickets</TableCell>
-            <TableCell className="text-center">Purchased Ticket</TableCell>
-            <TableCell className="text-center">Status</TableCell>
+            <TableCell className="text-center">No. of Tickets</TableCell>
+            <TableCell className="text-center">Value</TableCell>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -443,7 +415,7 @@ const PassedParticipationRaffles = ({
               key={index}
               className="[&>td]:text-nowrap [&>td]:text-sm [&>td]:text-black"
             >
-              <TableCell className="font-semibold">{item?.date}</TableCell>
+              <TableCell className="font-semibold">{item?.openingDate}</TableCell>
               <TableCell className="font-semibold">
                 {item?.closedDate}
               </TableCell>
@@ -459,7 +431,98 @@ const PassedParticipationRaffles = ({
               <TableCell className="text-center">
                 {item?.purchasedTicket?.toLocaleString()} FFT
               </TableCell>
-              <TableCell className="text-center">{item?.status}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </Fragment>
+  );
+};
+const MyWinningRaffles = ({
+  filterComponent,
+  filter,
+}: PanelProps) => {
+  const [search, setSearch] = useState("");
+
+  function filterRaffleData() {
+    const { type, date, raffle } = filter;
+
+    if (!type) return raffleData;
+
+    return raffleData.filter((entry) => {
+      if (type === "date" && date) {
+        const fromDate = new Date(date?.from as Date);
+        const toDate = new Date(date?.to as Date);
+        const raffleDate = new Date(entry.openingDate);
+
+        return raffleDate >= fromDate && raffleDate <= toDate;
+      } else if (type === "raffle" && raffle) {
+        return entry.raffleName === raffle;
+      }
+      return false;
+    });
+  }
+
+  const data = filterRaffleData()?.filter((e) =>
+    e.raffleName.toLowerCase().includes(search.toLowerCase()),
+  );
+
+  return (
+    <Fragment>
+      <div className="flex justify-between gap-2.5 max-md:flex-col">
+        <div className="flex gap-2">{filterComponent}</div>
+        <div className="flex gap-1.5">
+          <Input
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="border border-neutral-200 bg-white md:w-80"
+            placeholder="Search by raffle name"
+          />
+          <Button>Search</Button>
+        </div>
+      </div>
+      <Table>
+        <TableHeader className="[&>td]:text-nowrap [&>td]:text-sm [&>td]:font-semibold">
+          <TableRow>
+            <TableCell>
+              <div className="flex items-center gap-1.5">
+                <Image
+                  src="/images/icons/compare-arrows.svg"
+                  alt="compare arrow"
+                  height={20}
+                  width={20}
+                />
+                Closed Date
+              </div>
+            </TableCell>
+            <TableCell>Raffle Name</TableCell>
+            <TableCell className="text-center">Ticket Price</TableCell>
+            <TableCell className="text-center">No. of Tickets</TableCell>
+            <TableCell className="text-center">Value</TableCell>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {data?.map((item, index) => (
+            <TableRow
+              key={index}
+              className="[&>td]:text-nowrap [&>td]:text-sm [&>td]:text-black"
+            >
+              <TableCell className="font-semibold">{item?.openingDate}</TableCell>
+              <TableCell className="font-semibold">
+                {item?.closedDate}
+              </TableCell>
+              <TableCell className="font-semibold">
+                {item?.raffleName}
+              </TableCell>
+              <TableCell className="text-center">
+                {item?.ticketPrice} FFT
+              </TableCell>
+              <TableCell className="text-center">
+                {item?.numberOfTickets}
+              </TableCell>
+              <TableCell className="text-center">
+                {item?.purchasedTicket?.toLocaleString()} FFT
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
