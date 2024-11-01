@@ -14,7 +14,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useSession } from "next-auth/react";
-import BackButton from "@/components/common/backbutton2";
+import BackButton from "@/components/common/backButton";
 
 const claimedHistory = [
   {
@@ -66,7 +66,7 @@ const claimedHistory = [
     category: "Hotel Stays",
     value: "$300.00",
   },
-]
+];
 const streakReward = [
   {
     img: "/images/rewards/streak/travel-streak.svg",
@@ -129,7 +129,7 @@ const streakReward = [
 const RewardStreak = () => {
   const { data: session } = useSession();
   return (
-    <div className="bg-reward-bg ">
+    <div className="bg-reward-bg">
       <div className="container mx-auto max-md:px-8">
         <div className="flex w-full flex-col gap-4 pb-7 pt-3 md:pb-11 md:pt-8">
           <div className="flex w-fit cursor-pointer items-center text-secondary-900">
@@ -153,7 +153,7 @@ const RewardStreak = () => {
                     height={110}
                     width={110}
                   />
-                  <h2 className="text-secondary-1000 text-center text-[28px] font-bold">
+                  <h2 className="text-center text-[28px] font-bold text-secondary-1000">
                     {item?.title}
                   </h2>
                 </div>
@@ -276,9 +276,9 @@ const RewardStreak = () => {
                     Cultural Explorer Streak
                   </span>
                 </div>
-                <div className="flex justify-between max-md:flex-col text-lg font-semibold leading-6 text-[#393E46]">
+                <div className="flex justify-between text-lg font-semibold leading-6 text-[#393E46] max-md:flex-col">
                   <div>Reward Progress</div>
-                  <div className="flex justify-end max-md:flex-col gap-[10px]">
+                  <div className="flex justify-end gap-[10px] max-md:flex-col">
                     <div>Congratulations! Claim your reward here.</div>
                     <Button className="h-8 w-28 rounded-lg bg-[#00ADB5] text-sm font-semibold">
                       Claim Reward
