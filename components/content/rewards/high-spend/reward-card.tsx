@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Image from 'next/image'
-import DonutChart from './RewardChart';
+import DonutChart from './reward-chart';
 interface RewardCardProps {
   title: string;
   total: number;
