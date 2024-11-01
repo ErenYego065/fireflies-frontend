@@ -14,7 +14,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useSession } from "next-auth/react";
-import BackButton from "@/components/common/backButton";
+import BackButton from "@/components/common/back-button";
 
 const claimedHistory = [
   {
